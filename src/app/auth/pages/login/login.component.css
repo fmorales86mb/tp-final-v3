@@ -1,0 +1,26 @@
+.form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+    /* margin-top: 7rem; */
+  }
+  
+  .form-signin .checkbox {
+    font-weight: 400;
+  }
+  
+  .form-signin .form-floating:focus-within {
+    z-index: 2;
+  }
+
+  .form-signin .alert{
+    padding: 12px;
+  }
+  
+.invalid {
+  color: red;
+}
+.errors{
+  margin-bottom: 10px;
+}

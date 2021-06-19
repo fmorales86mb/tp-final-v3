@@ -1,0 +1,12 @@
+<div class="row bg-secondary rounded" *ngIf="item">
+    <!-- datos usuario -->
+    <div class="col-7 mt-3">
+        <h3>{{item.model.email}}</h3>
+        <h5>{{item.model.rol | rol}}</h5>
+    </div>
+
+    <!-- Img -->
+    <div class="col-5">
+        <img [src]="item.model.perfilSrc" class="img-fluid m-1 rounded max-h-150">            
+    </div>
+</div>

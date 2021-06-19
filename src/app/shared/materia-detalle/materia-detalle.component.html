@@ -1,0 +1,33 @@
+<div class="row bg-secondary rounded" *ngIf="item">
+    <!-- datos Materia -->
+    <div class="col-6">
+        <h3 class="mt-2">{{item.model.name}}</h3>
+        <h5>{{item.model | cuatrimestre}}</h5>
+        <ul class="text-start">
+            <li>
+                Inscriptos: {{estudiantes.length}}/{{item.model.cupo}}
+            </li>
+            <li>                    
+                Docente: {{item.model.docente.email}}
+            </li>
+        </ul>
+    </div>
+
+    <!-- Img -->
+    <div class="col-6">
+        <img [src]="item.model.imgSrc" class="img-fluid m-1 rounded">            
+    </div>
+    
+    <!-- Listado Estudiantes -->
+    <div class="col-12 rounded" style="background-color: steelblue;">
+        <h5 class="mt-2">Estudiantes Inscriptos:</h5>
+        <div class="list-scroll text-start h-300">
+            <app-user-list [items]="estudiantes" (emitter)="seleccionarUsuario($event)"></app-user-list> 
+            <!-- <ol>
+                <li *ngFor="let estudiante of estudiantes">
+                    {{estudiante.model.email}}
+                </li>
+            </ol> -->
+        </div>
+    </div>
+</div>

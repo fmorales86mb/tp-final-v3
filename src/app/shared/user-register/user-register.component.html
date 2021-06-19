@@ -1,0 +1,56 @@
+<div class="row justify-content-center text-start">
+    <div class="col-xs-12 col-md-5 p-4"> 
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="home-tab">
+
+                <!-- Tab 1 -->
+                <form  [formGroup]="form1" (ngSubmit)="clickRegister()">
+
+                    <div class="mb-2">                  
+                        <input type="file" class="form-control" (change)="fileChangeEvent($event)" aria-describedby="inputGroupFileAddon04" aria-label="Upload" formControlName="img1Ctrl">                    
+                        <div class="errors">
+                            <small class="invalid" *ngIf="getImg1Ctrl()?.errors?.required && getImg1Ctrl()?.touched">Imagen requerida</small>                                
+                        </div>
+                    </div>
+
+
+                    <div class="form-floating mb-2">
+                        <input type="email" class="form-control" id="email" placeholder="email@ejemplo.com" formControlName="emailCtrl">   
+                        <label for="email" class="text-dark">Email</label>
+                        <div class="errors">
+                            <small class="invalid" *ngIf="getEmailCtrl()?.errors?.required && getEmailCtrl()?.touched">Campo obligatorio</small>
+                            <small class="invalid" *ngIf="getEmailCtrl()?.errors?.email && getEmailCtrl()?.touched">Formato incorrecto</small>
+                        </div>  
+                    </div>
+
+                    <div class="form-floating mb-2">
+                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" formControlName="passCtrl1">
+                        <label for="floatingPassword" class="text-dark">Contraseña</label>
+                        <div class="errors">
+                            <small class="invalid" *ngIf="getPassCtrl1()?.errors?.required && getPassCtrl1()?.touched">Campo obligatorio</small>
+                            <small class="invalid" *ngIf="getPassCtrl1()?.errors?.minlength && getPassCtrl1()?.touched">Mínimo 6 caracteres</small>
+                        </div>
+                    </div>
+
+
+                    <div class="form-floating mb-2">
+                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" formControlName="passCtrl2">
+                        <label for="floatingPassword" class="text-dark">Repita la contraseña</label>
+                        <div class="errors">
+                            <small class="invalid" *ngIf="getPassCtrl2()?.errors?.required && getPassCtrl2()?.touched">Campo obligatorio</small>
+                            <small class="invalid" *ngIf="getPassCtrl2()?.errors?.minlength && getPassCtrl2()?.touched">Mínimo 6 caracteres</small>
+                            <small class="invalid" *ngIf="getPassCtrl2()?.errors?.mustMatch && getPassCtrl2()?.touched">La contraseña debe ser la misma</small>
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+                    <div class="row">
+                        <div class="col p-1">
+                            <button class="w-100 btn btn-success btn-lg" type="submit" [disabled]="form1.invalid">Registrarse</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

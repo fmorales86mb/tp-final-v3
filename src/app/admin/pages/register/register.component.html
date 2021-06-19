@@ -1,0 +1,41 @@
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <!-- Spinner -->
+    <ngx-spinner 
+        bdColor = "rgba(0, 0, 0, 0.8)" 
+        size = "medium" 
+        color = "#fff" 
+        type = "ball-atom" 
+        [fullScreen] = "true">
+        <p style="color: white" > Cargando... </p>
+    </ngx-spinner>
+
+    <!-- header -->
+    <div class="mb-auto">
+        <app-header [user]="user"></app-header>
+    </div>
+
+    <!-- main -->
+    <main class="px-3">
+        <!-- Encabezado -->
+        <div class="mb-3 mt-2 text-center">      
+            <h2>Alta Administrador</h2>
+        </div>
+
+        <!-- Alert Mje error registro -->
+        <div class="alert alert-warning" role="alert" *ngIf="mensajeError">
+            {{mensajeError}}
+        </div>
+
+        <!-- tabs Registro -->
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active mt-3" role="tabpanel" aria-labelledby="home-tab">
+                <app-user-register (userEmitter)="registrarUsuario($event)" [userRol]="userRol"></app-user-register>
+            </div>
+        </div>
+    </main>
+
+    <!-- footer -->
+    <div class="mt-auto">
+        <app-footer></app-footer>
+    </div>
+</div>

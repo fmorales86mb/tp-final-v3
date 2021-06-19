@@ -1,0 +1,70 @@
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
+    <!-- Spinner -->
+    <ngx-spinner 
+        bdColor = "rgba(0, 0, 0, 0.8)" 
+        size = "medium" 
+        color = "#fff" 
+        type = "ball-atom" 
+        [fullScreen] = "true">
+        <p style="color: white" > Cargando... </p>
+    </ngx-spinner>
+
+    <!-- header -->
+    <div class="mb-auto">
+        <app-header [user]="user"></app-header>
+    </div>
+
+    <!-- main -->
+    <main class="px-3">
+    <h1 class="mb-3">Inscripción</h1>
+        <div class="row vh-60">
+            
+            <!-- Mensaje -->
+            <div class="row justify-content-center">
+                <div class="col-8" *ngIf="mensaje">                
+                    <app-alert [mensaje]="mensaje"></app-alert>
+                </div>
+            </div>
+
+            <!-- listado materias -->
+            <div class="col-4 bg-dark rounded">
+                <h3>Materias</h3>
+                <div class="list-scroll col vh-60">
+                    <app-materia-list [items]="materias" (emitter)="seleccionarMateria($event)"></app-materia-list>                    
+                </div>
+            </div>
+
+            <!-- formulario materia -->
+            <div class="col-4">
+                <div *ngIf="materiaSeleccionada">
+                    <h3>{{materiaSeleccionada.model.name}}</h3>
+                    <h4>Cupo: {{totalEstudiantesMateria.length}}/{{materiaSeleccionada.model.cupo}}</h4>
+                    <div class="text-start">
+                        <ul>
+                            <li *ngFor="let estudiante of totalEstudiantesMateria">
+                                {{estudiante.model.email}}
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <button class="btn btn-success w-100" (click)="guardarClick()" [disabled]="nuevosEstudiantes.length == 0">Guardar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- listado estudiantes -->
+            <div class="col-4 bg-dark rounded">
+                <h3>Estudiantes</h3>
+                <div class="list-scroll col vh-60">
+                    <app-user-list [items]="users" (emitter)="seleccionarEstudiante($event)"></app-user-list> 
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- footer -->
+    <div class="mt-auto">
+        <app-footer></app-footer>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="row m-2 p-1 bg-secondary rounded">
+    <div class="col-3">
+        <div class="img-avatar">
+            <img class="rounded-circle" height="60px" width="60px" [src]="item.model.perfil1Src" data-holder-rendered="true">
+        </div>
+    </div>
+    <div class="col text-start">
+        <span class="h5 text-hover-primary mb-0">{{item.model.email}}</span> 
+        <p class="text-hover-primary mb-0 ml-1 fw-light">{{item.model.rol}}</p>
+    </div>
+</div>
+<div class="row m-2 p-1 bg-secondary rounded text-start">
+    <div class="col-5">
+        <span class="h5 text-hover-primary mb-0">{{examen.model.materia.name}}</span> 
+        <p class="text-hover-primary mb-0 fw-light">{{examen.model.fecha}}</p>
+        <p class="text-hover-primary mb-0 fw-light">{{examen.model.docente.email}}</p>
+    </div>
+    <div class="col">
+        <label for="customRange1" class="form-label">Nota: {{nota}}</label>
+        <input type="range" class="form-range" id="customRange1" min="1" max="10" step="1" [(ngModel)]="nota">
+    </div>
+    <button class="btn btn-info mt-1" (click)="guardarNota()" [disabled]="!nota">Guardar Nota</button>
+</div>
