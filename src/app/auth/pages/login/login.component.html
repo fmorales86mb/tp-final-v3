@@ -17,50 +17,54 @@
 
     <!-- main -->
     <main class="form-signin">
-        <form [formGroup]="loginForm" (ngSubmit)="clickIngresar()">
-          
-          <h1 class="h3 mb-3 fw-normal text-center">Bienvenid@</h1>
+      <div class="row">
+        <div class="col">
+          <form [formGroup]="loginForm" (ngSubmit)="clickIngresar()">
+            
+            <h1 class="h3 mb-3 fw-normal text-center">Bienvenid@</h1>
+        
       
-          <div class="row text-center mb-3">
-            <div class="col mb-1">
-              <button class="w-100 btn btn-secondary btn-sm" type="button" (click)="cargarUsuario(1)">Admin</button>
+            <div class="form-floating">
+              <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" [(ngModel)]="loginData.email" formControlName="emailCtrl">
+              <label for="floatingInput" class="text-dark">Email</label>
+              <div class="errors">
+                <small class="invalid" *ngIf="getEmailCtrl()?.errors?.required && getEmailCtrl()?.touched">Campo obligatorio</small>
+                <small class="invalid" *ngIf="getEmailCtrl()?.errors?.email && getEmailCtrl()?.touched">Formato incorrecto</small>
+              </div>
             </div>
-            <div class="col mb-1">
-              <button class=" w-100 btn btn-secondary btn-sm" type="button" (click)="cargarUsuario(2)">Docente</button>
+            
+            <div class="form-floating">
+              <input type="password" class="form-control" id="floatingPassword" placeholder="Password" [(ngModel)]="loginData.pass" formControlName="passCtrl">
+              <label for="floatingPassword" class="text-dark">Contraseña</label>
             </div>
-            <div class="col mb-1">
-              <button class=" w-100 btn btn-secondary btn-sm" type="button" (click)="cargarUsuario(3)">Especialista</button>
-            </div>
-          </div>      
-    
-          <div class="form-floating">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" [(ngModel)]="loginData.email" formControlName="emailCtrl">
-            <label for="floatingInput" class="text-dark">Email</label>
             <div class="errors">
-              <small class="invalid" *ngIf="getEmailCtrl()?.errors?.required && getEmailCtrl()?.touched">Campo obligatorio</small>
-              <small class="invalid" *ngIf="getEmailCtrl()?.errors?.email && getEmailCtrl()?.touched">Formato incorrecto</small>
+              <small class="invalid" *ngIf="getPassCtrl()?.errors?.required && getPassCtrl()?.touched">Campo obligatorio</small>
+              <small class="invalid" *ngIf="getPassCtrl()?.errors?.minlength && getPassCtrl()?.touched">Mínimo 6 caracteres</small>
             </div>
-          </div>
-          
-          <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" [(ngModel)]="loginData.pass" formControlName="passCtrl">
-            <label for="floatingPassword" class="text-dark">Contraseña</label>
-          </div>
-          <div class="errors">
-            <small class="invalid" *ngIf="getPassCtrl()?.errors?.required && getPassCtrl()?.touched">Campo obligatorio</small>
-            <small class="invalid" *ngIf="getPassCtrl()?.errors?.minlength && getPassCtrl()?.touched">Mínimo 6 caracteres</small>
-          </div>
+        
+            <div>
+              <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="loginForm.invalid">Ingresar</button>
+            </div>
+            <br>    
       
-          <div>
-            <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="loginForm.invalid">Ingresar</button>
+            <div class="alert alert-danger small" role="alert"  *ngIf="hasAlert" >
+              {{alertMessage}}
+            </div>
+                  
+          </form>
+        </div>
+        <div class="col-3" *ngIf="userAdmin && userEspecialista && userPaciente">
+          <div class="m-1">
+            <img class="img-avatar" [src]="userPaciente.perfil1Src" (click)="cargarUsuario(2)" height="80px">
           </div>
-          <br>    
-    
-          <div class="alert alert-danger small" role="alert"  *ngIf="hasAlert" >
-            {{alertMessage}}
+          <div class="m-1">
+            <img class="img-avatar" [src]="userEspecialista.perfil1Src" (click)="cargarUsuario(3)" height="80px">
           </div>
-                
-        </form>
+          <div class="m-1">
+            <img class="img-avatar" [src]="userAdmin.perfil1Src" (click)="cargarUsuario(1)" height="80px">
+          </div>
+        </div>
+      </div>
     </main>
 
     <!-- footer -->

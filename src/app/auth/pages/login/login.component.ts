@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/01-services/auth.service';
 import { UserService } from 'src/app/01-services/user.service';
 import { Rol } from 'src/app/02-models/enums/rol-enum';
 import { LoginData } from 'src/app/02-models/loginData';
+import { User } from 'src/app/02-models/user';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +19,13 @@ export class LoginComponent implements OnInit {
   public hasAlert:boolean;
   public alertMessage:string;  
   public loginData:LoginData;
+  public userPaciente:User;
+  public userEspecialista:User;
+  public userAdmin:User;
+
+  private idEspecialista:string = "bfReb4082ZOVMid0tTRkyyuoTHT2";
+  private idPaciente:string = "g97AYl1IN2au4MlyQjzkOFCARUJ3";
+  private idAdmin:string = "9XrLsNOAWnVt0LRNONcHWuvn06a2";
 
   constructor(private fb:FormBuilder, 
     private authService: AuthService,
@@ -38,6 +46,18 @@ export class LoginComponent implements OnInit {
       emailCtrl:['', [Validators.required, Validators.email]],
       passCtrl:['', [Validators.required, Validators.minLength(6)]]
     });
+
+    this.userService.getItem(this.idEspecialista).subscribe((us) => {
+      this.userEspecialista = us.data();
+    })
+
+    this.userService.getItem(this.idPaciente).subscribe((us) => {
+      this.userPaciente = us.data();
+    })
+
+    this.userService.getItem(this.idAdmin).subscribe((us) => {
+      this.userAdmin = us.data();
+    })
   }
 
   async clickIngresar(){
@@ -88,15 +108,15 @@ export class LoginComponent implements OnInit {
 
   cargarUsuario(id:number){
     if(id == 1){
-      this.loginData.email ="fmorales86mb@gmail.com";
+      this.loginData.email = this.userAdmin.email;
       this.loginData.pass = "123123";
     }
     else if(id ==2){
-      this.loginData.email ="docente2@user.com";
+      this.loginData.email = this.userPaciente.email;
       this.loginData.pass = "123123";
     }
     else if(id ==3){
-      this.loginData.email ="f.morales1986@protonmail.com";
+      this.loginData.email = this.userEspecialista.email;
       this.loginData.pass = "123123";
     }
   }
