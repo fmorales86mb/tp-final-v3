@@ -71,6 +71,17 @@ export class BaseService<T> {
       return this.itemsCollection.doc(docId).collection(subColl).doc(item.id).set(item.model);
     }
 
+    protected setItemsInSubColl(docId:string, subColl:string, items:any[]){
+      let batch = this.afs.firestore.batch();
+      let docRef = this.itemsCollection.doc(docId).ref;
+      
+      items.forEach(element => {
+        batch.set(docRef.collection(subColl).doc(), element);        
+      });
+      
+      return batch.commit();
+    }
+
     protected getSubColl(docId:string, subColl:string){
       return this.itemsCollection.doc(docId).collection(subColl).ref.get();
     }

@@ -16,6 +16,10 @@ import { UserItemNotaComponent } from './user-item-nota/user-item-nota.component
 import { ExamenItemComponent } from './examen-item/examen-item.component';
 import { EmailDirective } from './02-directives/email.directive';
 import { RolPipe } from './01-pipes/rol.pipe';
+import { RegisterPacienteComponent } from './register-paciente/register-paciente.component';
+import { RegisterAdminComponent } from './register-admin/register-admin.component';
+import { RegisterEspecialistaComponent } from './register-especialista/register-especialista.component';
+import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 
 @NgModule({
   declarations: [
@@ -34,6 +38,9 @@ import { RolPipe } from './01-pipes/rol.pipe';
     UserDetalleComponent,
     UserItemNotaComponent,
     ExamenItemComponent,
+    RegisterPacienteComponent,
+    RegisterAdminComponent,
+    RegisterEspecialistaComponent,
 
     //pipes    
     RolPipe
@@ -42,7 +49,8 @@ import { RolPipe } from './01-pipes/rol.pipe';
     CommonModule,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AutocompleteLibModule,
   ],
   exports: [
     //directives
@@ -60,6 +68,9 @@ import { RolPipe } from './01-pipes/rol.pipe';
     UserDetalleComponent,
     UserItemNotaComponent,
     ExamenItemComponent,
+    RegisterPacienteComponent,
+    RegisterAdminComponent,
+    RegisterEspecialistaComponent,
     
     //pipes
     RolPipe

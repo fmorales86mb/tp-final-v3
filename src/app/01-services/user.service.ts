@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Especialidad } from '../02-models/especialidad';
 import { Examen } from '../02-models/examen';
 import { IdModel } from '../02-models/idModel';
 import { Materia } from '../02-models/materia';
 import { User } from '../02-models/user';
 import { BaseService } from './base.service';
+import { EspecialidadesService } from './especialidades.service';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +32,10 @@ export class UserService extends BaseService<User>{
 
   setMateriaToUser(idUser:string, materia:IdModel<Materia>){
     return this.setItemInSubColl(idUser, "materias", materia);
+  }
+
+  setEspecialidadesToUser(idUser:string, especialidades:Especialidad[]){
+    return this.setItemsInSubColl(idUser, "especialidades", especialidades);
   }
 
   setExamenToUser(idUser:string, examen:IdModel<Examen>){

@@ -28,8 +28,9 @@ export class AuthService {
     let response:ResponseFirebase = new ResponseFirebase();
 
     await this.authDb.createUserWithEmailAndPassword(loginData.email, loginData.pass)
-      .then((cred) => {        
-        this.uid = cred.user.uid;        
+      .then((cred) => { 
+        response.uId = cred.user.uid;
+        //this.uid = cred.user.uid;        
         response.ok = true;
       })
       .catch((error) => {         
@@ -45,7 +46,7 @@ export class AuthService {
       })
       
       console.log(user);
-      this.userService.setItemWithId(user, this.uid)
+      this.userService.setItemWithId(user, response.uId)
       .then(()=>{
         console.log("ok save user");
       })

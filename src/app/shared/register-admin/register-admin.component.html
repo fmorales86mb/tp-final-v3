@@ -1,0 +1,116 @@
+<div class="row justify-content-center ">
+    <div class="col-xs-12 col-md-6 p-4"> 
+         <!-- Progress Bar -->
+        <div class="progress" style="height: 20px;" >
+            <div class="progress-bar" [ngClass]="progressClass" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active mt-3" [ngSwitch]="tab" role="tabpanel" aria-labelledby="home-tab">
+
+                <!-- Tab 1 -->
+                <form class="needs-validation" [formGroup]="form1" (ngSubmit)="clickStep(2)" *ngSwitchCase="1">
+
+                    <div class="col-12 mb-3">
+                        <label for="inputGroupFile04" class="form-label">Imagen de Perfil</label>
+                        <div class="input-group">                    
+                            <input type="file" class="form-control" (change)="fileChangeEvent($event, 1)" aria-describedby="inputGroupFileAddon04" aria-label="Upload" formControlName="img1Ctrl">                    
+                        </div>
+                        <div class="errors">
+                            <small class="invalid" *ngIf="getImg1Ctrl()?.errors?.required && getImg1Ctrl()?.touched">Imagen requerida</small>                                
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="email@ejemplo.com" formControlName="emailCtrl">   
+                        <div class="errors">
+                            <small class="invalid" *ngIf="getEmailCtrl()?.errors?.required && getEmailCtrl()?.touched">Campo obligatorio</small>
+                            <small class="invalid" *ngIf="getEmailCtrl()?.errors?.email && getEmailCtrl()?.touched">Formato incorrecto</small>
+                        </div>  
+                    </div>
+
+                    <div class="col-12">                
+                        <label for="inputPassword" class="col col-form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="inputPassword" formControlName="passCtrl1">
+                        <div class="errors">
+                            <small class="invalid" *ngIf="getPassCtrl1()?.errors?.required && getPassCtrl1()?.touched">Campo obligatorio</small>
+                            <small class="invalid" *ngIf="getPassCtrl1()?.errors?.minlength && getPassCtrl1()?.touched">Mínimo 6 caracteres</small>
+                        </div>
+                    </div>
+
+                    <div class="col-12">                
+                        <label for="inputPassword" class="col col-form-label">Repita la contraseña</label>                        
+                        <input type="password" class="form-control" id="inputPassword" formControlName="passCtrl2">                            
+                        <div class="errors">
+                            <small class="invalid" *ngIf="getPassCtrl2()?.errors?.required && getPassCtrl2()?.touched">Campo obligatorio</small>
+                            <small class="invalid" *ngIf="getPassCtrl2()?.errors?.minlength && getPassCtrl2()?.touched">Mínimo 6 caracteres</small>
+                            <small class="invalid" *ngIf="getPassCtrl2()?.errors?.mustMatch && getPassCtrl2()?.touched">La contraseña debe ser la misma</small>
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+                    <div class="row">
+                        <div class="col-6 p-1">
+                            <button class="w-100 btn btn-secondary btn-lg p-2" (click)="clickStep(0)" type="button">Volver</button>
+                        </div>
+                        <div class="col-6 p-1">
+                            <button class="w-100 btn btn-primary btn-lg" type="submit" [disabled]="form1.invalid">Continuar</button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Tab 2 -->
+                <form class="needs-validation" [formGroup]="form2" (ngSubmit)="clickRegister()" *ngSwitchCase="2">
+                    <div class="col">
+                        <label for="firstName" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="firstName" placeholder="" formControlName="nameCtrl">
+                        <div class="errors">
+                            <small class="invalid" *ngIf="getNameCtrl()?.errors?.required && getNameCtrl()?.touched">Campo obligatorio</small>
+                            <small class="invalid" *ngIf="getNameCtrl()?.errors?.minlength && getNameCtrl()?.touched">Mínimo 2 caracteres</small>
+                        </div>
+                    </div>
+        
+                    <div class="col">
+                        <label for="lastName" class="form-label">Apellido</label>
+                        <input type="text" class="form-control" id="lastName" placeholder="" formControlName="lastNameCtrl">
+                        <div class="errors">
+                            <small class="invalid" *ngIf="getLastNameCtrl()?.errors?.required && getLastNameCtrl()?.touched">Campo obligatorio</small>
+                            <small class="invalid" *ngIf="getLastNameCtrl()?.errors?.minlength && getLastNameCtrl()?.touched">Mínimo 2 caracteres</small>
+                        </div>
+                    </div>
+        
+                    <div class="col-12">
+                        <label for="address" class="form-label">DNI <small class="text-muted">Sólo números</small></label>
+                        <input type="text" class="form-control" id="address" placeholder="12345678" formControlName="dniCtrl">                            
+                        <div class="errors">
+                            <small class="invalid" *ngIf="getDniCtrl()?.errors?.required && getDniCtrl()?.touched">Campo obligatorio</small>
+                            <small class="invalid" *ngIf="(getDniCtrl()?.errors?.min || getDniCtrl()?.errors?.max) && getDniCtrl()?.touched && !getDniCtrl()?.errors?.pattern">El valor debe estar entre 999999999 y 1000000</small>
+                            <small class="invalid" *ngIf="getDniCtrl()?.errors?.pattern && getDniCtrl()?.touched">Sólo se permiten números</small>
+                        </div>
+                    </div>
+        
+                    <div class="col-12">
+                        <label for="address2" class="form-label">Edad <small class="text-muted">Entre 18 y 99 años</small></label>
+                        <input type="text" class="form-control" id="address2" placeholder="Apartment or suite" formControlName="ageCtrl">
+                        <div class="errors">
+                            <small class="invalid" *ngIf="getAgeCtrl()?.errors?.required && getAgeCtrl()?.touched">Campo obligatorio</small>
+                            <small class="invalid" *ngIf="(getAgeCtrl()?.errors?.min || getAgeCtrl()?.errors?.max) && getAgeCtrl()?.touched && !getAgeCtrl()?.errors?.pattern">Edad entre 18 y 99 años</small>
+                            <small class="invalid" *ngIf="getAgeCtrl()?.errors?.pattern && getAgeCtrl()?.touched">Sólo se permiten números</small>
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+                    <div class="row">
+                        <div class="col-6 p-1">
+                            <button class="w-100 btn btn-secondary btn-lg p-2" (click)="clickStep(1)" type="button">Volver</button>
+                        </div>
+                        <div class="col-6 p-1">
+                            <button class="w-100 btn btn-success btn-lg" type="submit" [disabled]="form2.invalid">Registrarse</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

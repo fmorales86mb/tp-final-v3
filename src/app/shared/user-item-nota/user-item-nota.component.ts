@@ -23,7 +23,7 @@ export class UserItemNotaComponent implements OnInit {
   }
 
   guardarNota(){
-    this.item.model.nota = this.nota;    
+    //this.item.model.nota = this.nota;    
     this.emitter.emit(this.item);
   }
 

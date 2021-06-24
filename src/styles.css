@@ -81,6 +81,10 @@ body {
   background-color:#b5c4bf;
 }
 
+.bg-aliceblue{
+  background-color: aliceblue;
+}
+
 .text-app{
   color: #333;
 }

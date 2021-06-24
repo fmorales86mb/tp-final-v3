@@ -9,7 +9,6 @@ export interface User{
     email:string;
     perfil1Src:string;
     perfil2Src:string;
-    rol:Rol;
-    nota:number;
+    rol:Rol;    
     activado:boolean;
 }
