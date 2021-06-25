@@ -30,7 +30,7 @@ export class RegisterAdminComponent implements OnInit {
     private bf:FormBuilder
   ) {     
     this.tab = 1;
-    this.progressClass = "percent-00";
+    this.progressClass = "percent-20";
   }
 
   ngOnInit(): void {    
@@ -76,11 +76,11 @@ export class RegisterAdminComponent implements OnInit {
   clickStep(step:number){
     switch(step){
       case 1:
-        this.progressClass = "percent-25";
+        this.progressClass = "percent-20";
         this.tab = 1;
         break;
       case 2:
-        this.progressClass = "percent-50";
+        this.progressClass = "percent-60";
         this.tab = 2;
         break;
     }    

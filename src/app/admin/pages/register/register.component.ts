@@ -3,8 +3,12 @@ import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from 'src/app/01-services/auth.service';
 import { StorageService } from 'src/app/01-services/storage.service';
+import { UserService } from 'src/app/01-services/user.service';
+import { TipoMje } from 'src/app/02-models/enums/mje-enum';
 import { Rol } from 'src/app/02-models/enums/rol-enum';
+import { Especialidad } from 'src/app/02-models/especialidad';
 import { LoginData } from 'src/app/02-models/loginData';
+import { Mensaje } from 'src/app/02-models/mensaje';
 import { RegisterData } from 'src/app/02-models/registerData';
 import { User } from 'src/app/02-models/user';
 
@@ -15,45 +19,82 @@ import { User } from 'src/app/02-models/user';
 })
 export class RegisterComponent implements OnInit {
 
-  user:User;
-  loginData: LoginData;
-  mensajeError:string;
+  baseSrc:string = "../../../assets/images/";
+  tab:number;
+  srcPaciente:string;
+  srcEspecialista:string;
+  srcAdmin:string;
   userRol:Rol;
+  loginData: LoginData;
+  mensaje:Mensaje;
+  user:User;
 
   constructor(
     private authService:AuthService,
     private spinner: NgxSpinnerService,
     private router:Router,
-    private storageService:StorageService
+    private storageService:StorageService,
+    private userService:UserService
   ) {     
-    this.userRol = Rol.Admin;
+    this.tab = 0;
+    this.srcEspecialista = this.baseSrc + "doctora-03.jpg";
+    this.srcPaciente = this.baseSrc + "paciente02.jpg";
+    this.srcAdmin = this.baseSrc + "admin01.jpg";
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {   
     this.user = this.authService.GetCurrentUser();
   }
 
   async registrarUsuario(data:RegisterData){
     this.spinner.show();    
-
-    //data.user.perfilSrc = await this.uploadPhoto(data.files[0]);
+    
+    data.user.perfil1Src = await this.uploadPhoto(data.files[0]);
+    if(data.user.rol == Rol.Paciente){
+      data.user.perfil2Src = await this.uploadPhoto(data.files[1]);
+    }
     
     this.authService.Registrarse(data.loginData, data.user)
-    .then((res)=>{
+    .then(async (res)=>{
       if(res.ok){
-        this.router.navigate(["admin/home"]);
+        if(data.user.rol == Rol.Especialista){
+          await this.saveEspecialidades(res.uId, data.especialidades);
+        }
+        
+        this.router.navigate(["/admin/home"]);
       }
       else{
-        this.mensajeError = res.error.description;
-        console.log(res.error.description);
+        this.mensaje = {
+          txt: res.error.description,
+          tipo:TipoMje.Warning
+        };
+        this.tab = 0;
       }
     })
     .catch(()=>{
-      this.mensajeError = "Ocurrió un error inesperado. Vuelva a intentarlo en unos instantes.";
+      this.mensaje = {
+        txt:"Ocurrió un error inesperado, vuelva a intentarlo más tarde.",
+        tipo:TipoMje.Danger
+      };
+      this.tab = 0;
     })
     .finally(()=>{
       this.spinner.hide();
     })
+  }
+
+  setRol(rolId:number){
+    if(rolId == 1){
+      this.userRol = Rol.Admin;
+    }
+    else if(rolId == 2){
+      this.userRol = Rol.Paciente;
+    }
+    else if(rolId == 3){
+      this.userRol = Rol.Especialista;
+    }
+    this.mensaje = null;
+    this.tab = rolId;
   }
 
   private async uploadPhoto(file:File) {  
@@ -62,4 +103,9 @@ export class RegisterComponent implements OnInit {
 
     return await(await uploadTask).ref.getDownloadURL();     
   }
+
+  async saveEspecialidades(userId:string, especialidades:Especialidad[]){
+    await this.userService.setEspecialidadesToUser(userId, especialidades);
+  }
+
 }

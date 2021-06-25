@@ -5,7 +5,7 @@
             <div class="progress-bar" [ngClass]="progressClass" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
 
-        <div class="tab-content" id="myTabContent">
+        <div class="tab-content text-start" id="myTabContent">
             <div class="tab-pane fade show active mt-3" [ngSwitch]="tab" role="tabpanel" aria-labelledby="home-tab">
 
                 <!-- Tab 1 -->
@@ -51,10 +51,7 @@
 
                     <hr class="my-4">
                     <div class="row">
-                        <div class="col-6 p-1">
-                            <button class="w-100 btn btn-secondary btn-lg p-2" (click)="clickStep(0)" type="button">Volver</button>
-                        </div>
-                        <div class="col-6 p-1">
+                        <div class="col p-1">
                             <button class="w-100 btn btn-primary btn-lg" type="submit" [disabled]="form1.invalid">Continuar</button>
                         </div>
                     </div>
@@ -102,10 +99,7 @@
 
                     <hr class="my-4">
                     <div class="row">
-                        <div class="col-6 p-1">
-                            <button class="w-100 btn btn-secondary btn-lg p-2" (click)="clickStep(1)" type="button">Volver</button>
-                        </div>
-                        <div class="col-6 p-1">
+                        <div class="col p-1">
                             <button class="w-100 btn btn-success btn-lg" type="submit" [disabled]="form2.invalid">Registrarse</button>
                         </div>
                     </div>
