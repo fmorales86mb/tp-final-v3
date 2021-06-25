@@ -30,23 +30,27 @@ export class UserService extends BaseService<User>{
     return this.getItemByFilter("rol", 3);
   }
 
-  setMateriaToUser(idUser:string, materia:IdModel<Materia>){
-    return this.setItemInSubColl(idUser, "materias", materia);
-  }
+  // setMateriaToUser(idUser:string, materia:IdModel<Materia>){
+  //   return this.setItemInSubColl(idUser, "materias", materia);
+  // }
 
   setEspecialidadesToUser(idUser:string, especialidades:Especialidad[]){
     return this.setItemsInSubColl(idUser, "especialidades", especialidades);
   }
 
-  setExamenToUser(idUser:string, examen:IdModel<Examen>){
-    return this.setItemInSubColl(idUser, "examenes", examen);
+  getEspecialidades(idUser:string){
+    return this.getSubColl(idUser, "especialidades");
   }
 
-  getMaterias(idUser:string){
-    return this.getSubColl(idUser, "materias");
-  }
+  // setExamenToUser(idUser:string, examen:IdModel<Examen>){
+  //   return this.setItemInSubColl(idUser, "examenes", examen);
+  // }
 
-  getExamenes(idUser:string){
-    return this.getSubColl(idUser, "examenes");
-  }
-}
+//   getMaterias(idUser:string){
+//     return this.getSubColl(idUser, "materias");
+//   }
+
+//   getExamenes(idUser:string){
+//     return this.getSubColl(idUser, "examenes");
+//   }
+ }

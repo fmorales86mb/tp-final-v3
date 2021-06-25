@@ -1,12 +1,69 @@
-<div class="row bg-secondary rounded" *ngIf="item">
-    <!-- datos usuario -->
-    <div class="col-7 mt-3">
-        <h3>{{item.model.email}}</h3>
-        <h5>{{item.model.rol | rol}}</h5>
-    </div>
+<div class="" *ngIf="item">
+    <div [ngSwitch]="item.model.rol">
+        <!-- Administrador -->
+        <div class="row bg-secondary rounded" *ngSwitchCase="1">
+            <!-- datos usuario -->
+            <div class="col-7 mt-3">
+                <h3>{{item.model.nombre}} {{item.model.apellido}}</h3>
+                <h5>{{item.model.email}}</h5>
+                <h5>{{item.model.rol | rol}}</h5>
+                <ul class="text-start">
+                    <li>Edad: {{item.model.edad}}</li>
+                    <li>DNI: {{item.model.dni}}</li>
+                </ul>
+            </div>
 
-    <!-- Img -->
-    <div class="col-5">
-        <img [src]="item.model.perfilSrc" class="img-fluid m-1 rounded max-h-150">            
+            <!-- Img -->
+            <div class="col-5 my-auto">
+                <img [src]="item.model.perfil1Src" class="img-fluid m-1 rounded max-h-150">            
+            </div>
+        </div>
+
+        <!-- Paciente -->
+        <div class="row bg-secondary rounded" *ngSwitchCase="2">
+            <!-- datos usuario -->
+            <div class="col-6 mt-3">
+                <h3>{{item.model.nombre}} {{item.model.apellido}}</h3>
+                <h5>{{item.model.email}}</h5>
+                <h5>{{item.model.rol | rol}}</h5>
+                <ul class="text-start">
+                    <li>Edad: {{item.model.edad}}</li>
+                    <li>DNI: {{item.model.dni}}</li>
+                    <li>Obra Social: {{item.model.obraSocial}}</li>
+                </ul>
+            </div>
+
+            <!-- Img -->
+            <div class="col-6 my-auto">
+                <img [src]="item.model.perfil1Src" class="img-fluid m-1 rounded max-h-150">        
+                <img [src]="item.model.perfil2Src" class="img-fluid m-1 rounded max-h-150">      
+            </div>
+        </div>
+
+        <!-- Administrador -->
+        <div class="row bg-secondary rounded" *ngSwitchCase="3">
+            <!-- datos usuario -->
+            <div class="col-7 mt-3">
+                <h3>{{item.model.nombre}} {{item.model.apellido}}</h3>
+                <h5>{{item.model.email}}</h5>
+                <h5>{{item.model.rol | rol}}</h5>
+                <ul class="text-start">
+                    <li>Edad: {{item.model.edad}}</li>
+                    <li>DNI: {{item.model.dni}}</li>
+                    <li>Especialidades: 
+                        <ul>
+                            <li *ngFor="let especialidad of especialidades">
+                                {{especialidad.model.nombre}}    
+                            </li>                            
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Img -->
+            <div class="col-5 my-auto">
+                <img [src]="item.model.perfil1Src" class="img-fluid m-1 rounded max-h-150">            
+            </div>
+        </div>
     </div>
 </div>

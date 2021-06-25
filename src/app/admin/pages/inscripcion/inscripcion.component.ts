@@ -127,7 +127,7 @@ export class InscripcionComponent implements OnInit {
       this.spinner.show();
       this.materiaService.setEstudiante(estudiante, this.materiaSeleccionada.id)
       .then(()=>{
-        this.userService.setMateriaToUser(estudiante.id, this.materiaSeleccionada)
+        //this.userService.setMateriaToUser(estudiante.id, this.materiaSeleccionada)
         this.mensaje = {
           txt: "Inscripción exitosa",
           tipo: TipoMje.Success

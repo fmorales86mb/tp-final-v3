@@ -92,7 +92,7 @@ export class AltaMateriaComponent implements OnInit {
         model:materia
       };
 
-      await this.userService.setMateriaToUser(this.docenteSeleccionado.id, model);
+      //await this.userService.setMateriaToUser(this.docenteSeleccionado.id, model);
       
       materia.docente = null;
       this.router.navigate(["admin/home"]);

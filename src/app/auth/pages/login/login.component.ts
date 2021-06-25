@@ -42,6 +42,8 @@ export class LoginComponent implements OnInit {
    }
 
    ngOnInit(): void {
+    this.spinner.show();
+    
     this.loginForm = this.fb.group({
       emailCtrl:['', [Validators.required, Validators.email]],
       passCtrl:['', [Validators.required, Validators.minLength(6)]]
@@ -49,15 +51,16 @@ export class LoginComponent implements OnInit {
 
     this.userService.getItem(this.idEspecialista).subscribe((us) => {
       this.userEspecialista = us.data();
-    })
+    });
 
     this.userService.getItem(this.idPaciente).subscribe((us) => {
       this.userPaciente = us.data();
-    })
+    });
 
     this.userService.getItem(this.idAdmin).subscribe((us) => {
       this.userAdmin = us.data();
-    })
+      this.spinner.hide();
+    });
   }
 
   async clickIngresar(){
