@@ -95,10 +95,10 @@ export class LoginComponent implements OnInit {
         this.router.navigate(["admin/home"]);
         break;
       case Rol.Paciente:
-        this.router.navigate(["alumno/home"]);
+        this.router.navigate(["paciente/home"]);
         break;
       case Rol.Especialista:
-        this.router.navigate(["profesor/home"]);
+        this.router.navigate(["espe/home"]);
         break;
     }
   }

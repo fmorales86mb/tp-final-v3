@@ -7,15 +7,14 @@ import { Rol } from '../02-models/enums/rol-enum';
 @Injectable({
   providedIn: 'root'
 })
-export class AlumnoGuard implements CanActivate {
-
+export class PacienteGuard implements CanActivate {
   constructor(private authService:AuthService, private router:Router){}
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
-      if(this.authService.GetIsAuth() && this.authService.GetCurrentUser().rol == Rol.Estudiante){
+      if(this.authService.GetIsAuth() && this.authService.GetCurrentUser().rol == Rol.Paciente){
         return true;
       }
       else{
@@ -23,5 +22,4 @@ export class AlumnoGuard implements CanActivate {
         return false;      
       }   
   }
-  
 }

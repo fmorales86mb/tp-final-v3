@@ -1,0 +1,33 @@
+<!-- Perfil -->
+<div class="card text-white bg-secondary mb-3">
+    <div class="row g-0">
+    <div class="col-md-4 m-1">
+        <img [src]="user.perfil1Src" class="perfil-card rounded">
+    </div>
+    <div class="col-md-4 m-1" *ngIf="user.rol == 2">            
+        <img [src]="user.perfil2Src" class="perfil-card rounded">
+    </div>
+    <div class="col-md">
+        <div class="card-body">
+            <h5 class="card-title">{{user.nombre}} {{user.apellido}}</h5>
+            <p class="card-text">Edad: {{user.edad}}</p>
+            <p class="card-text">{{user.email}}</p>
+            <p class="card-text">DNI: {{user.dni}}</p>
+            <p class="card-text" *ngIf="user.rol == 2">Obra Social: {{user.obraSocial}}</p>
+                        
+        <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+        </div>
+    </div>
+    <div class="col-md">
+        <div class="card-body">
+            <div *ngIf="user.rol == 3">
+                <p class="card-text" >Especialidades:</p>
+                <ul>
+                    <li *ngFor="let espe of user.especialidades">{{espe.nombre}}</li>                                                        
+                </ul>
+            </div>    
+        </div>
+    </div>
+
+    </div>
+</div>

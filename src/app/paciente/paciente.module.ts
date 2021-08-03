@@ -2,13 +2,24 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PacienteRoutingModule } from './paciente-routing.module';
+import { HomeComponent } from './pages/home/home.component';
+import { PerfilComponent } from './pages/perfil/perfil.component';
+import { SharedModule } from '../shared/shared.module';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { NuevoTurnoComponent } from './pages/nuevo-turno/nuevo-turno.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    HomeComponent,
+    PerfilComponent,
+    NuevoTurnoComponent
+  ],
   imports: [
     CommonModule,
-    PacienteRoutingModule
+    PacienteRoutingModule,
+    SharedModule,
+    NgxSpinnerModule
   ]
 })
 export class PacienteModule { }

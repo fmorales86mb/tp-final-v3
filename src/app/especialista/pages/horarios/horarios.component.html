@@ -1,0 +1,46 @@
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
+    <!-- Spinner -->
+    <ngx-spinner 
+        bdColor = "rgba(0, 0, 0, 0.8)" 
+        size = "medium" 
+        color = "#fff" 
+        type = "ball-atom" 
+        [fullScreen] = "true">
+        <p style="color: white" > Cargando... </p>
+    </ngx-spinner>
+
+    <!-- header -->
+    <div class="mb-auto">
+        <app-header [user]="user"></app-header>
+    </div>
+
+    <!-- main -->
+    <main class="px-3">
+        <h2 class="mb-3">Mis Horarios</h2>
+
+        <!-- Mensaje -->
+        <div class="row justify-content-center">
+            <div class="col-8" *ngIf="mensaje">                
+                <app-alert [mensaje]="mensaje"></app-alert>
+            </div>
+        </div>
+        
+        <!-- Horarios -->
+        <div class="container py-4">
+            <div class="card text-white bg-secondary">
+                <h3 style="padding: 1rem;">Especialidades</h3>
+                <div class="row g-0" *ngFor="let espe of user.especialidades" style="padding: 1rem;">
+                    <h4>{{espe.nombre}}</h4>
+                    <app-horario [horariosCargados]="espe.horarios" (horariosEmitter)="guardarHorario(espe, $event)"></app-horario>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- footer -->
+    <div class="mt-auto">
+        <app-footer></app-footer>
+    </div>
+</div>

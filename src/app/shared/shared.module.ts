@@ -20,6 +20,9 @@ import { RegisterPacienteComponent } from './register-paciente/register-paciente
 import { RegisterAdminComponent } from './register-admin/register-admin.component';
 import { RegisterEspecialistaComponent } from './register-especialista/register-especialista.component';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
+import { UserPerfilComponent } from './user-perfil/user-perfil.component';
+import { HorarioComponent } from './horario/horario.component';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
 @NgModule({
   declarations: [
@@ -41,9 +44,11 @@ import { AutocompleteLibModule } from 'angular-ng-autocomplete';
     RegisterPacienteComponent,
     RegisterAdminComponent,
     RegisterEspecialistaComponent,
+    UserPerfilComponent,
+    HorarioComponent,
 
     //pipes    
-    RolPipe
+    RolPipe,
   ],
   imports: [
     CommonModule,
@@ -51,6 +56,7 @@ import { AutocompleteLibModule } from 'angular-ng-autocomplete';
     FormsModule,
     ReactiveFormsModule,
     AutocompleteLibModule,
+    NgxMaterialTimepickerModule
   ],
   exports: [
     //directives
@@ -71,6 +77,8 @@ import { AutocompleteLibModule } from 'angular-ng-autocomplete';
     RegisterPacienteComponent,
     RegisterAdminComponent,
     RegisterEspecialistaComponent,
+    UserPerfilComponent,
+    HorarioComponent,
     
     //pipes
     RolPipe

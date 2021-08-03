@@ -1,0 +1,73 @@
+<div class="row g-0"  style="padding: 1rem;">
+
+    <form [formGroup]="form" (ngSubmit)="saveHorario()">
+        <!-- Días -->
+        <div class="row m-3">
+            <div class="col-1 mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" formControlName="check1Ctrl" [(ngModel)]="selectedDays[0]">
+                <label class="form-check-label" for="exampleCheck1">LU</label>
+            </div>
+            <div class="col-1 mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" formControlName="check2Ctrl" [(ngModel)]="selectedDays[1]">
+                <label class="form-check-label" for="exampleCheck1">MA</label>
+            </div>
+            <div class="col-1 mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" formControlName="check3Ctrl" [(ngModel)]="selectedDays[2]">
+                <label class="form-check-label" for="exampleCheck1">MI</label>
+            </div>
+            <div class="col-1 mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" formControlName="check4Ctrl" [(ngModel)]="selectedDays[3]">
+                <label class="form-check-label" for="exampleCheck1">JU</label>
+            </div>
+            <div class="col-1 mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" formControlName="check5Ctrl" [(ngModel)]="selectedDays[4]">
+                <label class="form-check-label" for="exampleCheck1">VI</label>
+            </div>
+            <div class="col-1 mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" formControlName="check6Ctrl" [(ngModel)]="selectedDays[5]">
+                <label class="form-check-label" for="exampleCheck1">SA</label>
+            </div>
+        </div>
+
+        <!-- Horario -->
+        <div class="row">
+            <div class="col-md-3 col-sm-12 m-2">
+                <div class="toggle-example">
+                    <label class="form-label" style="padding-right: 1rem;">Desde: </label>
+                    <input class="form-control"  
+                        [(ngModel)]="desde"                       
+                        [ngxTimepicker]="toggleTimepicker1" 
+                        [disableClick]="true" 
+                        [format]="24"
+                        min="08:00"
+                        max="19:00"
+                        readonly 
+                        formControlName="desdeCtrl">
+                    <ngx-material-timepicker-toggle [for]="toggleTimepicker1"></ngx-material-timepicker-toggle>
+                    <ngx-material-timepicker #toggleTimepicker1 [minutesGap]="30"></ngx-material-timepicker>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-12 m-2">
+                <div class="toggle-example">
+                    <label class="form-label ml-2" style="padding-right: 1rem;">Hasta: </label>
+                    <input class="form-control" 
+                    [(ngModel)]="hasta"
+                    [ngxTimepicker]="toggleTimepicker" 
+                    [disableClick]="true" 
+                    [format]="24"
+                    min="08:00"
+                    max="19:00"
+                    readonly
+                    formControlName="hastaCtrl">
+                    <ngx-material-timepicker-toggle [for]="toggleTimepicker"></ngx-material-timepicker-toggle>
+                    <ngx-material-timepicker #toggleTimepicker [minutesGap]="30"></ngx-material-timepicker>
+                </div>
+            </div>
+
+            <div class="col-md-2 col-sm-12 m-2">
+                <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Guardar</button>
+            </div>
+        </div>
+    </form>
+
+</div>

@@ -7,15 +7,14 @@ import { Rol } from '../02-models/enums/rol-enum';
 @Injectable({
   providedIn: 'root'
 })
-export class ProfesorGuard implements CanActivate {
-
+export class EspeGuard implements CanActivate {
   constructor(private authService:AuthService, private router:Router){}
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
-      if(this.authService.GetIsAuth() && this.authService.GetCurrentUser().rol == Rol.Profesor){
+      if(this.authService.GetIsAuth() && this.authService.GetCurrentUser().rol == Rol.Especialista){
         return true;
       }
       else{
@@ -23,5 +22,4 @@ export class ProfesorGuard implements CanActivate {
         return false;      
       }   
   }
-  
 }
