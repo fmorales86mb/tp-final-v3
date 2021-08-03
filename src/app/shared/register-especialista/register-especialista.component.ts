@@ -48,14 +48,14 @@ export class RegisterEspecialistaComponent implements OnInit {
     this.initForm1();
     this.initForm2();
 
-    this.espeService.items.subscribe((items) =>{    
+    this.espeService.getAll().subscribe((items) =>{    
       this.especialidades = items;    
-      console.log(this.especialidades);
+      //console.log(this.especialidades);
     });
   }
 
   async clickRegister(){
-    console.log(this.especialidadesSeleccionadas.length);
+    //console.log(this.especialidadesSeleccionadas.length);
     this.progressClass = "percent-100"
     
     this.loginData = {
@@ -68,8 +68,7 @@ export class RegisterEspecialistaComponent implements OnInit {
     const data:RegisterData = {
       user:this.user,
       loginData: this.loginData,
-      files:[this.file1],
-      especialidades:this.especialidadesSeleccionadas
+      files:[this.file1]
     };
 
     this.userEmitter.emit(data);
@@ -85,9 +84,8 @@ export class RegisterEspecialistaComponent implements OnInit {
         perfil1Src: "",        
         activado:false,
         email:this.loginData.email,
-        obraSocial:"",
-        perfil2Src:""
-      };  
+        especialidades: this.especialidadesSeleccionadas
+      };
   }
 
   clickStep(step:number){
@@ -144,7 +142,7 @@ export class RegisterEspecialistaComponent implements OnInit {
       lastNameCtrl:['', [Validators.required, Validators.minLength(2)]],
       dniCtrl:['', [Validators.required, Validators.max(999999999), Validators.min(1000000), Validators.pattern("^[0-9]*$")]],
       ageCtrl:['', [Validators.required, Validators.max(98), Validators.min(19), Validators.pattern("^[0-9]*$")]],
-      espeCtrl:['', [Validators.required, Validators.minLength(2)]],
+      espeCtrl:['', [Validators.minLength(2)]],
     });
   }
 
@@ -178,8 +176,7 @@ export class RegisterEspecialistaComponent implements OnInit {
     // And reassign the 'data' which is binded to 'data' property.    
     this.isNewEspe = true;
     this.especialidad = {
-      nombre:val,
-      //horarios:[]
+      nombre:val
     };
   }
   

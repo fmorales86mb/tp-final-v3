@@ -118,12 +118,12 @@
                                 <a [innerHTML]="item.nombre"></a>
                                 </ng-template>
                                 
-                                <!-- <ng-template #notFoundTemplate let-notFound>
+                                <ng-template #notFoundTemplate let-notFound>
                                 <div [innerHTML]="notFound"></div>
-                                </ng-template> -->
+                                </ng-template>
                             </div>
                             <div class="errors">
-                                <small class="invalid" *ngIf="getEspeCtrl()?.errors?.required && getEspeCtrl()?.touched">Campo obligatorio</small>
+                                <small class="invalid" *ngIf="especialidadesSeleccionadas.length == 0 && getEspeCtrl()?.touched">Debe seleccionar al menos una especialidad</small>
                                 <small class="invalid" *ngIf="getEspeCtrl()?.errors?.minlength && getEspeCtrl()?.touched">Mínimo 2 caracteres</small>
                             </div>
                         </div>

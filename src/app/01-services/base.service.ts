@@ -1,94 +1,91 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { IdModel } from '../02-models/idModel';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BaseService<T> {
+    private collName:string;
 
-    protected itemsCollection: AngularFirestoreCollection<T>;
-    items: Observable<T[]>; 
-    snapshots:Observable<IdModel<T>[]>;   
-
-    constructor(private afs: AngularFirestore) {
-      
+    constructor(private afs: AngularFirestore, collName:string) {
+      this.collName = collName;
     }
 
-    protected setCollection(collName:string){
-      this.itemsCollection = this.afs.collection<T>(collName);
-      this.items = this.itemsCollection.valueChanges();
-
-      this.snapshots = this.itemsCollection.snapshotChanges().pipe(
-        map(actions => actions.map(a => {
-          const model:IdModel<T> = {
-            id: a.payload.doc.id,
-            model: a.payload.doc.data()
-          };
-
-          return model;
-          // const data = a.payload.doc.data();
-          // const id = a.payload.doc.id;
-          // return { id, ...data };
-        })));
+    public getAll(){      
+      return this.afs.collection<T>(this.collName)
+        .valueChanges({idField: "docId"});      
     }
 
-    protected setCollectionOrderBy(collName:string, field:string){
-      this.itemsCollection = this.afs.collection<T>(collName, ref => ref.orderBy(field, "desc"));
-      this.items = this.itemsCollection.valueChanges();
+    protected getAllOrderBy(field:string){
+      return this.afs.collection<T>(this.collName, ref => ref.orderBy(field, "asc"))
+        .valueChanges({idField: "docId"});
     }
 
-    protected setCollFilter(valueFilter:string, collName:string, field:string, filterField:string){
-      this.itemsCollection = this.afs.collection<T>(collName, ref => ref
-        .where(filterField, '==', valueFilter)
-        .orderBy(field, "desc"));
-      this.items = this.itemsCollection.valueChanges();
-    }
-  
-    getItemByFilter(campo:string, value:any){
-      return this.itemsCollection.ref.where(campo,'==',value).get();
+    protected getAllOrderBy2(field:string, field2:string){
+      return this.afs.collection<T>(this.collName, ref => ref
+        .orderBy(field, "asc")
+        .orderBy(field2, "asc"))
+        .valueChanges({idField: "docId"}); 
     }
 
-    addItem(item: T) {
-      return this.itemsCollection.add(Object.assign({}, item));    
+    protected getByFilter(filterField:string, filterValue:any){
+      return this.afs.collection<T>(this.collName, ref => ref 
+        .where(filterField,'==',filterValue))
+        .valueChanges({idField: "docId"});
     }
 
-    setItemWithId(item: T, id:string) {
-      return this.itemsCollection.doc(id).set(Object.assign({}, item));    
+    protected getByFilterAndOrder(filterField:string, filterValue:any, orderfield:string, orderAsc:boolean){
+      if(orderAsc){
+        return this.afs.collection<T>(this.collName, ref => ref
+          .where(filterField, '==', filterValue)
+          .orderBy(orderfield, "asc"))
+          .valueChanges();
+      }else{
+        return this.afs.collection<T>(this.collName, ref => ref
+          .where(filterField, '==', filterValue)
+          .orderBy(orderfield, "desc"))
+          .valueChanges();
+      }
+    }
+
+    public addItem(item: T) {
+      return this.afs.collection<T>(this.collName).add(Object.assign({}, item));    
+    }
+
+    public setItemWithId(item: T, id:string) {
+      return this.afs.collection<T>(this.collName).doc(id).set(Object.assign({}, item));    
     }
     
-    getItem(id:string){
-      return this.itemsCollection.doc(id).get();
+    public getItem(id:string){
+      return this.afs.collection<T>(this.collName).doc(id).get();
     }
 
-    deleteItem(id:string){
-      return this.itemsCollection.doc(id).delete();
+    public deleteItem(id:string){
+      return this.afs.collection<T>(this.collName).doc(id).delete();
     }
 
-    protected setItemInSubColl(docId:string, subColl:string, item:IdModel<any>){
-      return this.itemsCollection.doc(docId).collection(subColl).doc(item.id).set(item.model);
-    }
+    // protected setItemInSubColl(docId:string, subColl:string, item:IdModel<any>){
+    //   return this.itemsCollection.doc(docId).collection(subColl).doc(item.id).set(item.model);
+    // }
 
-    protected setItemsInSubColl(docId:string, subColl:string, items:any[]){
-      let batch = this.afs.firestore.batch();
-      let docRef = this.itemsCollection.doc(docId).ref;
+    // protected setItemsInSubColl(docId:string, subColl:string, items:any[]){
+    //   let batch = this.afs.firestore.batch();
+    //   let docRef = this.itemsCollection.doc(docId).ref;
       
-      items.forEach(element => {
-        batch.set(docRef.collection(subColl).doc(), element);        
-      });
+    //   items.forEach(element => {
+    //     batch.set(docRef.collection(subColl).doc(), element);        
+    //   });
       
-      return batch.commit();
-    }
+    //   return batch.commit();
+    // }
 
-    protected getSubColl(docId:string, subColl:string){
-      return this.itemsCollection.doc(docId).collection(subColl).ref.get();
-    }
+    // protected getSubColl(docId:string, subColl:string){
+    //   return this.itemsCollection.doc(docId).collection(subColl).ref.get();
+    // }
 
-    protected deleteItemOfSubColl(docId:string, subColl:string, itemId:string){
-      return this.itemsCollection.doc(docId).collection(subColl).doc(itemId).delete();
-    }
+    // protected deleteItemOfSubColl(docId:string, subColl:string, itemId:string){
+    //   return this.itemsCollection.doc(docId).collection(subColl).doc(itemId).delete();
+    // }
 
     /*
     < menor que

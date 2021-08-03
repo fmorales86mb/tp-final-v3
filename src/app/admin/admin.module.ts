@@ -6,23 +6,19 @@ import { HomeComponent } from './pages/home/home.component';
 import { SharedModule } from '../shared/shared.module';
 import { RegisterComponent } from './pages/register/register.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { AltaMateriaComponent } from './pages/alta-materia/alta-materia.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InscripcionComponent } from './pages/inscripcion/inscripcion.component';
 import { ListadoMateriasComponent } from './pages/listado-materias/listado-materias.component';
 import { ListadoUsuariosComponent } from './pages/listado-usuarios/listado-usuarios.component';
-import { ListadoUsuariosEliminadosComponent } from './pages/listado-usuarios-eliminados/listado-usuarios-eliminados.component';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
-    RegisterComponent,
-    AltaMateriaComponent,
+    RegisterComponent,    
     InscripcionComponent,
     ListadoMateriasComponent,
-    ListadoUsuariosComponent,
-    ListadoUsuariosEliminadosComponent
+    ListadoUsuariosComponent,    
   ],
   imports: [
     CommonModule,

@@ -54,11 +54,7 @@ export class RegisterComponent implements OnInit {
     
     this.authService.Registrarse(data.loginData, data.user)
     .then(async (res)=>{
-      if(res.ok){
-        if(data.user.rol == Rol.Especialista){
-          await this.saveEspecialidades(res.uId, data.especialidades);
-        }
-        
+      if(res.ok){        
         this.router.navigate([""]);
       }
       else{
@@ -100,9 +96,5 @@ export class RegisterComponent implements OnInit {
     const uploadTask = this.storageService.uploadFile(file, filePath);  
 
     return await(await uploadTask).ref.getDownloadURL();     
-  }
-
-  async saveEspecialidades(userId:string, especialidades:Especialidad[]){
-    await this.userService.setEspecialidadesToUser(userId, especialidades);
   }
 }

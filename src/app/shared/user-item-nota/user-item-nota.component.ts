@@ -1,6 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Examen } from 'src/app/02-models/examen';
-import { IdModel } from 'src/app/02-models/idModel';
 import { User } from 'src/app/02-models/user';
 
 @Component({
@@ -10,10 +8,10 @@ import { User } from 'src/app/02-models/user';
 })
 export class UserItemNotaComponent implements OnInit {
 
-  @Input() item:IdModel<User>;
-  @Input() examen:IdModel<Examen>;
+  @Input() item:User;
+  @Input() examen:any;
   nota:number;
-  @Output() emitter = new EventEmitter<IdModel<User>>();
+  @Output() emitter = new EventEmitter<User>();
   
   constructor(    
   ) { }

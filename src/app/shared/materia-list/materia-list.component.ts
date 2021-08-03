@@ -1,6 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { IdModel } from 'src/app/02-models/idModel';
-import { Materia } from 'src/app/02-models/materia';
 
 @Component({
   selector: 'app-materia-list',
@@ -9,8 +7,8 @@ import { Materia } from 'src/app/02-models/materia';
 })
 export class MateriaListComponent implements OnInit {
 
-  @Input() items:IdModel<Materia>[];
-  @Output() emitter = new EventEmitter<IdModel<Materia>>();
+  @Input() items:any[];
+  @Output() emitter = new EventEmitter<any>();
   
   constructor() { 
     this.items = [];
@@ -19,7 +17,7 @@ export class MateriaListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  seleccionarItem(item:IdModel<Materia>){
+  seleccionarItem(item){
     this.emitter.emit(item);
   }
 

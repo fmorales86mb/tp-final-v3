@@ -9,7 +9,6 @@ import { BaseService } from './base.service';
 export class EspecialidadesService extends BaseService<Especialidad>{
 
   constructor(private fire:AngularFirestore) { 
-    super(fire);
-    this.setCollection("especialidades");
+    super(fire, "especialidades");    
   }
 }

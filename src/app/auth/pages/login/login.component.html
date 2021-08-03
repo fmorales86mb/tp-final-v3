@@ -58,20 +58,20 @@
       </div>
 
       <!-- Accesos rápidos -->
-      <div class="row" *ngIf="userAdmin && userEspecialista && userPaciente">        
-        <div class="col m-auto">
+      <div class="row">        
+        <div class="col m-auto" *ngIf="userPaciente">
           <a [routerLink]="">
             <img class="img-avatar m-auto" [src]="userPaciente.perfil1Src" (click)="cargarUsuario(2)" height="80px">            
           </a>
           <p>{{userPaciente.rol | rol}}</p>
         </div>
-        <div class="col m-auto">
+        <div class="col m-auto" *ngIf="userEspecialista">
           <a [routerLink]="">
             <img class="img-avatar m-auto" [src]="userEspecialista.perfil1Src" (click)="cargarUsuario(3)" height="80px">            
           </a>
           <p>{{userEspecialista.rol | rol}}</p>
         </div>
-        <div class="col m-auto">
+        <div class="col m-auto" *ngIf="userAdmin">
           <a [routerLink]="">
             <img class="img-avatar m-auto" [src]="userAdmin.perfil1Src" (click)="cargarUsuario(1)" height="80px">            
           </a>

@@ -23,8 +23,8 @@ export class LoginComponent implements OnInit {
   public userEspecialista:User;
   public userAdmin:User;
 
-  private idEspecialista:string = "bfReb4082ZOVMid0tTRkyyuoTHT2";
-  private idPaciente:string = "g97AYl1IN2au4MlyQjzkOFCARUJ3";
+  private idEspecialista:string = "2kAEoHXU8Qfw5tVovB39gzYsuET2";
+  private idPaciente:string = "AR1pr27lmFgiXJ341AeTKODWy4q2";
   private idAdmin:string = "9XrLsNOAWnVt0LRNONcHWuvn06a2";
 
   constructor(private fb:FormBuilder, 

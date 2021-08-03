@@ -51,8 +51,7 @@ export class RegisterAdminComponent implements OnInit {
     const data:RegisterData = {
       user: this.admin,
       loginData: this.loginData,
-      files:[this.file1],
-      especialidades:null
+      files:[this.file1]
     };
 
     this.userEmitter.emit(data);

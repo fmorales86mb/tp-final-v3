@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { ErrorHandleFirebase } from '../02-models/errors-handle';
-import { IdModel } from '../02-models/idModel';
 import { LoginData } from '../02-models/loginData';
 import { ResponseFirebase } from '../02-models/response-firebase';
 import { User } from '../02-models/user';
@@ -24,7 +23,7 @@ export class AuthService {
     ) { 
     }
 
-  public async Registrarse(loginData: LoginData, user:any):Promise<ResponseFirebase>{
+  public async Registrarse(loginData: LoginData, user:User):Promise<ResponseFirebase>{
     let response:ResponseFirebase = new ResponseFirebase();
 
     await this.authDb.createUserWithEmailAndPassword(loginData.email, loginData.pass)

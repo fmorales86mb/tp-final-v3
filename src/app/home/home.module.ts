@@ -5,12 +5,14 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './pages/home/home.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { SharedModule } from '../shared/shared.module';
+import { PruebaComponent } from './pages/prueba/prueba.component';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
-    ErrorComponent
+    ErrorComponent,
+    PruebaComponent
   ],
   imports: [
     CommonModule,

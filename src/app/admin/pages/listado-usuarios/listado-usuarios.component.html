@@ -41,11 +41,11 @@
             <!-- detalle usuario -->
             <div class="col-5">
                 <app-user-detalle *ngIf="usuarioSeleccionado" [item]="usuarioSeleccionado"></app-user-detalle>
-                <div *ngIf="usuarioSeleccionado?.model.rol == 3">
-                    <button class="btn btn-warning w-100 mt-3" *ngIf="usuarioSeleccionado.model.activado" (click)="habilitarEspecialista(false)">
+                <div *ngIf="usuarioSeleccionado?.rol == 3">
+                    <button class="btn btn-warning w-100 mt-3" *ngIf="usuarioSeleccionado.activado" (click)="habilitarEspecialista(false)">
                         Deshabilitar Especialista
                     </button>
-                    <button class="btn btn-success w-100 mt-3" *ngIf="!usuarioSeleccionado.model.activado" (click)="habilitarEspecialista(true)">
+                    <button class="btn btn-success w-100 mt-3" *ngIf="!usuarioSeleccionado.activado" (click)="habilitarEspecialista(true)">
                         Habilitar Especialista
                     </button>
                 </div>

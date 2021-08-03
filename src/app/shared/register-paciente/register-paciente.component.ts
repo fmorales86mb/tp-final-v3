@@ -56,8 +56,7 @@ export class RegisterPacienteComponent implements OnInit, AfterContentInit  {
     const data:RegisterData = {
       user: this.user,
       loginData: this.loginData,
-      files:[this.file1, this.file2],
-      especialidades:null
+      files:[this.file1, this.file2]
     };
 
     this.userEmitter.emit(data);
@@ -74,7 +73,7 @@ export class RegisterPacienteComponent implements OnInit, AfterContentInit  {
         perfil2Src: "",
         obraSocial: this.getOsCtrl().value,
         activado:false,
-        email:this.loginData.email
+        email:this.loginData.email      
       };  
   }
 

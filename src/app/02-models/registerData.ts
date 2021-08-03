@@ -6,5 +6,4 @@ export interface RegisterData{
     user:User
     loginData:LoginData;
     files:File[];
-    especialidades:Especialidad[];
 }

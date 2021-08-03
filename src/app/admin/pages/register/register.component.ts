@@ -33,8 +33,7 @@ export class RegisterComponent implements OnInit {
     private authService:AuthService,
     private spinner: NgxSpinnerService,
     private router:Router,
-    private storageService:StorageService,
-    private userService:UserService
+    private storageService:StorageService    
   ) {     
     this.tab = 0;
     this.srcEspecialista = this.baseSrc + "doctora-03.jpg";
@@ -56,11 +55,7 @@ export class RegisterComponent implements OnInit {
     
     this.authService.Registrarse(data.loginData, data.user)
     .then(async (res)=>{
-      if(res.ok){
-        if(data.user.rol == Rol.Especialista){
-          await this.saveEspecialidades(res.uId, data.especialidades);
-        }
-        
+      if(res.ok){                
         this.router.navigate(["/admin/home"]);
       }
       else{
@@ -103,9 +98,4 @@ export class RegisterComponent implements OnInit {
 
     return await(await uploadTask).ref.getDownloadURL();     
   }
-
-  async saveEspecialidades(userId:string, especialidades:Especialidad[]){
-    await this.userService.setEspecialidadesToUser(userId, especialidades);
-  }
-
 }
