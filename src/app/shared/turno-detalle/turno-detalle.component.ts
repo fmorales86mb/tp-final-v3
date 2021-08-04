@@ -13,12 +13,20 @@ export class TurnoDetalleComponent implements OnInit, OnChanges {
   @Input() item:Turno;
   @Input() rol:Rol;
   @Output() emitter = new EventEmitter<Turno>();
-  confirmar:boolean;
-  cancelar:boolean;
+  confirmar:boolean[];
+  accion:boolean[];
+  disbled:boolean[];
+  verRes:boolean;
   motivo:string;
+  resenia:string;
   
   constructor() { 
+    this.accion = [];
+    this.confirmar = [];
+    this.disbled = [];
     this.motivo = "";
+    this.resenia = "";
+    this.verRes = false;
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -26,46 +34,227 @@ export class TurnoDetalleComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    this.initView();
+    this.initView();    
   }
 
-  cancelarDisabled(){
-    if(this.item.estado == EstadoTurno.Aceptado ||
-      this.item.estado == EstadoTurno.Realizado ||
-      this.item.estado == EstadoTurno.Rechazado){
-        return true;
-      }
-      else{
-        return false;
-      }
-  }
-
-  confirmarDisabled(){
-    if(this.confirmar && this.motivo != ""){
-      return false;
+  cancelarVisible(){
+    let visible:Boolean = false;
+    
+    switch(this.rol){
+      case Rol.Admin:
+        if(this.item.estado != EstadoTurno.Aceptado &&
+          this.item.estado != EstadoTurno.Realizado &&
+          this.item.estado != EstadoTurno.Rechazado &&
+          this.accion[0]     
+        ){
+          visible =  true;
+        }
+        break;
+      case Rol.Especialista:
+        if(this.item.estado != EstadoTurno.Aceptado &&
+          this.item.estado != EstadoTurno.Realizado &&
+          this.item.estado != EstadoTurno.Rechazado &&
+          this.accion[0]    
+        ){
+          visible =  true;
+        }
+        break;
+      case Rol.Paciente:
+        if(this.item.estado != EstadoTurno.Realizado && this.accion[0]){
+          visible =  true;
+        }
+        break;        
     }
-    else{
-      return true;
+
+    return visible;
+  }
+
+  verReseniaVisible(){
+    let visible:Boolean = false;
+
+    switch(this.rol){
+      case Rol.Admin:        
+        break;
+      case Rol.Especialista:
+        if(this.item.comentario && this.item.comentario != "" || this.item.resenia)     
+        {
+          visible =  true;
+        }
+        break;
+      case Rol.Paciente:
+        if(this.item.comentario && this.item.comentario != "" || this.item.resenia)     
+        {
+          visible =  true;
+        }
+        break;
     }
+
+    return visible;
   }
 
-  clickCancelar(){
-    this.confirmar = true;
-    this.cancelar = false;
+  completarEncuestaVisible(){
+    let visible:Boolean = false;
+
+    switch(this.rol){
+      case Rol.Admin:      
+        break;
+      case Rol.Especialista:        
+        break;
+      case Rol.Paciente:
+        if(this.item.estado == EstadoTurno.Realizado && this.item.resenia){
+          visible = true;
+        }
+        break;
+    }
+
+    return visible;
   }
 
-  clickConfirmar(){
-    this.item.comentario = this.motivo;
-    this.emitter.emit(this.item);
+  calificarAtencionVisible(){
+    let visible:Boolean = false;
+
+    switch(this.rol){
+      case Rol.Admin:        
+        break;
+      case Rol.Especialista:
+        break;
+      case Rol.Paciente:
+        if(this.item.estado == EstadoTurno.Realizado){
+          visible = true;
+        }
+        break;
+    }
+
+    return visible;
+  }
+
+  rechazarVisible(){
+    let visible:Boolean = false;
+
+    switch(this.rol){
+      case Rol.Admin:        
+        break;
+      case Rol.Especialista:
+        if(this.item.estado != EstadoTurno.Aceptado &&
+          this.item.estado != EstadoTurno.Realizado &&
+          this.item.estado != EstadoTurno.Cancelado &&
+          this.accion[1]     
+        ){
+          visible =  true;
+        }
+        break;
+      case Rol.Paciente:
+        break;
+    }
+
+    return visible;
+  }
+
+  aceptarVisible(){
+    let visible:Boolean = false;
+
+    switch(this.rol){
+      case Rol.Admin:        
+        break;
+      case Rol.Especialista:
+        if(this.item.estado != EstadoTurno.Rechazado &&
+          this.item.estado != EstadoTurno.Realizado &&
+          this.item.estado != EstadoTurno.Cancelado &&
+          this.item.estado != EstadoTurno.Aceptado     
+        ){
+          visible =  true;
+        }
+        break;
+      case Rol.Paciente:
+        break;
+    }
+
+    return visible;
+  }
+
+  finalizarVisilbe(){
+    let visible:Boolean = false;
+
+    switch(this.rol){
+      case Rol.Admin:        
+        break;
+      case Rol.Especialista:
+        if(this.item.estado == EstadoTurno.Aceptado && this.accion[3]){
+          visible = true;
+        }
+        break;
+      case Rol.Paciente:
+        break;
+    }
+
+    return visible;
+  }
+  
+
+  confirmarDisabled(btn:number){
+    let disabled = true;
+
+    switch (btn){
+      case 1:        
+      case 2:
+      case 3:
+        if(this.confirmar[btn] && this.motivo != ""){
+          disabled = false;
+        }
+      case 4:
+        if(this.confirmar[btn] && this.resenia != ""){
+          disabled = false;
+        }
+    }
+    
+    return disabled;
+  }
+
+  clickAccion(btn:number){
+    this.confirmar[btn] = true;
+    this.accion[btn] = false;
+    this.disbled = [true, true, true, true, true];    
+  }
+
+  clickConfirmarAccion(btn:number){
+    this.disbled = [false, false, false, false];
+
+    switch(btn){
+      case 0: 
+        this.item.comentario = this.motivo;
+        this.item.estado = EstadoTurno.Cancelado;
+        this.emitter.emit(this.item);
+        break;
+      case 1:
+        this.item.comentario = this.motivo;
+        this.item.estado = EstadoTurno.Rechazado;
+        this.emitter.emit(this.item);
+        break;
+      case 2:
+        this.item.comentario = null;
+        this.item.estado = EstadoTurno.Aceptado;
+        this.emitter.emit(this.item);
+        break;
+      case 3:
+        this.item.comentario = null;
+        this.item.resenia = this.resenia;
+        this.item.estado = EstadoTurno.Realizado;
+        this.emitter.emit(this.item);
+        break;
+      case 4:
+        this.verRes = true;
+        this.disbled[4] = true;
+        break;
+    }
+    
   }
 
   initView(){
-    this.cancelar = false;
-    this.confirmar = false;
+    this.accion = [true, true, true, true, false];
+    this.confirmar = [false, false, false, false, false];
+    this.disbled = [false, false, false, false, false];
     this.motivo = "";
-    if(this.rol == Rol.Admin){
-      this.cancelar = true;      
-    }
+    this.verRes = false;
   }
 
 }

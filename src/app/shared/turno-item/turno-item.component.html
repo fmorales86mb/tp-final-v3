@@ -1,11 +1,7 @@
 <div class="row m-2 p-1 rounded">
     <div class="col text-start">
-        <span class="h5 text-hover-primary mb-0">{{item.especialista.nombre}} {{item.especialista.apellido}}</span> 
-        <p class="text-hover-primary mb-0 ml-1 fw-light">{{item.fecha.toDate() | date:'yyyy/MM/dd h:mm:ss a'}}</p>
-        <p class="text-hover-primary mb-0 ml-1 fw-light"></p>
-    </div>
-    <div class="col-3">
-        <p class="text-hover-primary mb-1 fw-light">Cupo:</p>
-        <span class="h2 text-hover-primary mb-0"></span> 
+        <span class="h5 text-hover-primary mb-0">Fecha: {{item.fecha.toDate() | date:'yyyy/MM/dd h:mm:ss a'}}</span> 
+        <p class="text-hover-primary mb-0 fw-light">Especialidad: {{item.especialidad.nombre}} <small class="text-hover-primary mb-0 fw-light">({{item.especialista.nombre}} {{item.especialista.apellido}})</small></p>
+        <p class="text-hover-primary mb-0 fw-light" *ngIf="item.paciente && item.estado != 6">Paciente: {{item.paciente.nombre}} {{item.paciente.apellido}}</p>
     </div>
 </div>

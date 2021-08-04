@@ -58,8 +58,8 @@ export class TurnoNuevoComponent implements OnInit, OnChanges {
 
   clickGuardar(){
     this.turnoSeleccionado.paciente = this.paciente;
-    this.turnoSeleccionado.estado = EstadoTurno.Reservado;
-    //console.log(this.turnoSeleccionado)
+    this.turnoSeleccionado.comentario = null;
+    this.turnoSeleccionado.estado = EstadoTurno.Reservado;    
     this.emitter.emit(this.turnoSeleccionado);
   }
 
@@ -96,7 +96,7 @@ export class TurnoNuevoComponent implements OnInit, OnChanges {
     let horario = this.especialistaSeleccionado.horarios.find(x => x.docId == this.especialidadSeleccionada.docId);
     
     this.turnoService.getTurnosByEspecialistaEspecialidadLibres
-      (this.especialistaSeleccionado.docId, this.especialidadSeleccionada.docId).subscribe(turnos => {
+      (this.especialistaSeleccionado.docId, this.especialidadSeleccionada.docId).subscribe(turnos => {        
         this.turnos = turnos;
       })
   }

@@ -27,6 +27,7 @@ import { TurnoNuevoComponent } from './turno-nuevo/turno-nuevo.component';
 import { TurnoItemComponent } from './turno-item/turno-item.component';
 import { TurnoListComponent } from './turno-list/turno-list.component';
 import { TurnoDetalleComponent } from './turno-detalle/turno-detalle.component';
+import { EstadoPipe } from './01-pipes/estado.pipe';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { TurnoDetalleComponent } from './turno-detalle/turno-detalle.component';
     //pipes    
     RolPipe,
      TurnoDetalleComponent,
+     EstadoPipe,
   ],
   imports: [
     CommonModule,

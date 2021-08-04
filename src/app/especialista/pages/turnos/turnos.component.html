@@ -27,8 +27,8 @@
         </div>  
         
         <div class="row">
-            <div class="col-4 m-auto">
-                <input type="text" (input)="onSearchChange($event.target.value)">
+            <div class="col-3 m-auto">
+                <input type="text" class="w-100" (input)="onSearchChange($event.target.value)">
                 <app-turno-list [items]="turnosFiltrados" (emitter)="seleccionarItem($event)"></app-turno-list>
             </div>
             <div class="col-3" style="margin-right: auto;">

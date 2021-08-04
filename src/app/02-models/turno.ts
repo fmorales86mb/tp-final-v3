@@ -10,4 +10,5 @@ export interface Turno{
     docId?:string;
     estado:EstadoTurno;
     comentario?:string;
+    resenia?:string;
 }

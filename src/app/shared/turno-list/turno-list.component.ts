@@ -13,7 +13,7 @@ export class TurnoListComponent implements OnInit, OnChanges {
   
   constructor() { }
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(changes: SimpleChanges): void {    
     this.items = changes.items.currentValue;
   }
 

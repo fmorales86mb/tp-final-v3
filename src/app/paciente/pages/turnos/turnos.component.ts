@@ -1,9 +1,8 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from 'src/app/01-services/auth.service';
 import { TurnoService } from 'src/app/01-services/turno.service';
 import { TipoMje } from 'src/app/02-models/enums/mje-enum';
-import { EstadoTurno } from 'src/app/02-models/enums/turno-estado-enum';
 import { Mensaje } from 'src/app/02-models/mensaje';
 import { Turno } from 'src/app/02-models/turno';
 import { User } from 'src/app/02-models/user';
@@ -34,7 +33,7 @@ export class TurnosComponent implements OnInit {
     this.user = this.autService.GetCurrentUser();
 
     this.spinner.show();
-    this.turnoService.getTurnosTomados().subscribe(items => {
+    this.turnoService.getTurnosByEspecialistaTomados(this.user.docId).subscribe(items => {
       this.turnos = items;
       this.turnosFiltrados = this.turnos;
       console.log(this.turnos);
@@ -59,7 +58,6 @@ export class TurnosComponent implements OnInit {
 
   updateTurno(turno:Turno){
     this.spinner.show();
-    //console.log(turno);
 
     this.turnoService.setItemWithId(turno, turno.docId)
     .then(()=>{

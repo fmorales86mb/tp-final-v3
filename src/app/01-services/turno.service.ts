@@ -35,6 +35,14 @@ export class TurnoService extends BaseService<Turno> {
       .valueChanges({idField: "docId"});
   }
 
+  getTurnosByEspecialistaTomados(userId:string){
+    return this.fire.collection<Turno>("turnos", ref => ref
+      .where("especialista.docId", '==', userId)
+      .where("estado", 'in', [EstadoTurno.Aceptado, EstadoTurno.Reservado, EstadoTurno.Realizado])
+      .orderBy("fecha", "asc"))
+      .valueChanges({idField: "docId"});
+  }
+
   getTurnosTomados(){
     return this.getByFilterAndOrder("estado", EstadoTurno.Reservado, "fecha", true);
   }

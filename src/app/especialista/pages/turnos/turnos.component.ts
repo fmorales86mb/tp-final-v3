@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from 'src/app/01-services/auth.service';
 import { TurnoService } from 'src/app/01-services/turno.service';
@@ -34,7 +34,7 @@ export class TurnosComponent implements OnInit {
     this.user = this.autService.GetCurrentUser();
 
     this.spinner.show();
-    this.turnoService.getTurnosTomados().subscribe(items => {
+    this.turnoService.getTurnosByEspecialistaTomados(this.user.docId).subscribe(items => {
       this.turnos = items;
       this.turnosFiltrados = this.turnos;
       console.log(this.turnos);
@@ -45,8 +45,8 @@ export class TurnosComponent implements OnInit {
   onSearchChange(searchValue: string): void {  
     this.turnosFiltrados = this.turnos.filter(t => {
       if(t.especialidad.nombre.toLowerCase().startsWith(searchValue.toLowerCase()) ||
-      t.especialista.nombre.toLowerCase().startsWith(searchValue.toLowerCase()) ||
-      t.especialista.apellido.toLowerCase().startsWith(searchValue.toLowerCase())){
+      t.paciente?.nombre.toLowerCase().startsWith(searchValue.toLowerCase()) ||
+      t.paciente?.apellido.toLowerCase().startsWith(searchValue.toLowerCase())){
         return t;
       }
     })
@@ -59,7 +59,6 @@ export class TurnosComponent implements OnInit {
 
   updateTurno(turno:Turno){
     this.spinner.show();
-    //console.log(turno);
 
     this.turnoService.setItemWithId(turno, turno.docId)
     .then(()=>{
@@ -80,5 +79,4 @@ export class TurnosComponent implements OnInit {
       this.spinner.hide();
     })
   }
-
 }
