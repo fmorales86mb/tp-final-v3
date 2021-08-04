@@ -9,4 +9,5 @@ export interface Turno{
     fecha:any;    
     docId?:string;
     estado:EstadoTurno;
+    comentario?:string;
 }

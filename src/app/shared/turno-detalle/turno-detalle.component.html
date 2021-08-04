@@ -1,0 +1,49 @@
+<div class="album py-5">
+    <div class="">
+
+      <div class="row row-cols-1 g-3">
+        <div class="col">
+          <div class="card shadow-sm">
+
+            <img [src]="item.especialista.perfil1Src" height="225">
+
+            <div class="card-body">
+              <p class="card-text">{{item.fecha.toDate() | date:'yyyy/MM/dd h:mm:ss a'}}</p>
+              <p class="card-text">Especialista: {{item.especialista.nombre}} {{item.especialista.apellido}}</p>
+
+              <app-user-item [item]="item.paciente" *ngIf="item.paciente && item.estado != 6"></app-user-item>
+
+              <small class="text-danger" *ngIf="confirmar">Agregue un motivo</small>
+              <p>
+                <input type="text" [(ngModel)]="motivo" *ngIf="confirmar">
+              </p>
+
+              <div class="d-flex justify-content-between align-items-center">
+                
+                <div class="btn-group">
+                  <!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
+                  <button 
+                    *ngIf="cancelar"
+                    type="button" 
+                    [disabled]="cancelarDisabled()" 
+                    class="btn btn-sm btn-outline-danger"
+                    (click)="clickCancelar()">
+                    Cancelar Turno
+                  </button>
+                  <button 
+                    *ngIf="confirmar"
+                    type="button" 
+                    [disabled]="confirmarDisabled()" 
+                    class="btn btn-sm btn-outline-danger"
+                    (click)="clickConfirmar()">
+                    Confirmar Cancelación del Turno
+                  </button>
+                </div>
+                <small class="text-muted"></small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

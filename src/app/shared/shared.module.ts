@@ -26,6 +26,7 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { TurnoNuevoComponent } from './turno-nuevo/turno-nuevo.component';
 import { TurnoItemComponent } from './turno-item/turno-item.component';
 import { TurnoListComponent } from './turno-list/turno-list.component';
+import { TurnoDetalleComponent } from './turno-detalle/turno-detalle.component';
 
 @NgModule({
   declarations: [
@@ -50,11 +51,12 @@ import { TurnoListComponent } from './turno-list/turno-list.component';
     UserPerfilComponent,
     HorarioComponent,
     TurnoNuevoComponent,
+    TurnoItemComponent,
+    TurnoListComponent,
 
     //pipes    
     RolPipe,
-     TurnoItemComponent,
-     TurnoListComponent,
+     TurnoDetalleComponent,
   ],
   imports: [
     CommonModule,
@@ -86,6 +88,9 @@ import { TurnoListComponent } from './turno-list/turno-list.component';
     UserPerfilComponent,
     HorarioComponent,
     TurnoNuevoComponent,
+    TurnoItemComponent,
+    TurnoListComponent,
+    TurnoDetalleComponent,
     
     //pipes
     RolPipe

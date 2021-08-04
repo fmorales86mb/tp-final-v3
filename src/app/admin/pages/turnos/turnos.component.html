@@ -1,0 +1,51 @@
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
+    <!-- Spinner -->
+    <ngx-spinner 
+        bdColor = "rgba(0, 0, 0, 0.8)" 
+        size = "medium" 
+        color = "#fff" 
+        type = "ball-atom" 
+        [fullScreen] = "true">
+        <p style="color: white" > Cargando... </p>
+    </ngx-spinner>
+
+    <!-- header -->
+    <div class="mb-auto">
+        <app-header [user]="user"></app-header>
+    </div>
+
+    <!-- main -->
+    <main class="px-3">
+        <h2 class="mb-3">Lisatado de Turnos</h2>
+
+        <!-- Mensaje -->
+        <div class="row justify-content-center">
+            <div class="col-8" *ngIf="mensaje">                
+                <app-alert [mensaje]="mensaje"></app-alert>
+            </div>
+        </div>  
+        
+        <div class="row">
+            <div class="col-4 m-auto">
+                <input type="text" (input)="onSearchChange($event.target.value)">
+                <app-turno-list [items]="turnosFiltrados" (emitter)="seleccionarItem($event)"></app-turno-list>
+            </div>
+            <div class="col-3" style="margin-right: auto;">
+                <app-turno-detalle 
+                    *ngIf="turnoSeleccionado" 
+                    [item]="turnoSeleccionado"
+                    [rol]="user.rol"
+                    (emitter)="cancelarTurno($event)">
+                </app-turno-detalle>
+            </div>
+        </div>
+        
+
+    </main>
+
+    <!-- footer -->
+    <div class="mt-auto">
+        <app-footer></app-footer>
+    </div>
+</div>

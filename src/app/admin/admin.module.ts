@@ -8,11 +8,11 @@ import { RegisterComponent } from './pages/register/register.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InscripcionComponent } from './pages/inscripcion/inscripcion.component';
-import { ListadoMateriasComponent } from './pages/listado-materias/listado-materias.component';
 import { ListadoUsuariosComponent } from './pages/listado-usuarios/listado-usuarios.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { NuevoTurnoComponent } from './pages/nuevo-turno/nuevo-turno.component';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
+import { TurnosComponent } from './pages/turnos/turnos.component';
 
 
 @NgModule({
@@ -20,10 +20,10 @@ import { AutocompleteLibModule } from 'angular-ng-autocomplete';
     HomeComponent,
     RegisterComponent,    
     InscripcionComponent,
-    ListadoMateriasComponent,
     ListadoUsuariosComponent,
     PerfilComponent,
-    NuevoTurnoComponent,    
+    NuevoTurnoComponent,
+    TurnosComponent,    
   ],
   imports: [
     CommonModule,
