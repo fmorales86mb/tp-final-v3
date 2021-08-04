@@ -84,7 +84,8 @@ export class RegisterEspecialistaComponent implements OnInit {
         perfil1Src: "",        
         activado:false,
         email:this.loginData.email,
-        especialidades: this.especialidadesSeleccionadas
+        especialidades: this.especialidadesSeleccionadas,
+        horarios : this.especialidadesSeleccionadas
       };
   }
 

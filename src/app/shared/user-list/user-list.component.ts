@@ -20,7 +20,7 @@ export class UserListComponent implements OnInit {
   }
 
   seleccionarItem(item:User){
-    console.log(item);
+    //console.log(item);
     this.emitter.emit(item);
   }
 

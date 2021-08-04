@@ -55,7 +55,11 @@ export class RegisterComponent implements OnInit {
     
     this.authService.Registrarse(data.loginData, data.user)
     .then(async (res)=>{
-      if(res.ok){                
+      if(res.ok){   
+        this.mensaje = {
+          txt: "Registro Exitoso",
+          tipo:TipoMje.Success
+        };             
         this.router.navigate(["/admin/home"]);
       }
       else{

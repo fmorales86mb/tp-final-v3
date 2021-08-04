@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from 'src/app/01-services/auth.service';
+import { TurnoService } from 'src/app/01-services/turno.service';
 import { UserService } from 'src/app/01-services/user.service';
 import { TipoMje } from 'src/app/02-models/enums/mje-enum';
 import { Especialidad } from 'src/app/02-models/especialidad';
@@ -22,6 +23,7 @@ export class HorariosComponent implements OnInit {
     private autService:AuthService,
     private userService:UserService,
     private spinner: NgxSpinnerService,
+    private turnoService:TurnoService
   ) { }
 
   ngOnInit(): void {
@@ -30,7 +32,7 @@ export class HorariosComponent implements OnInit {
   }
 
   guardarHorario(espe:Especialidad, horarios:Horario[]){
-    this.user.especialidades.forEach(e => {
+    this.user.horarios.forEach(e => {
       if(e.docId == espe.docId){
         e.horarios = horarios;
       }
@@ -52,6 +54,20 @@ export class HorariosComponent implements OnInit {
     })
     .finally(()=>{
       this.spinner.hide();
+    })
+
+    this.turnoService.createTurnosDeEspecialista(horarios, this.user, espe)
+    .then(async (res)=>{
+      console.log("turnos creados");
+    })
+    .catch(()=>{
+      this.mensaje = {
+        txt:"Ocurrió un error inesperado, vuelva a intentarlo más tarde.",
+        tipo:TipoMje.Danger
+      };
+    })
+    .finally(()=>{
+      //this.spinner.hide();
     })
   }
 }

@@ -23,6 +23,9 @@ import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { UserPerfilComponent } from './user-perfil/user-perfil.component';
 import { HorarioComponent } from './horario/horario.component';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { TurnoNuevoComponent } from './turno-nuevo/turno-nuevo.component';
+import { TurnoItemComponent } from './turno-item/turno-item.component';
+import { TurnoListComponent } from './turno-list/turno-list.component';
 
 @NgModule({
   declarations: [
@@ -46,9 +49,12 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
     RegisterEspecialistaComponent,
     UserPerfilComponent,
     HorarioComponent,
+    TurnoNuevoComponent,
 
     //pipes    
     RolPipe,
+     TurnoItemComponent,
+     TurnoListComponent,
   ],
   imports: [
     CommonModule,
@@ -79,6 +85,7 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
     RegisterEspecialistaComponent,
     UserPerfilComponent,
     HorarioComponent,
+    TurnoNuevoComponent,
     
     //pipes
     RolPipe

@@ -14,4 +14,5 @@ export interface User{
     activado:boolean;
     docId?:string;
     especialidades?:Especialidad[];
+    horarios?:Especialidad[];
 }

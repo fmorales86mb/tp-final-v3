@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Especialidad } from '../02-models/especialidad';
 import { User } from '../02-models/user';
 import { BaseService } from './base.service';
 
@@ -18,5 +19,17 @@ export class UserService extends BaseService<User>{
 
   getEspecialistas(){
     return this.getByFilter("rol", 3);
+  }
+
+  getPacientes(){
+    return this.getByFilter("rol", 2);
+  }
+
+  getEspecialistasByEspecialidad(especialidad:Especialidad){
+
+    return this.fire.collection<User>("users", ref => ref 
+      .where('rol','==',3)
+      .where('especialidades','array-contains', especialidad))
+      .valueChanges({idField: "docId"});
   }
  }

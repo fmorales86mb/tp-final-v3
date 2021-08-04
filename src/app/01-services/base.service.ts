@@ -39,12 +39,12 @@ export class BaseService<T> {
         return this.afs.collection<T>(this.collName, ref => ref
           .where(filterField, '==', filterValue)
           .orderBy(orderfield, "asc"))
-          .valueChanges();
+          .valueChanges({idField: "docId"});
       }else{
         return this.afs.collection<T>(this.collName, ref => ref
           .where(filterField, '==', filterValue)
           .orderBy(orderfield, "desc"))
-          .valueChanges();
+          .valueChanges({idField: "docId"});
       }
     }
 

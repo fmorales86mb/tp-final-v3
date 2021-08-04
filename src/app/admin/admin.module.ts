@@ -12,6 +12,7 @@ import { ListadoMateriasComponent } from './pages/listado-materias/listado-mater
 import { ListadoUsuariosComponent } from './pages/listado-usuarios/listado-usuarios.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { NuevoTurnoComponent } from './pages/nuevo-turno/nuevo-turno.component';
+import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { NuevoTurnoComponent } from './pages/nuevo-turno/nuevo-turno.component';
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    AutocompleteLibModule
   ]
 })
 export class AdminModule { }

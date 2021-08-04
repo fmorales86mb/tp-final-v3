@@ -17,7 +17,7 @@
 
     <!-- main -->
     <main class="px-3">
-        <h2 class="mb-3">Mis Horarios</h2>
+        <h2 class="mb-3">Nuevo Turno</h2>
 
         <!-- Mensaje -->
         <div class="row justify-content-center">
@@ -26,17 +26,14 @@
             </div>
         </div>
         
-        <!-- Horarios -->
-        <div class="container py-4">
-            <div class="card text-white bg-secondary">
-                <h3 style="padding: 1rem;">Especialidades</h3>
-                <div class="row g-0" *ngFor="let espe of user.horarios" style="padding: 1rem;">
-                    <h4>{{espe.nombre}}</h4>
-                    <app-horario [horariosCargados]="espe.horarios" (horariosEmitter)="guardarHorario(espe, $event)"></app-horario>
-                </div>
+        <div class="row">
+            <div class="col-4">
+                <app-user-list [items]="pacientes" (emitter)="seleccionarUsuario($event)"></app-user-list> 
+            </div>
+            <div class="col">
+                <app-turno-nuevo [paciente]="pacienteSeleccionado" (emitter)="guardarTurno($event)"></app-turno-nuevo>
             </div>
         </div>
-
     </main>
 
     <!-- footer -->

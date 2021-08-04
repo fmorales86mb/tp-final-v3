@@ -1,0 +1,87 @@
+<div class="row">
+
+    <!-- Mensaje -->
+    <div class="row justify-content-center">
+        <div class="col-8" *ngIf="mensaje">                
+            <app-alert [mensaje]="mensaje"></app-alert>
+        </div>
+    </div>
+
+    <div class="col">
+        <!-- Form Turno -->
+        <form class="needs-validation" (ngSubmit)="clickGuardar()">
+            <!-- Especialidad -->
+            <div class="row">
+                <div class="col m-auto">
+                    <label for="address" class="form-label">Especialidad</label>
+                    <div class="ng-autocomplete w-100" >
+                        <ng-autocomplete 
+                        [data]="especialidades"
+                        [searchKeyword]="keyword"
+                        (selected)='selectEvent($event)'
+                        (inputChanged)='onChangeSearch($event)'
+                        (inputFocused)='onFocused($event)'
+                        [itemTemplate]="itemTemplate"
+                        [notFoundTemplate]="notFoundTemplate"
+                        >                                 
+                        </ng-autocomplete>
+                        
+                        <ng-template #itemTemplate let-item>
+                        <a [innerHTML]="item.nombre"></a>
+                        </ng-template>
+                        
+                        <ng-template #notFoundTemplate let-notFound>
+                        <div [innerHTML]="notFound"></div>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Especialista -->
+            <div class="row">
+                <div class="col m-auto">
+                    <label for="address" class="form-label">Especialista</label>
+                    <div class="ng-autocomplete w-100" >
+                        <ng-autocomplete 
+                        [data]="especialistas"
+                        [searchKeyword]="keyword1"
+                        (selected)='selectEventEspecialista($event)'
+                        (inputChanged)='onChangeSearchEspecialista($event)'
+                        (inputFocused)='onFocusedEspecialista($event)'
+                        [itemTemplate]="itemTemplate"
+                        [notFoundTemplate]="notFoundTemplate"
+                        >                                 
+                        </ng-autocomplete>
+                        
+                        <ng-template #itemTemplate let-item>
+                        <a [innerHTML]="item.nombre + ' ' +item.apellido"></a>
+                        </ng-template>
+                        
+                        <ng-template #notFoundTemplate let-notFound>
+                        <div [innerHTML]="notFound"></div>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col m-auto" *ngIf="turnoSeleccionado">
+                    <label for="address" class="form-label">Turno Seleccionado</label>
+                    <app-turno-item [item]="turnoSeleccionado"></app-turno-item>
+                </div>
+            </div>
+
+            <!-- Btn Guardar -->
+            <hr class="my-4">
+            <div class="row">
+                <div class="col m-auto p-1">
+                    <button class="w-100 btn btn-success btn-lg" type="submit" [disabled]="guardarDisabled()">Solicitar Turno</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col">
+        <!-- Listado Turnos -->
+        <app-turno-list [items]="turnos" (emitter)="seleccionarItem($event)"></app-turno-list>     
+    </div>
+</div>
