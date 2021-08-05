@@ -1,0 +1,43 @@
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ChartOptions, ChartType } from 'chart.js';
+import { Label, SingleDataSet } from 'ng2-charts';
+
+@Component({
+  selector: 'app-grafico-pie',
+  templateUrl: './grafico-pie.component.html',
+  styleUrls: ['./grafico-pie.component.css']
+})
+export class GraficoPieComponent implements OnInit, OnChanges {
+
+  pieChartOptions: ChartOptions = {
+    responsive: true,
+  };
+  @Input() pieChartLabels: Label[] = [];
+  @Input() pieChartData: SingleDataSet = [];    
+  pieChartType: ChartType = 'pie';
+  pieChartLegend = false;    
+  pieChartPlugins = [];
+  public chartColors: Array<any> = [
+    { 
+      backgroundColor: [
+      'rgba(54, 162, 235, 0.2)',
+      'rgba(255, 206, 86, 0.2)',
+      'rgba(75, 192, 192, 0.2)',
+      'rgba(153, 102, 255, 0.2)',
+      'rgba(255, 159, 64, 0.2)',
+      'rgba(255, 99, 132, 0.2)'
+      ]
+    }
+]
+    
+  constructor() { }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.pieChartLabels = changes.pieChartLabels.currentValue;
+    this.pieChartData = changes.pieChartData.currentValue;
+  }
+
+  ngOnInit(): void {
+  }
+
+}

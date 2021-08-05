@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from 'src/app/01-services/auth.service';
 import { HistorialService } from 'src/app/01-services/historial.service';
@@ -21,11 +22,13 @@ export class ListadoUsuariosComponent implements OnInit {
   users:User[];
   usuarioSeleccionado:User;
   historial:HistoriaClinica[];
+  historialSeleccionado:HistoriaClinica;
 
   constructor(private autService:AuthService, 
       private userService:UserService,
       private spinner: NgxSpinnerService,
-      private historialService:HistorialService) { 
+      private historialService:HistorialService,
+      private modalService: NgbModal) { 
     this.users=[];
     this.historial = [];
   }
@@ -77,5 +80,11 @@ export class ListadoUsuariosComponent implements OnInit {
     .finally(()=>{
       this.spinner.hide();
     })
+  }
+
+  mostrarDetalle(content,historial:HistoriaClinica){
+    this.historialSeleccionado = historial;
+    // console.log(this.historialSeleccionado);
+    this.modalService.open(content);
   }
 }

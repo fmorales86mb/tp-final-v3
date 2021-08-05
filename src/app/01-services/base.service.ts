@@ -21,6 +21,16 @@ export class BaseService<T> {
         .valueChanges({idField: "docId"});
     }
 
+    protected getAllOrderByOption(field:string, orderAsc:boolean){
+      if(orderAsc){
+        return this.afs.collection<T>(this.collName, ref => ref.orderBy(field, "asc"))
+        .valueChanges({idField: "docId"});
+      }else{
+        return this.afs.collection<T>(this.collName, ref => ref.orderBy(field, "desc"))
+        .valueChanges({idField: "docId"});
+      }
+    }
+
     protected getAllOrderBy2(field:string, field2:string){
       return this.afs.collection<T>(this.collName, ref => ref
         .orderBy(field, "asc")

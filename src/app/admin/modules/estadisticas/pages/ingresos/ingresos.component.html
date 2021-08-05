@@ -1,0 +1,39 @@
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <!-- header -->
+    <div class="mb-auto">
+        <app-header [user]="user"></app-header>
+    </div>
+
+    <!-- main -->
+    <main class="px-3">
+
+        <h2 class="mb-3">Registro de Ingresos</h2>
+
+        <!-- Mensaje -->
+        <div class="row justify-content-center">
+            <div class="col-8" *ngIf="mensaje">                
+                <app-alert [mensaje]="mensaje"></app-alert>
+            </div>
+        </div>  
+        
+        <div class="row">
+            <!-- Logs -->
+            <div class="col-3 m-auto">                
+                <div class="col m-auto">
+                    <app-log-list [items]="logs"></app-log-list>
+                </div>                
+            </div>
+            <!-- Grafico -->
+            <div class="col-5 m-auto">                                
+                <app-grafico-pie [pieChartLabels]="labels" [pieChartData]="data"></app-grafico-pie>              
+            </div>
+        </div>
+
+        
+    </main>
+
+    <!-- footer -->
+    <div class="mt-auto">
+        <app-footer></app-footer>
+    </div>
+</div>

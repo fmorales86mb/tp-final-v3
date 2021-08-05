@@ -54,9 +54,14 @@
             <!-- Historial -->
             <div class="col-3 m-auto" *ngIf="historial.length > 0">
                 <div class="list-scroll col vh-70 rounded">
-                    <app-historia-list [items]="historial"></app-historia-list>
+                    <app-historia-list [items]="historial" (emitter)="mostrarDetalle(staticBackdrop2, $event)"></app-historia-list>
                 </div>
             </div>
+
+            <!-- Modal Historia-->
+        <ng-template #staticBackdrop2 let-modal>
+            <app-historia-detalle [item]="historialSeleccionado"></app-historia-detalle>
+        </ng-template>
         </div>
     </main>
 

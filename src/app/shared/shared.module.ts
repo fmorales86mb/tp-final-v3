@@ -32,6 +32,10 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { HistoriaItemComponent } from './historia-item/historia-item.component';
 import { HistoriaListComponent } from './historia-list/historia-list.component';
 import { HistoriaDetalleComponent } from './historia-detalle/historia-detalle.component';
+import { LogItemComponent } from './log-item/log-item.component';
+import { LogListComponent } from './log-list/log-list.component';
+import { GraficoPieComponent } from './grafico-pie/grafico-pie.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -63,6 +67,9 @@ import { HistoriaDetalleComponent } from './historia-detalle/historia-detalle.co
     HistoriaItemComponent,
     HistoriaListComponent,
     HistoriaDetalleComponent,
+    LogItemComponent,
+     LogListComponent,
+     GraficoPieComponent,
 
     //pipes    
     RolPipe,
@@ -74,7 +81,8 @@ import { HistoriaDetalleComponent } from './historia-detalle/historia-detalle.co
     ReactiveFormsModule,
     AutocompleteLibModule,
     NgxMaterialTimepickerModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    ChartsModule
   ],
   exports: [
     //directives
@@ -102,6 +110,9 @@ import { HistoriaDetalleComponent } from './historia-detalle/historia-detalle.co
     HistoriaItemComponent,
     HistoriaListComponent,
     HistoriaDetalleComponent,
+    LogItemComponent,
+    LogListComponent,
+    GraficoPieComponent,
     
     //pipes
     RolPipe

@@ -11,7 +11,6 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
 import { NuevoTurnoComponent } from './pages/nuevo-turno/nuevo-turno.component';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { TurnosComponent } from './pages/turnos/turnos.component';
-import { EstadisticasComponent } from './pages/estadisticas/estadisticas.component';
 
 
 @NgModule({
@@ -21,8 +20,7 @@ import { EstadisticasComponent } from './pages/estadisticas/estadisticas.compone
     ListadoUsuariosComponent,
     PerfilComponent,
     NuevoTurnoComponent,
-    TurnosComponent,
-    EstadisticasComponent,    
+    TurnosComponent,      
   ],
   imports: [
     CommonModule,

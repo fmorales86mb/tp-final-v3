@@ -11,4 +11,10 @@ export class LogService extends BaseService<LogIngreso>{
   constructor(private fire:AngularFirestore) { 
     super(fire, "log");    
   }
+
+  getLogs(){
+    return this.getAllOrderByOption("fecha", false);
+  }
+
+
 }
