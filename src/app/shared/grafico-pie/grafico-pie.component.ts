@@ -14,8 +14,8 @@ export class GraficoPieComponent implements OnInit, OnChanges {
   };
   @Input() pieChartLabels: Label[] = [];
   @Input() pieChartData: SingleDataSet = [];    
-  pieChartType: ChartType = 'pie';
-  pieChartLegend = false;    
+  pieChartType: ChartType = 'pie';  
+  pieChartLegend = true;    
   pieChartPlugins = [];
   public chartColors: Array<any> = [
     { 
@@ -34,7 +34,7 @@ export class GraficoPieComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.pieChartLabels = changes.pieChartLabels.currentValue;
-    this.pieChartData = changes.pieChartData.currentValue;
+    this.pieChartData = changes.pieChartData.currentValue;    
   }
 
   ngOnInit(): void {

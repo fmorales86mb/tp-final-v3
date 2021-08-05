@@ -36,6 +36,8 @@ import { LogItemComponent } from './log-item/log-item.component';
 import { LogListComponent } from './log-list/log-list.component';
 import { GraficoPieComponent } from './grafico-pie/grafico-pie.component';
 import { ChartsModule } from 'ng2-charts';
+import { GraficoBarComponent } from './grafico-bar/grafico-bar.component';
+import { GraficoLineComponent } from './grafico-line/grafico-line.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +75,8 @@ import { ChartsModule } from 'ng2-charts';
 
     //pipes    
     RolPipe,
+     GraficoBarComponent,
+     GraficoLineComponent,
   ],
   imports: [
     CommonModule,
@@ -113,6 +117,8 @@ import { ChartsModule } from 'ng2-charts';
     LogItemComponent,
     LogListComponent,
     GraficoPieComponent,
+    GraficoBarComponent,
+    GraficoLineComponent,
     
     //pipes
     RolPipe

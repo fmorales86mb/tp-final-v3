@@ -4,6 +4,8 @@ import { LogService } from 'src/app/01-services/log.service';
 import { LogIngreso } from 'src/app/02-models/log';
 import { Mensaje } from 'src/app/02-models/mensaje';
 import { User } from 'src/app/02-models/user';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-ingresos',
@@ -17,6 +19,8 @@ export class IngresosComponent implements OnInit {
   mensaje:Mensaje;
   data:any[];
   labels:any[];
+  titleGrafico:string;
+  chartType:string;
 
   constructor(
     private autService:AuthService,
@@ -25,6 +29,7 @@ export class IngresosComponent implements OnInit {
     this.logs = [];
     this.data = [];
     this.labels=[];
+    this.titleGrafico = "Ingresosos por Usuario";    
   }
 
   ngOnInit(): void {
@@ -38,7 +43,7 @@ export class IngresosComponent implements OnInit {
 
   private procesarDatos(){
     this.logs.forEach(log => {
-      let nombreCompleto:string =  log.usuario.nombre + log.usuario.apellido;
+      let nombreCompleto:string =  log.usuario.nombre + ' ' + log.usuario.apellido;
       this.getName(nombreCompleto);
       
       let i = this.labels.indexOf(nombreCompleto);
@@ -51,6 +56,36 @@ export class IngresosComponent implements OnInit {
       this.labels.push(nombreCompleto); 
       this.data.push(0);     
     }
+  }
+
+  pdf(html:string){
+    let header:string = new Date().toLocaleDateString();
+      // Extraemos el
+      const DATA = document.getElementById(html);
+      const doc = new jsPDF('p', 'pt', 'a4');  
+      
+      const options = {
+        background: 'white',
+        scale: 3
+      };
+      html2canvas(DATA, options).then((canvas) => {
+  
+        const img = canvas.toDataURL('image/PNG');
+  
+        // Add image Canvas to PDF
+        const bufferX = 15;
+        const bufferY = 15;
+        const imgProps = (doc as any).getImageProperties(img);
+        const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
+        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+        doc.text(" - ", 10, 10);
+        doc.text(header, 10, 10);
+        doc.text(" - ", 10, 10);
+        doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');          
+        return doc;
+      }).then((docResult) => {
+        docResult.save(`${new Date().toISOString()}_tutorial.pdf`);
+      });
   }
 
 }

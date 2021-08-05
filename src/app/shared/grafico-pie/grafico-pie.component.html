@@ -1,5 +1,6 @@
-<div style="display: block;" *ngIf="pieChartData && pieChartLabels">
-    <canvas baseChart 
+<div style="display: block;" *ngIf="pieChartData && pieChartLabels" id="htmlData">    
+    <div>
+        <canvas baseChart 
         [data]="pieChartData" 
         [labels]="pieChartLabels" 
         [chartType]="pieChartType"
@@ -7,5 +8,7 @@
         [plugins]="pieChartPlugins"
         [legend]="pieChartLegend"
         [colors]="chartColors">
-    </canvas>
+        </canvas>
+    </div>
+
 </div> 

@@ -5,10 +5,12 @@ import { EstadisticasRoutingModule } from './estadisticas-routing.module';
 import { IngresosComponent } from './pages/ingresos/ingresos.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ChartsModule } from 'ng2-charts';
+import { TurnosComponent } from './pages/turnos/turnos.component';
 
 @NgModule({
   declarations: [
-    IngresosComponent
+    IngresosComponent,
+    TurnosComponent
   ],
   imports: [
     CommonModule,
