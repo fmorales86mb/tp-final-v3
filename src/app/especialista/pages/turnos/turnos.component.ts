@@ -54,6 +54,7 @@ export class TurnosComponent implements OnInit {
   }
 
   seleccionarItem(turno:Turno){
+    this.mensaje = null;
     this.turnoSeleccionado = turno;
   }
 

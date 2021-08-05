@@ -3,7 +3,6 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from 'src/app/01-services/auth.service';
 import { TurnoService } from 'src/app/01-services/turno.service';
 import { TipoMje } from 'src/app/02-models/enums/mje-enum';
-import { EstadoTurno } from 'src/app/02-models/enums/turno-estado-enum';
 import { Mensaje } from 'src/app/02-models/mensaje';
 import { Turno } from 'src/app/02-models/turno';
 import { User } from 'src/app/02-models/user';
@@ -36,8 +35,7 @@ export class TurnosComponent implements OnInit {
     this.spinner.show();
     this.turnoService.getTurnosTomados().subscribe(items => {
       this.turnos = items;
-      this.turnosFiltrados = this.turnos;
-      console.log(this.turnos);
+      this.turnosFiltrados = this.turnos;      
       this.spinner.hide();
     })
   }
@@ -54,6 +52,7 @@ export class TurnosComponent implements OnInit {
   }
 
   seleccionarItem(turno:Turno){
+    this.mensaje = null;
     this.turnoSeleccionado = turno;
   }
 

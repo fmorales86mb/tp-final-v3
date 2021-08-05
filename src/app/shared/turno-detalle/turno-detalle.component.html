@@ -1,122 +1,184 @@
 <div class="album py-5">
-    <div class="">
+  <div class="">
 
-      <div class="row row-cols-1 g-3">
-        <div class="col">
-          <div class="card shadow-sm">
+    <div class="row row-cols-1 g-3">
+      <div class="col">
+        <div class="card shadow-sm">
 
-            <img [src]="item.especialista.perfil1Src" height="225">
+          <img [src]="item.especialista.perfil1Src" height="225">
 
-            <div class="card-body">
-              <h3>{{item.estado | estado}}</h3>
-              <p class="card-text">{{item.fecha.toDate() | date:'yyyy/MM/dd h:mm:ss a'}}</p>
-              <p class="card-text">Especialista: {{item.especialista.nombre}} {{item.especialista.apellido}}</p>
-              <p class="card-text">Especialidad: {{item.especialidad.nombre}}</p>
-              <p class="card-text" *ngIf="verRes && item.resenia">Reseña: {{item.resenia}}</p>
-              <p class="card-text" *ngIf="verRes && item.comentario">Comentario: {{item.comentario}}</p>
+          <div class="card-body">
+            <h3>{{item.estado | estado}}</h3>
+            <p class="card-text">{{item.fecha.toDate() | date:'yyyy/MM/dd h:mm:ss a'}}</p>
+            <p class="card-text">Especialista: {{item.especialista.nombre}} {{item.especialista.apellido}}</p>
+            <p class="card-text">Especialidad: {{item.especialidad.nombre}}</p>
+            <p class="card-text" *ngIf="verRes && item.resenia">Reseña: {{item.resenia}}</p>
+            <p class="card-text" *ngIf="verRes && item.comentario">Comentario: {{item.comentario}}</p>
 
-              <app-user-item [item]="item.paciente" *ngIf="item.paciente && item.estado != 6"></app-user-item>
+            <app-user-item [item]="item.paciente" *ngIf="item.paciente && item.estado != 6"></app-user-item>
 
-              <!-- Comentario -->
-              <small class="text-danger" *ngIf="confirmar[0] || confirmar[1]">Agregue un motivo</small>
-              <p>
-                <input type="text" [(ngModel)]="motivo" *ngIf="confirmar[0] || confirmar[1]">
-              </p>
+            <!-- Comentario -->
+            <small class="text-danger" *ngIf="confirmar[0] || confirmar[1]">Agregue un motivo</small>
+            <p>
+              <input type="text" [(ngModel)]="motivo" *ngIf="confirmar[0] || confirmar[1]">
+            </p>
 
-              <!-- Reseña -->
-              <small class="text-danger" *ngIf="confirmar[3]">Agregue una reseña</small>
-              <p>
-                <input type="text" [(ngModel)]="resenia" *ngIf="confirmar[3]">
-              </p>
+            <!-- Reseña -->
+            <small class="text-danger" *ngIf="confirmar[3]">Agregue una reseña</small>
+            <p>
+              <input type="text" [(ngModel)]="resenia" *ngIf="confirmar[3]">
+            </p>
 
-              <div class="d-flex justify-content-between align-items-center">
-                <!-- Cancelar 0-->
-                <div class="btn-group">                  
-                  <button 
-                    *ngIf="cancelarVisible()"
-                    type="button" 
-                    [disabled]="disbled[0]" 
-                    class="btn btn-sm btn-outline-danger"
-                    (click)="clickAccion(0)">
-                    Cancelar
-                  </button>
-                  <button 
-                    *ngIf="confirmar[0]"
-                    type="button" 
-                    [disabled]="confirmarDisabled(0)" 
-                    class="btn btn-sm btn-outline-danger"
-                    (click)="clickConfirmarAccion(0)">
-                    Confirmar Cancelación del Turno
-                  </button>
-                </div>   
-                
-                <!-- Rechazar 1-->
-                <div class="btn-group">                  
-                  <button 
-                    *ngIf="rechazarVisible()"
-                    type="button" 
-                    [disabled]="disbled[1]" 
-                    class="btn btn-sm btn-outline-danger"
-                    (click)="clickAccion(1)">
-                    Rechazar
-                  </button>
-                  <button 
-                    *ngIf="confirmar[1]"
-                    type="button" 
-                    [disabled]="confirmarDisabled(1)" 
-                    class="btn btn-sm btn-outline-danger"
-                    (click)="clickConfirmarAccion(1)">
-                    Confirmar Rechazo del Turno
-                  </button>
-                </div>   
+            <!-- Calificación -->
+            <small class="text-danger" *ngIf="confirmar[6]">Califique la atención recibida</small>
+            <p>
+              <input type="text" [(ngModel)]="calificacion" *ngIf="confirmar[6]">
+            </p>
 
-                <!-- Aceptar 2-->
-                <div class="btn-group">                  
-                  <button 
-                    *ngIf="aceptarVisible()"
-                    type="button" 
-                    [disabled]="disbled[2]" 
-                    class="btn btn-sm btn-outline-success"
-                    (click)="clickConfirmarAccion(2)">
-                    Aceptar
-                  </button>
-                </div>  
+            <div class="d-flex justify-content-between align-items-center">
+              <!-- Cancelar 0-->
+              <div class="btn-group">                  
+                <button 
+                  *ngIf="cancelarVisible()"
+                  type="button" 
+                  [disabled]="disbled[0]" 
+                  class="btn btn-sm btn-outline-danger"
+                  (click)="clickAccion(0)">
+                  Cancelar
+                </button>
+                <button 
+                  *ngIf="confirmar[0]"
+                  type="button" 
+                  [disabled]="confirmarDisabled(0)" 
+                  class="btn btn-sm btn-outline-danger"
+                  (click)="clickConfirmarAccion(0)">
+                  Confirmar Cancelación del Turno
+                </button>
+              </div>   
+              
+              <!-- Rechazar 1-->
+              <div class="btn-group">                  
+                <button 
+                  *ngIf="rechazarVisible()"
+                  type="button" 
+                  [disabled]="disbled[1]" 
+                  class="btn btn-sm btn-outline-danger"
+                  (click)="clickAccion(1)">
+                  Rechazar
+                </button>
+                <button 
+                  *ngIf="confirmar[1]"
+                  type="button" 
+                  [disabled]="confirmarDisabled(1)" 
+                  class="btn btn-sm btn-outline-danger"
+                  (click)="clickConfirmarAccion(1)">
+                  Confirmar Rechazo
+                </button>
+              </div>   
 
-                <!-- Finalizar 3-->
-                <div class="btn-group">                  
-                  <button 
-                    *ngIf="finalizarVisilbe()"
-                    type="button" 
-                    [disabled]="disbled[3]" 
-                    class="btn btn-sm btn-outline-danger"
-                    (click)="clickAccion(3)">
-                    Finalizar
-                  </button>
-                  <button 
-                    *ngIf="confirmar[3]"
-                    type="button" 
-                    [disabled]="confirmarDisabled(3)" 
-                    class="btn btn-sm btn-outline-danger"
-                    (click)="clickConfirmarAccion(3)">
-                    Confirmar Finalización del Turno
-                  </button>
-                </div> 
+              <!-- Aceptar 2-->
+              <div class="btn-group">                  
+                <button 
+                  *ngIf="aceptarVisible()"
+                  type="button" 
+                  [disabled]="disbled[2]" 
+                  class="btn btn-sm btn-outline-success"
+                  (click)="clickConfirmarAccion(2)">
+                  Aceptar
+                </button>
+              </div>  
 
-                <!-- Ver Reseña 4-->
-                <div class="btn-group">                  
-                  <button 
-                    *ngIf="verReseniaVisible()"
-                    type="button" 
-                    [disabled]="disbled[4]" 
-                    class="btn btn-sm btn-outline-secondary"
-                    (click)="clickConfirmarAccion(4)">
-                    Ver Reseña
-                  </button>
-                </div>  
+              <!-- Finalizar 3-->
+              <div class="btn-group">                  
+                <button 
+                  *ngIf="finalizarVisilbe()"
+                  type="button" 
+                  [disabled]="disbled[3]" 
+                  class="btn btn-sm btn-outline-danger"
+                  (click)="clickAccion(3)">
+                  Finalizar
+                </button>
+                <button 
+                  *ngIf="confirmar[3]"
+                  type="button" 
+                  [disabled]="confirmarDisabled(3)" 
+                  class="btn btn-sm btn-outline-danger"
+                  (click)="clickConfirmarAccion(3)">
+                  Confirmar Finalización del Turno
+                </button>
+              </div> 
+
+              <!-- Ver Reseña 4-->
+              <div class="btn-group">                  
+                <button 
+                  *ngIf="verReseniaVisible()"
+                  type="button" 
+                  [disabled]="disbled[4]" 
+                  class="btn btn-sm btn-outline-secondary"
+                  (click)="clickConfirmarAccion(4)">
+                  Ver Reseña
+                </button>
+              </div> 
+              
+              <!-- Encuesta 5-->
+              <div class="btn-group">                  
+                <button 
+                  *ngIf="completarEncuestaVisible()"
+                  type="button" 
+                  [disabled]="disbled[2]" 
+                  class="btn btn-sm btn-outline-success"
+                  data-bs-toggle="modal"
+                  data-bs-target="#staticBackdrop">
+                  Completar Encuesta
+                </button>
+              </div> 
+
+              <!-- Calificar Atención 6-->
+              <div class="btn-group">                  
+                <button 
+                  *ngIf="calificarAtencionVisible()"
+                  type="button" 
+                  [disabled]="disbled[6]" 
+                  class="btn btn-sm btn-outline-danger"
+                  (click)="clickAccion(6)">
+                  Calificar Atención
+                </button>
+                <button 
+                  *ngIf="confirmar[6]"
+                  type="button" 
+                  [disabled]="confirmarDisabled(6)" 
+                  class="btn btn-sm btn-outline-danger"
+                  (click)="clickConfirmarAccion(6)">
+                  Guardar Calificación 
+                </button>
               </div>
+
+              <!-- Historia 7-->
+              <div class="btn-group">                  
+                <button 
+                  *ngIf="historiaVisilbe()"
+                  type="button" 
+                  [disabled]="disbled[7]" 
+                  class="btn btn-sm btn-outline-warning"
+                  data-bs-toggle="modal"
+                  data-bs-target="#staticBackdrop2">
+                  Completar Historia Clínica
+                </button>
+              </div> 
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
+
+<!-- Modal Encuesta-->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <app-encuesta (emitter)="guardarEncuesta($event)"></app-encuesta>
+</div>
+
+<!-- Modal Historia-->
+<div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <app-historia-nueva [turno]="item"></app-historia-nueva>
+</div>

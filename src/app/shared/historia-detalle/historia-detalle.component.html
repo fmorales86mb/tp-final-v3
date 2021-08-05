@@ -1,0 +1,75 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Historia Clínica</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-start">
+        
+        <div *ngIf="item">
+            <!-- Altura -->
+            <div class="col-12">
+                <label for="email" class="form-label">Altura (cm):</label>
+                <input type="text" disabled class="form-control" [(ngModel)]="item.alutra">   
+            </div>
+
+            <!-- Peso -->
+            <div class="col-12">
+                <label for="email" class="form-label">Peso (kg):</label>
+                <input type="text" disabled class="form-control" [(ngModel)]="item.peso">   
+            </div>
+
+            <!-- Temperatura -->
+            <div class="col-12">
+                <label for="email" class="form-label">Temperatura (°C):</label>
+                <input type="text" disabled class="form-control" [(ngModel)]="item.temperatura">   
+            </div>
+
+            <!-- Presión -->
+            <div class="col-12">
+                <label for="email" class="form-label">Presión:</label>
+                <input type="text" disabled class="form-control" [(ngModel)]="item.presion">   
+            </div>
+
+            <!-- D1 -->
+            <div class="row">
+                <div class="col-6">
+                    <label for="email" class="form-label">Clave</label>
+                    <input type="text" disabled class="form-control" [(ngModel)]="item.dinamicos[0].clave">    
+                </div>
+                <div class="col-6">
+                    <label for="email" class="form-label">Valor</label>
+                    <input type="text" disabled class="form-control" [(ngModel)]="item.dinamicos[0].valor">    
+                </div>
+            </div>
+            <!-- D2 -->
+            <div class="row">
+                <div class="col-6">
+                    <label for="email" class="form-label">Clave</label>
+                    <input type="text" disabled class="form-control" [(ngModel)]="item.dinamicos[1].clave">    
+                </div>
+                <div class="col-6">
+                    <label for="email" class="form-label">Valor</label>
+                    <input type="text" disabled class="form-control" [(ngModel)]="item.dinamicos[1].valor">    
+                </div>
+            </div>
+            <!-- D3 -->
+            <div class="row">
+                <div class="col-6">
+                    <label for="email" class="form-label">Clave</label>
+                    <input type="text" disabled class="form-control" [(ngModel)]="item.dinamicos[2].clave">    
+                </div>
+                <div class="col-6">
+                    <label for="email" class="form-label">Valor</label>
+                    <input type="text" disabled class="form-control" [(ngModel)]="item.dinamicos[2].valor">    
+                </div>
+            </div>
+
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+</div>

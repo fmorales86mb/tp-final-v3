@@ -58,6 +58,7 @@ export class TurnoNuevoComponent implements OnInit, OnChanges {
 
   clickGuardar(){
     this.turnoSeleccionado.paciente = this.paciente;
+    this.turnoSeleccionado.pacienteId = this.paciente.docId;
     this.turnoSeleccionado.comentario = null;
     this.turnoSeleccionado.estado = EstadoTurno.Reservado;    
     this.emitter.emit(this.turnoSeleccionado);

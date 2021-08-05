@@ -64,6 +64,11 @@
                 </div>
             </div>
 
+            <!-- Paciente -->
+            <div class="row" *ngIf="paciente">
+                <h5>Paciente {{paciente.nombre}} {{paciente.apellido}}</h5>
+            </div>
+
             <div class="row">
                 <div class="col m-auto" *ngIf="turnoSeleccionado">
                     <label for="address" class="form-label">Turno Seleccionado</label>

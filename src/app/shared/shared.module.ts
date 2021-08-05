@@ -6,9 +6,7 @@ import { RouterModule } from '@angular/router';
 import { UserRegisterComponent } from './user-register/user-register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserListComponent } from './user-list/user-list.component';
-import { MateriaItemComponent } from './materia-item/materia-item.component';
 import { UserItemComponent } from './user-item/user-item.component';
-import { MateriaListComponent } from './materia-list/materia-list.component';
 import { MateriaDetalleComponent } from './materia-detalle/materia-detalle.component';
 import { AlertComponent } from './alert/alert.component';
 import { UserDetalleComponent } from './user-detalle/user-detalle.component';
@@ -28,6 +26,12 @@ import { TurnoItemComponent } from './turno-item/turno-item.component';
 import { TurnoListComponent } from './turno-list/turno-list.component';
 import { TurnoDetalleComponent } from './turno-detalle/turno-detalle.component';
 import { EstadoPipe } from './01-pipes/estado.pipe';
+import { EncuestaComponent } from './encuesta/encuesta.component';
+import { HistoriaNuevaComponent } from './historia-nueva/historia-nueva.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { HistoriaItemComponent } from './historia-item/historia-item.component';
+import { HistoriaListComponent } from './historia-list/historia-list.component';
+import { HistoriaDetalleComponent } from './historia-detalle/historia-detalle.component';
 
 @NgModule({
   declarations: [
@@ -39,46 +43,6 @@ import { EstadoPipe } from './01-pipes/estado.pipe';
     UserRegisterComponent,    
     UserItemComponent,
     UserListComponent,
-    MateriaItemComponent,
-    MateriaListComponent,
-    MateriaDetalleComponent,
-    AlertComponent,
-    UserDetalleComponent,
-    UserItemNotaComponent,
-    ExamenItemComponent,
-    RegisterPacienteComponent,
-    RegisterAdminComponent,
-    RegisterEspecialistaComponent,
-    UserPerfilComponent,
-    HorarioComponent,
-    TurnoNuevoComponent,
-    TurnoItemComponent,
-    TurnoListComponent,
-
-    //pipes    
-    RolPipe,
-     TurnoDetalleComponent,
-     EstadoPipe,
-  ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    FormsModule,
-    ReactiveFormsModule,
-    AutocompleteLibModule,
-    NgxMaterialTimepickerModule
-  ],
-  exports: [
-    //directives
-    EmailDirective,
-
-    FooterComponent,
-    HeaderComponent,
-    UserRegisterComponent,
-    UserItemComponent,
-    UserListComponent,
-    MateriaItemComponent,
-    MateriaListComponent,
     MateriaDetalleComponent,
     AlertComponent,
     UserDetalleComponent,
@@ -93,6 +57,51 @@ import { EstadoPipe } from './01-pipes/estado.pipe';
     TurnoItemComponent,
     TurnoListComponent,
     TurnoDetalleComponent,
+    EstadoPipe,
+    EncuestaComponent,
+    HistoriaNuevaComponent,
+    HistoriaItemComponent,
+    HistoriaListComponent,
+    HistoriaDetalleComponent,
+
+    //pipes    
+    RolPipe,
+  ],
+  imports: [
+    CommonModule,
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AutocompleteLibModule,
+    NgxMaterialTimepickerModule,
+    NgxSpinnerModule
+  ],
+  exports: [
+    //directives
+    EmailDirective,
+
+    FooterComponent,
+    HeaderComponent,
+    UserRegisterComponent,
+    UserItemComponent,
+    UserListComponent,
+    AlertComponent,
+    UserDetalleComponent,
+    RegisterPacienteComponent,
+    RegisterAdminComponent,
+    RegisterEspecialistaComponent,
+    UserPerfilComponent,
+    HorarioComponent,
+    TurnoNuevoComponent,
+    TurnoItemComponent,
+    TurnoListComponent,
+    TurnoDetalleComponent,
+    EstadoPipe,
+    EncuestaComponent,
+    HistoriaNuevaComponent,
+    HistoriaItemComponent,
+    HistoriaListComponent,
+    HistoriaDetalleComponent,
     
     //pipes
     RolPipe

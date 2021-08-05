@@ -1,0 +1,96 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Historia Clínica</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-start">
+        
+        <form class="" [formGroup]="form">
+            <!-- Altura -->
+            <div class="col-12">
+                <label for="email" class="form-label">Altura (cm):</label>
+                <input type="text" requiered class="form-control" id="email" placeholder="" formControlName="altura">   
+                <div class="errors">
+                    <small class="invalid" *ngIf="getAltura()?.errors?.required && getAltura()?.touched && !getAltura()?.errors?.pattern">Campo obligatorio</small>
+                    <small class="invalid" *ngIf="getAltura()?.errors?.max && getAltura()?.touched && !getAltura()?.errors?.pattern">Máximo 300 cm</small>
+                    <small class="invalid" *ngIf="getAltura()?.errors?.pattern && getAltura()?.touched">Sólo se permiten números</small>                   
+                </div>  
+            </div>
+
+            <!-- Peso -->
+            <div class="col-12">
+                <label for="email" class="form-label">Peso (kg):</label>
+                <input type="text" requiered class="form-control" id="email" placeholder="" formControlName="peso">   
+                <div class="errors">
+                    <small class="invalid" *ngIf="getPeso()?.errors?.required && getPeso()?.touched && !getPeso()?.errors?.pattern">Campo obligatorio</small>
+                    <small class="invalid" *ngIf="getPeso()?.errors?.max && getPeso()?.touched && !getPeso()?.errors?.pattern">Máximo 200 kg</small>
+                    <small class="invalid" *ngIf="getPeso()?.errors?.pattern && getPeso()?.touched">Sólo se permiten números</small>                   
+                </div>  
+            </div>
+
+            <!-- Temperatura -->
+            <div class="col-12">
+                <label for="email" class="form-label">Temperatura (°C):</label>
+                <input type="text" requiered class="form-control" id="email" placeholder="" formControlName="temperatura">   
+                <div class="errors">
+                    <small class="invalid" *ngIf="getTemperatura()?.errors?.required && getTemperatura()?.touched && !getTemperatura()?.errors?.pattern">Campo obligatorio</small>
+                    <small class="invalid" *ngIf="getTemperatura()?.errors?.max && getTemperatura()?.touched && !getTemperatura()?.errors?.pattern">Máximo 50 °C</small>
+                    <small class="invalid" *ngIf="getTemperatura()?.errors?.pattern && getTemperatura()?.touched">Sólo se permiten números</small>                   
+                </div>  
+            </div>
+
+            <!-- Presión -->
+            <div class="col-12">
+                <label for="email" class="form-label">Presión:</label>
+                <input type="text" requiered class="form-control" id="email" placeholder="" formControlName="presion">   
+                <div class="errors">
+                    <small class="invalid" *ngIf="getPresion()?.errors?.required && getPresion()?.touched && !getPresion()?.errors?.pattern">Campo obligatorio</small>
+                    <small class="invalid" *ngIf="getPresion()?.errors?.max && getPresion()?.touched && !getPresion()?.errors?.pattern">Máximo 200</small>
+                    <small class="invalid" *ngIf="getPresion()?.errors?.pattern && getPresion()?.touched">Sólo se permiten números</small>                   
+                </div>  
+            </div>
+
+            <!-- D1 -->
+            <div class="row">
+                <div class="col-6">
+                    <label for="email" class="form-label">Clave</label>
+                    <input type="text" requiered class="form-control" id="email" placeholder="" formControlName="clave1">    
+                </div>
+                <div class="col-6">
+                    <label for="email" class="form-label">Valor</label>
+                    <input type="text" requiered class="form-control" id="email" placeholder="" formControlName="valor1">    
+                </div>
+            </div>
+            <!-- D2 -->
+            <div class="row">
+                <div class="col-6">
+                    <label for="email" class="form-label">Clave</label>
+                    <input type="text" requiered class="form-control" id="email" placeholder="" formControlName="clave2">    
+                </div>
+                <div class="col-6">
+                    <label for="email" class="form-label">Valor</label>
+                    <input type="text" requiered class="form-control" id="email" placeholder="" formControlName="valor2">    
+                </div>
+            </div>
+            <!-- D3 -->
+            <div class="row">
+                <div class="col-6">
+                    <label for="email" class="form-label">Clave</label>
+                    <input type="text" requiered class="form-control" id="email" placeholder="" formControlName="clave3">    
+                </div>
+                <div class="col-6">
+                    <label for="email" class="form-label">Valor</label>
+                    <input type="text" requiered class="form-control" id="email" placeholder="" formControlName="valor3">    
+                </div>
+            </div>
+
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-success" [disabled]="form.invalid" data-bs-dismiss="modal" (click)="guardar()">Guardar</button>
+      </div>
+    </div>
+</div>

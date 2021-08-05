@@ -33,10 +33,9 @@ export class TurnosComponent implements OnInit {
     this.user = this.autService.GetCurrentUser();
 
     this.spinner.show();
-    this.turnoService.getTurnosByEspecialistaTomados(this.user.docId).subscribe(items => {
+    this.turnoService.getTurnosByPacienteTomados(this.user.docId).subscribe(items => {
       this.turnos = items;
-      this.turnosFiltrados = this.turnos;
-      console.log(this.turnos);
+      this.turnosFiltrados = this.turnos;      
       this.spinner.hide();
     })
   }
@@ -48,11 +47,11 @@ export class TurnosComponent implements OnInit {
       t.especialista.apellido.toLowerCase().startsWith(searchValue.toLowerCase())){
         return t;
       }
-    })
-    console.log(this.turnosFiltrados);
+    })    
   }
 
   seleccionarItem(turno:Turno){
+    this.mensaje = null;
     this.turnoSeleccionado = turno;
   }
 

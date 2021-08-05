@@ -45,7 +45,16 @@
             <nav class="nav nav-masthead justify-content-center float-md-end" *ngSwitchCase="2">
                 <a class="nav-link" aria-current="page" [routerLink]="['/paciente/home']" >Home</a>
                 <a class="nav-link" [routerLink]="['/paciente/perfil']">Mi Perfil</a>
-                <a class="nav-link" [routerLink]="['/paciente/turnos/nuevo']">Solicitar Turno</a>
+
+                <div class="dropdown">
+                    <a class="nav-link align-items-center dropdown-toggle" id="dropdownNavLink" data-bs-toggle="dropdown" aria-expanded="false">
+                      Turnos
+                    </a>
+                    <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownNavLink">
+                      <li><a class="dropdown-item active" [routerLink]="['/paciente/turnos/nuevo']" aria-current="page">Solicitar Turno</a></li>
+                      <li><a class="dropdown-item" [routerLink]="['/paciente/turnos']">Mis Turnos</a></li>
+                    </ul>
+                </div>
 
                 <a class="nav-link exit-icon" [routerLink]="" (click)="logout()">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-box-arrow-right text-warning" viewBox="0 0 16 16">

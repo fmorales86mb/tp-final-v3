@@ -26,8 +26,18 @@
             </div>
         </div>
         
-        <!-- Perfil -->
-        <app-user-perfil [user]="user"></app-user-perfil>
+        
+        <div class="row">
+            <!-- Perfil -->
+            <div class="col-8">
+                <app-user-perfil [user]="user"></app-user-perfil>
+            </div>
+            <!-- Historial -->
+            <div class="col-4">
+                <app-historia-list [items]="historiales"></app-historia-list>
+            </div>
+        </div>
+        
 
     </main>
 

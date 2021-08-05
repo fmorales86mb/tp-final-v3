@@ -43,15 +43,27 @@ export class TurnoService extends BaseService<Turno> {
       .valueChanges({idField: "docId"});
   }
 
+  getTurnosByPacienteTomados(userId:string){
+    return this.fire.collection<Turno>("turnos", ref => ref      
+      .where("pacienteId", '==', userId)
+      .where("estado", 'in', [EstadoTurno.Aceptado, EstadoTurno.Reservado, EstadoTurno.Realizado])
+      .orderBy("fecha", "asc"))
+      .valueChanges({idField: "docId"});
+  }
+
   getTurnosTomados(){
-    return this.getByFilterAndOrder("estado", EstadoTurno.Reservado, "fecha", true);
+    return this.fire.collection<Turno>("turnos", ref => ref            
+      .where("estado", 'in', [EstadoTurno.Aceptado, EstadoTurno.Reservado, EstadoTurno.Realizado, EstadoTurno.Cancelado, EstadoTurno.Rechazado])
+      .orderBy("fecha", "asc"))
+      .valueChanges({idField: "docId"});
   }
 
   getTurnosByEspecialistaEspecialidadLibres(userId:string, espeId:string){
     return this.fire.collection<Turno>("turnos", ref => ref
       .where("especialista.docId", '==', userId)
       .where("especialidad.docId", '==', espeId)
-      .where("estado", '==', EstadoTurno.Libre)
+      .where("estado", 'in', [EstadoTurno.Libre, EstadoTurno.Cancelado, EstadoTurno.Rechazado]
+      )
       .orderBy("fecha", "asc"))
       .valueChanges({idField: "docId"});
   }
@@ -98,7 +110,9 @@ export class TurnoService extends BaseService<Turno> {
       especialista : especialista,
       fecha:date,
       especialidad: especialidad,
-      estado:EstadoTurno.Libre
+      estado:EstadoTurno.Libre,      
+      pacienteId:null,
+      hasHistoria:false      
     }
 
     return turno;

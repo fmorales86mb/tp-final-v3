@@ -91,6 +91,7 @@ export class AuthService {
       const x = await this.userService.getItem(this.uid).toPromise();
       if(x.data().rol != 3 || x.data().activado){
         this.currentUser = x.data();
+        this.currentUser.docId = this.uid;
       }
       else {
         this.isAuth = false;        
@@ -127,6 +128,5 @@ export class AuthService {
   public GetUserId():string{
     return this.uid;
   }
-
 
 }

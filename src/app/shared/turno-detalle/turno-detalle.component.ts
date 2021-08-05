@@ -19,6 +19,7 @@ export class TurnoDetalleComponent implements OnInit, OnChanges {
   verRes:boolean;
   motivo:string;
   resenia:string;
+  calificacion:string;
   
   constructor() { 
     this.accion = [];
@@ -26,6 +27,7 @@ export class TurnoDetalleComponent implements OnInit, OnChanges {
     this.disbled = [];
     this.motivo = "";
     this.resenia = "";
+    this.calificacion = "";
     this.verRes = false;
   }
 
@@ -119,7 +121,8 @@ export class TurnoDetalleComponent implements OnInit, OnChanges {
       case Rol.Especialista:
         break;
       case Rol.Paciente:
-        if(this.item.estado == EstadoTurno.Realizado){
+        if(this.item.estado == EstadoTurno.Realizado && 
+          this.accion[6] && !this.item.calificacion){
           visible = true;
         }
         break;
@@ -189,20 +192,43 @@ export class TurnoDetalleComponent implements OnInit, OnChanges {
 
     return visible;
   }
+
+  historiaVisilbe(){
+    let visible:Boolean = false;
+
+    switch(this.rol){
+      case Rol.Admin:        
+        break;
+      case Rol.Especialista:
+        if(this.item.estado == EstadoTurno.Realizado && !this.item.hasHistoria){
+          visible = true;
+        }
+        break;
+      case Rol.Paciente:
+        break;
+    }
+
+    return visible;
+  }
   
 
   confirmarDisabled(btn:number){
     let disabled = true;
 
     switch (btn){
+      case 0:
       case 1:        
-      case 2:
       case 3:
         if(this.confirmar[btn] && this.motivo != ""){
           disabled = false;
         }
       case 4:
         if(this.confirmar[btn] && this.resenia != ""){
+          disabled = false;
+        }
+        break;
+      case 6:
+        if(this.confirmar[btn] && this.calificacion != ""){
           disabled = false;
         }
     }
@@ -217,16 +243,20 @@ export class TurnoDetalleComponent implements OnInit, OnChanges {
   }
 
   clickConfirmarAccion(btn:number){
-    this.disbled = [false, false, false, false];
+    this.disbled = [false, false, false, false, false, false, false];
 
     switch(btn){
       case 0: 
         this.item.comentario = this.motivo;
+        this.item.pacienteId = null;
+        this.item.paciente = null;
         this.item.estado = EstadoTurno.Cancelado;
         this.emitter.emit(this.item);
         break;
       case 1:
         this.item.comentario = this.motivo;
+        this.item.pacienteId = null;
+        this.item.paciente = null;
         this.item.estado = EstadoTurno.Rechazado;
         this.emitter.emit(this.item);
         break;
@@ -245,16 +275,26 @@ export class TurnoDetalleComponent implements OnInit, OnChanges {
         this.verRes = true;
         this.disbled[4] = true;
         break;
+      case 6:
+        this.item.calificacion = this.calificacion;
+        this.disbled[6] = true;
+        this.emitter.emit(this.item);
+        break;
     }
     
   }
 
   initView(){
-    this.accion = [true, true, true, true, false];
-    this.confirmar = [false, false, false, false, false];
-    this.disbled = [false, false, false, false, false];
+    this.accion = [true, true, true, true, true, true, true, true, true];
+    this.confirmar = [false, false, false, false, false, false, false, false];
+    this.disbled = [false, false, false, false, false, false, false, false];
     this.motivo = "";
+    this.calificacion = "";
     this.verRes = false;
+  }
+
+  guardarEncuesta(x){
+    console.log(x);
   }
 
 }

@@ -1,0 +1,23 @@
+<div class="row m-2 p-1 bg-secondary rounded">
+    <div class="col text-start">
+        <span class="h5 text-hover-primary mb-0">{{item.paciente.nombre}} {{item.paciente.apellido}}</span> 
+        <p class="text-hover-primary mb-0 ml-1 fw-light">{{item.fecha.toDate() | date:'yyyy/MM/dd h:mm a'}}</p>
+        <p class="text-hover-primary mb-0 ml-1 fw-light">Especialista: {{item.especialista.apellido}}</p>
+    </div>
+    <div class="col-3 m-auto">
+        <div class="btn-group">                  
+            <button 
+              type="button" 
+              class="btn btn-sm btn-outline-warning"
+              data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop2">
+              Detalle
+            </button>
+          </div> 
+    </div>
+</div>
+
+<!-- Modal Historia-->
+<div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <app-historia-detalle [item]="item"></app-historia-detalle>
+</div>
