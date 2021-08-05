@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit {
 
   @Input() user:User;
   navbarType:number;
+  logo = "assets/images/apple-icon-180x180.png"
   
   constructor(private authService:AuthService) {
     this.navbarType = 0;
