@@ -34,9 +34,15 @@
             </div>
             <!-- Historial -->
             <div class="col-4">
-                <app-historia-list [items]="historiales"></app-historia-list>
+                <app-historia-list [items]="historiales" (emitter)="mostrarDetalle(staticBackdrop2, $event)"></app-historia-list>
             </div>
         </div>
+
+        <!-- Modal Historia-->
+        <ng-template #staticBackdrop2 let-modal>
+            <app-historia-detalle [item]="historialSeleccionado"></app-historia-detalle>
+        </ng-template>
+
         
 
     </main>

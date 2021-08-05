@@ -15,4 +15,8 @@ export class HistorialService extends BaseService<HistoriaClinica> {
   getByPaciente(id:string){
     return this.getByFilterAndOrder("paciente.docId", id, "fecha", true);
   }
+
+  getByEspecialista(id:string){
+    return this.getByFilterAndOrder("especialista.docId", id, "fecha", true);
+  }
 }

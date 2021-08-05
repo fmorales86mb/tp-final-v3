@@ -87,6 +87,10 @@
     </div>
     <div class="col">
         <!-- Listado Turnos -->
-        <app-turno-list [items]="turnos" (emitter)="seleccionarItem($event)"></app-turno-list>     
+         <div class="col m-auto">
+            <div class="list-scroll col vh-70 rounded">
+                <app-turno-list [items]="turnos" (emitter)="seleccionarItem($event)"></app-turno-list>
+            </div>
+        </div>  
     </div>
 </div>

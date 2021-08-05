@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from 'src/app/01-services/auth.service';
+import { HistorialService } from 'src/app/01-services/historial.service';
 import { UserService } from 'src/app/01-services/user.service';
 import { TipoMje } from 'src/app/02-models/enums/mje-enum';
+import { Rol } from 'src/app/02-models/enums/rol-enum';
+import { HistoriaClinica } from 'src/app/02-models/historia-clinica';
 import { Mensaje } from 'src/app/02-models/mensaje';
 import { User } from 'src/app/02-models/user';
 
@@ -17,11 +20,14 @@ export class ListadoUsuariosComponent implements OnInit {
   mensaje:Mensaje;
   users:User[];
   usuarioSeleccionado:User;
+  historial:HistoriaClinica[];
 
   constructor(private autService:AuthService, 
       private userService:UserService,
-      private spinner: NgxSpinnerService) { 
+      private spinner: NgxSpinnerService,
+      private historialService:HistorialService) { 
     this.users=[];
+    this.historial = [];
   }
 
   ngOnInit(): void {
@@ -29,7 +35,6 @@ export class ListadoUsuariosComponent implements OnInit {
     this.spinner.show();
     this.user = this.autService.GetCurrentUser();
     this.userService.getAll().subscribe((items) => {
-      console.log(items);
       this.users = items;
       this.spinner.hide();
     });
@@ -37,7 +42,16 @@ export class ListadoUsuariosComponent implements OnInit {
 
   seleccionarUsuario(usuario:User){
     this.mensaje = null;
-    this.usuarioSeleccionado = usuario;    
+    this.usuarioSeleccionado = usuario;  
+    
+    if(this.usuarioSeleccionado.rol == Rol.Paciente){
+      this.historialService.getByPaciente(this.usuarioSeleccionado.docId).subscribe(items =>{
+        this.historial = items;
+      })
+    }
+    else{
+      this.historial = [];
+    }
   }
 
   habilitarEspecialista(habilitar:boolean){

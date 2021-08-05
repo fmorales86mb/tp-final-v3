@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { SharedModule } from './shared/shared.module';
     AngularFirestoreModule,
     AngularFireStorageModule,
     BrowserAnimationsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

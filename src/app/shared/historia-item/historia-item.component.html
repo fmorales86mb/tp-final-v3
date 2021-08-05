@@ -9,15 +9,9 @@
             <button 
               type="button" 
               class="btn btn-sm btn-outline-warning"
-              data-bs-toggle="modal"
-              data-bs-target="#staticBackdrop2">
+              (click)="clickDetalle()">
               Detalle
             </button>
-          </div> 
+        </div> 
     </div>
-</div>
-
-<!-- Modal Historia-->
-<div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <app-historia-detalle [item]="item"></app-historia-detalle>
 </div>

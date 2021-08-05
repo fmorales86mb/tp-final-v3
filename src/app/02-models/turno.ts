@@ -14,5 +14,6 @@ export interface Turno{
     comentario?:string;
     resenia?:string;
     calificacion?:string;
-    hasHistoria:boolean;    
+    hasHistoria:boolean;
+    historia?:HistoriaClinica    
 }

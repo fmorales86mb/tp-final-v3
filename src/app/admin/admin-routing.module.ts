@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminGuard } from '../03-guards/admin.guard';
+import { EstadisticasComponent } from './pages/estadisticas/estadisticas.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ListadoUsuariosComponent } from './pages/listado-usuarios/listado-usuarios.component';
 import { NuevoTurnoComponent } from './pages/nuevo-turno/nuevo-turno.component';
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path:'usuarios', component:ListadoUsuariosComponent, canActivate:[AdminGuard]},  
   {path:'turnos/nuevo', component:NuevoTurnoComponent, canActivate:[AdminGuard]}, 
   {path:'turnos', component:TurnosComponent, canActivate:[AdminGuard]}, 
-  {path:'perfil', component:PerfilComponent, canActivate:[AdminGuard]}
+  {path:'perfil', component:PerfilComponent, canActivate:[AdminGuard]},
+  {path:'estadisticas', component:EstadisticasComponent, canActivate:[AdminGuard]},
 ];
 
 @NgModule({

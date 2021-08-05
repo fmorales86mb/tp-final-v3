@@ -3,8 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from 'src/app/01-services/auth.service';
+import { LogService } from 'src/app/01-services/log.service';
 import { UserService } from 'src/app/01-services/user.service';
 import { Rol } from 'src/app/02-models/enums/rol-enum';
+import { LogIngreso } from 'src/app/02-models/log';
 import { LoginData } from 'src/app/02-models/loginData';
 import { User } from 'src/app/02-models/user';
 
@@ -31,7 +33,8 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private router:Router,
     private userService:UserService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private logService:LogService
     ) {    
     this.hasAlert = false;
     this.alertMessage ="";
@@ -71,6 +74,7 @@ export class LoginComponent implements OnInit {
     .then((res) => {
       if(res.ok){
         const user = this.authService.GetCurrentUser();
+        this.logIngreso(user);
         this.navigateByRol(user.rol);
       }
       else{
@@ -122,5 +126,14 @@ export class LoginComponent implements OnInit {
       this.loginData.email = this.userEspecialista.email;
       this.loginData.pass = "123123";
     }
+  }
+
+  logIngreso(user:User){
+    let log:LogIngreso = {
+      usuario:user,
+      fecha:new Date()
+    };
+
+    this.logService.addItem(log);
   }
 }

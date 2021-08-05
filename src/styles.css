@@ -98,3 +98,8 @@ body {
   height: 60px;
   width: 60px;
 }
+
+.list-scroll{
+	overflow-y: auto;
+    overflow-x: hidden;  
+}

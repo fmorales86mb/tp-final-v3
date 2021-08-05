@@ -8,6 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { HorariosComponent } from './pages/horarios/horarios.component';
 import { TurnosComponent } from './pages/turnos/turnos.component';
+import { PacientesComponent } from './pages/pacientes/pacientes.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { TurnosComponent } from './pages/turnos/turnos.component';
     HomeComponent,
     PerfilComponent,
     HorariosComponent,
-    TurnosComponent
+    TurnosComponent,
+    PacientesComponent
   ],
   imports: [
     CommonModule,

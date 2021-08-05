@@ -29,7 +29,13 @@
         <div class="row">
             <div class="col-4 m-auto">
                 <input type="text" (input)="onSearchChange($event.target.value)">
-                <app-turno-list [items]="turnosFiltrados" (emitter)="seleccionarItem($event)"></app-turno-list>
+                <!-- Turnos -->
+                <div class="col m-auto">
+                    <div class="list-scroll col vh-70 rounded">
+                        <app-turno-list [items]="turnosFiltrados" (emitter)="seleccionarItem($event)"></app-turno-list>
+                    </div>
+                </div>
+                
             </div>
             <div class="col-3" style="margin-right: auto;">
                 <app-turno-detalle 
