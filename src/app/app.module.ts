@@ -19,12 +19,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),    
     AngularFirestoreModule,
     AngularFireStorageModule,
-    BrowserAnimationsModule,
+    
     NgxSpinnerModule,
     NgbModule
   ],

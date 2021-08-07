@@ -7,8 +7,8 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
 import { TurnosComponent } from './pages/turnos/turnos.component';
 
 const routes: Routes = [
-  {path:'home', component:HomeComponent, canActivate:[PacienteGuard]},
-  {path:'perfil', component:PerfilComponent, canActivate:[PacienteGuard]},
+  {path:'home', component:HomeComponent, canActivate:[PacienteGuard],data: {animation: 'HomePage'}},
+  {path:'perfil', component:PerfilComponent, canActivate:[PacienteGuard], data: {animation: 'AboutPage'}},
   {path:'turnos/nuevo', component:NuevoTurnoComponent, canActivate:[PacienteGuard]},
   {path:'turnos', component:TurnosComponent, canActivate:[PacienteGuard]},
 ];

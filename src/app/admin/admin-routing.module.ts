@@ -9,12 +9,12 @@ import { RegisterComponent } from './pages/register/register.component';
 import { TurnosComponent } from './pages/turnos/turnos.component';
 
 const routes: Routes = [
-  {path:'home', component:HomeComponent, canActivate:[AdminGuard]},
+  {path:'home', component:HomeComponent, canActivate:[AdminGuard], data: {animation: 'HomePage'}},
   {path:'register', component:RegisterComponent, canActivate:[AdminGuard]},  
   {path:'usuarios', component:ListadoUsuariosComponent, canActivate:[AdminGuard]},  
-  {path:'turnos/nuevo', component:NuevoTurnoComponent, canActivate:[AdminGuard]}, 
-  {path:'turnos', component:TurnosComponent, canActivate:[AdminGuard]}, 
-  {path:'perfil', component:PerfilComponent, canActivate:[AdminGuard]},  
+  {path:'turnos/nuevo', component:NuevoTurnoComponent, canActivate:[AdminGuard], data: {animation: 'AboutPage'}}, 
+  {path:'turnos', component:TurnosComponent, canActivate:[AdminGuard], data: {animation: 'HomePage'}}, 
+  {path:'perfil', component:PerfilComponent, canActivate:[AdminGuard],data: {animation: 'AboutPage'}},  
   {
     path: 'estadisticas',
     loadChildren: () => import('./modules/estadisticas/estadisticas.module').then(m => m.EstadisticasModule)

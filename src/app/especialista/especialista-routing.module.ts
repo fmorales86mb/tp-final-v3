@@ -8,10 +8,10 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
 import { TurnosComponent } from './pages/turnos/turnos.component';
 
 const routes: Routes = [
-  {path:'home', component:HomeComponent, canActivate:[EspeGuard]},
-  {path:'perfil', component:PerfilComponent, canActivate:[EspeGuard]},
+  {path:'home', component:HomeComponent, canActivate:[EspeGuard],data: {animation: 'HomePage'}},
+  {path:'perfil', component:PerfilComponent, canActivate:[EspeGuard], data: {animation: 'AboutPage'}},
   {path:'turnos', component:TurnosComponent, canActivate:[EspeGuard]},
-  {path:'horarios', component:HorariosComponent, canActivate:[EspeGuard]},
+  {path:'horarios', component:HorariosComponent, canActivate:[EspeGuard],data: {animation: 'HomePage'}},
   {path:'pacientes', component:PacientesComponent, canActivate:[EspeGuard]},
 ];
 
