@@ -1,7 +1,7 @@
 
       <div class="modal-header">
         <h5 class="modal-title" id="staticBackdropLabel">Historia Clínica</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
       </div>
       <div class="modal-body text-start">
         
@@ -63,11 +63,46 @@
                     <input type="text" disabled class="form-control" [(ngModel)]="item.dinamicos[2].valor">    
                 </div>
             </div>
+            <!-- D4 -->
+            <div class="row">
+                <div class="col-6">
+                    <label for="email" class="form-label">Clave</label>
+                    <input type="text" disabled class="form-control" [(ngModel)]="item.dinamicos[3].clave">    
+                </div>
+                <div class="col-6">
+                    <label for="customRange2" class="form-label">Valor</label>
+                    <input type="text" disabled class="form-control" [(ngModel)]="item.dinamicos[3].valor">     
+                </div>
+            </div>
+            <!-- D5 -->
+            <div class="row">
+                <div class="col-6">
+                    <label for="email" class="form-label">Clave</label>
+                    <input type="text" disabled class="form-control" [(ngModel)]="item.dinamicos[4].clave">    
+                </div>
+                <div class="col-6">
+                    <label for="email" class="form-label">Valor</label>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" disabled type="checkbox" [(ngModel)]="item.dinamicos[4].valor" style="margin-left: 0px !important;">
+                    </div>    
+                </div>
+            </div>
+            <!-- D6 -->
+            <div class="row">
+                <div class="col-6">
+                    <label for="email" class="form-label">Clave</label>
+                    <input type="text" disabled class="form-control" [(ngModel)]="item.dinamicos[5].clave">    
+                </div>
+                <div class="col-6">
+                    <label for="email" class="form-label">Valor</label>
+                    <input type="number" disabled onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" class="form-control" [(ngModel)]="item.dinamicos[5].valor">    
+                </div>
+            </div>
 
         </div>
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button> -->
       </div>
 

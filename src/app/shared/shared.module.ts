@@ -38,6 +38,7 @@ import { GraficoPieComponent } from './grafico-pie/grafico-pie.component';
 import { ChartsModule } from 'ng2-charts';
 import { GraficoBarComponent } from './grafico-bar/grafico-bar.component';
 import { GraficoLineComponent } from './grafico-line/grafico-line.component';
+import { RecaptchaModule } from 'ng-recaptcha';
 
 @NgModule({
   declarations: [
@@ -86,7 +87,8 @@ import { GraficoLineComponent } from './grafico-line/grafico-line.component';
     AutocompleteLibModule,
     NgxMaterialTimepickerModule,
     NgxSpinnerModule,
-    ChartsModule
+    ChartsModule,
+    RecaptchaModule
   ],
   exports: [
     //directives

@@ -3,7 +3,6 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from 'src/app/01-services/auth.service';
 import { HistorialService } from 'src/app/01-services/historial.service';
-import { UserService } from 'src/app/01-services/user.service';
 import { HistoriaClinica } from 'src/app/02-models/historia-clinica';
 import { Mensaje } from 'src/app/02-models/mensaje';
 import { User } from 'src/app/02-models/user';
@@ -38,12 +37,13 @@ export class PacientesComponent implements OnInit {
     
     this.historialService.getByEspecialista(this.user.docId).subscribe((items) => {
       this.users = [];
-      let aux = [];
-      items.forEach(i =>{
-        aux.push(i.paciente);
-      });
 
-      this.users = aux.filter(this.onlyUnique);
+      items.forEach(i => {
+        if(!this.users.some(u => u.docId == i.paciente.docId)){
+          this.users.push(i.paciente);
+        }        
+      })
+
       this.spinner.hide();
     });
   }
@@ -57,13 +57,8 @@ export class PacientesComponent implements OnInit {
     })
   }
 
-  private onlyUnique(value, index, self) {
-    return self.indexOf(value) === index;
-  }
-
   mostrarDetalle(content,historial:HistoriaClinica){
     this.historialSeleccionado = historial;
-    // console.log(this.historialSeleccionado);
     this.modalService.open(content);
   }
 }

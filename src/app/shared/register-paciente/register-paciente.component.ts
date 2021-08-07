@@ -1,5 +1,6 @@
 import { AfterContentInit, AfterViewInit, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { RecaptchaErrorParameters } from 'ng-recaptcha';
 import { Rol } from 'src/app/02-models/enums/rol-enum';
 import { LoginData } from 'src/app/02-models/loginData';
 import { RegisterData } from 'src/app/02-models/registerData';
@@ -160,4 +161,12 @@ export class RegisterPacienteComponent implements OnInit, AfterContentInit  {
   getImg2Ctrl(){return this.form1.get('img2Ctrl');}
 
   getOsCtrl(){return this.form2.get('osCtrl');}
+
+  // public resolved(captchaResponse: string): void {
+  //   console.log(`Resolved captcha with response: ${captchaResponse}`);
+  // }
+
+  // public onError(errorDetails: RecaptchaErrorParameters): void {
+  //   console.log(`reCAPTCHA error encountered; details:`, errorDetails);
+  // }
 }

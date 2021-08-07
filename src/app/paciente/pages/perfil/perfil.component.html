@@ -30,10 +30,12 @@
         <div class="row">
             <!-- Perfil -->
             <div class="col-8">
+                <h4>Perfil</h4>
                 <app-user-perfil [user]="user"></app-user-perfil>
             </div>
             <!-- Historial -->
             <div class="col-4">
+                <h4>Historial Clínico</h4>
                 <app-historia-list [items]="historiales" (emitter)="mostrarDetalle(staticBackdrop2, $event)"></app-historia-list>
             </div>
         </div>

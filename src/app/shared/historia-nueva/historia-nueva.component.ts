@@ -34,9 +34,15 @@ export class HistoriaNuevaComponent implements OnInit {
       clave1:[''],
       clave2:[''],
       clave3:[''],
+      clave4:[''],
+      clave5:[''],
+      clave6:[''],
       valor1:[''],
       valor2:[''],
       valor3:[''],
+      valor4:[''],
+      valor5:[''],
+      valor6:[''],
     });
   }
 
@@ -70,7 +76,24 @@ export class HistoriaNuevaComponent implements OnInit {
   getValor3(){
     return this.form.get("valor3");
   }
-
+  getClave4(){
+    return this.form.get("clave4");
+  }
+  getValor4(){
+    return this.form.get("valor4");
+  }
+  getClave5(){
+    return this.form.get("clave5");
+  }
+  getValor5(){
+    return this.form.get("valor5");
+  }
+  getClave6(){
+    return this.form.get("clave6");
+  }
+  getValor6(){
+    return this.form.get("valor6");
+  }
   
   guardar(){
     this.historia = {
@@ -84,13 +107,17 @@ export class HistoriaNuevaComponent implements OnInit {
       dinamicos:[
         {clave: this.getClave1().value, valor:this.getValor1().value},
         {clave: this.getClave2().value, valor:this.getValor2().value},
-        {clave: this.getClave3().value, valor:this.getValor3().value                                                                                                                                                                                                                                                                                                },
+        {clave: this.getClave3().value, valor:this.getValor3().value},
+        {clave: this.getClave4().value, valor:this.getValor4().value},
+        {clave: this.getClave5().value, valor:this.getValor5().value},
+        {clave: this.getClave6().value, valor:this.getValor6().value                                                                                                                                                                                                                                                                                           },
       ]
     }
 
     this.turno.hasHistoria = true;
     this.turno.historia = this.historia;
 
+    console.log(this.historia.dinamicos);
     this.historialService.addItem(this.historia);
     this.turnoService.setItemWithId(this.turno, this.turno.docId);
   }

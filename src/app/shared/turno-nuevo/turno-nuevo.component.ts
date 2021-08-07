@@ -20,7 +20,7 @@ export class TurnoNuevoComponent implements OnInit, OnChanges {
   @Input() paciente:User;   
   @Output() emitter = new EventEmitter<Turno>();
   keyword = 'nombre';
-  keyword1 = 'email';
+  keyword1 = 'apellido';
   keyword2 = 'nombre';
   especialidades:Especialidad[];
   especialistas:User[];

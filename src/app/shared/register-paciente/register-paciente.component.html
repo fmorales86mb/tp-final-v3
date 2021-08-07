@@ -8,6 +8,7 @@
         <div class="progress" style="height: 20px;" >
             <div class="progress-bar" [ngClass]="progressClass" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
+        <!-- <re-captcha (resolved)="resolved($event)" (error)="onError($event)" errorMode="handled"></re-captcha> -->
 
         <div class="tab-content text-start" id="myTabContent">
             <div class="tab-pane fade show active mt-3" [ngSwitch]="tab" role="tabpanel" aria-labelledby="home-tab">
@@ -125,6 +126,7 @@
                         <div class="col p-1">
                             <button class="w-100 btn btn-success btn-lg" type="submit" [disabled]="form2.invalid">Registrarse</button>
                         </div>
+                        
                     </div>
                 </form>
             </div>
