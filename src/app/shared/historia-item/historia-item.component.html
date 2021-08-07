@@ -1,6 +1,6 @@
 <div class="row m-2 p-1 bg-secondary rounded">
     <div class="col text-start">
-        <span class="h5 text-hover-primary mb-0">{{item.paciente.nombre}} {{item.paciente.apellido}}</span> 
+        <span class="h5 text-hover-primary mb-0">{{item.paciente | nombreCompleto}}</span> 
         <p class="text-hover-primary mb-0 ml-1 fw-light">{{item.fecha.toDate() | date:'yyyy/MM/dd h:mm a'}}</p>
         <p class="text-hover-primary mb-0 ml-1 fw-light">Especialista: {{item.especialista.apellido}}</p>
     </div>

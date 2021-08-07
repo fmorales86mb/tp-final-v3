@@ -10,7 +10,7 @@
           <div class="card-body">
             <h3>{{item.estado | estado}}</h3>
             <p class="card-text">{{item.fecha.toDate() | date:'yyyy/MM/dd h:mm:ss a'}}</p>
-            <p class="card-text">Especialista: {{item.especialista.nombre}} {{item.especialista.apellido}}</p>
+            <p class="card-text">Especialista: {{item.especialista | nombreCompleto}}</p>
             <p class="card-text">Especialidad: {{item.especialidad.nombre}}</p>
             <p class="card-text" *ngIf="verRes && item.resenia">Reseña: {{item.resenia}}</p>
             <p class="card-text" *ngIf="verRes && item.comentario">Comentario: {{item.comentario}}</p>

@@ -39,6 +39,7 @@ import { ChartsModule } from 'ng2-charts';
 import { GraficoBarComponent } from './grafico-bar/grafico-bar.component';
 import { GraficoLineComponent } from './grafico-line/grafico-line.component';
 import { RecaptchaModule } from 'ng-recaptcha';
+import { NombreCompletoPipe } from './01-pipes/nombre-completo.pipe';
 
 @NgModule({
   declarations: [
@@ -71,13 +72,14 @@ import { RecaptchaModule } from 'ng-recaptcha';
     HistoriaListComponent,
     HistoriaDetalleComponent,
     LogItemComponent,
-     LogListComponent,
-     GraficoPieComponent,
+    LogListComponent,
+    GraficoPieComponent,
+    GraficoBarComponent,
+    GraficoLineComponent,
 
     //pipes    
     RolPipe,
-     GraficoBarComponent,
-     GraficoLineComponent,
+    NombreCompletoPipe,
   ],
   imports: [
     CommonModule,
@@ -123,7 +125,8 @@ import { RecaptchaModule } from 'ng-recaptcha';
     GraficoLineComponent,
     
     //pipes
-    RolPipe
+    RolPipe,
+    NombreCompletoPipe,
   ]
 })
 export class SharedModule { }

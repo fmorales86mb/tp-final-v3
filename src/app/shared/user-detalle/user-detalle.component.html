@@ -4,7 +4,7 @@
         <div class="row bg-secondary rounded" *ngSwitchCase="1">
             <!-- datos usuario -->
             <div class="col-7 mt-3">
-                <h3>{{item.nombre}} {{item.apellido}}</h3>
+                <h3>{{item | nombreCompleto}}</h3>
                 <h5>{{item.email}}</h5>
                 <h5>{{item.rol | rol}}</h5>
                 <ul class="text-start">
@@ -23,7 +23,7 @@
         <div class="row bg-secondary rounded" *ngSwitchCase="2">
             <!-- datos usuario -->
             <div class="col-6 mt-3">
-                <h3>{{item.nombre}} {{item.apellido}}</h3>
+                <h3>{{item | nombreCompleto}}</h3>
                 <h5>{{item.email}}</h5>
                 <h5>{{item.rol | rol}}</h5>
                 <ul class="text-start">
@@ -44,7 +44,7 @@
         <div class="row bg-secondary rounded" *ngSwitchCase="3">
             <!-- datos usuario -->
             <div class="col-7 mt-3">
-                <h3>{{item.nombre}} {{item.apellido}}</h3>
+                <h3>{{item | nombreCompleto}}</h3>
                 <h5>{{item.email}}</h5>
                 <h5>{{item.rol | rol}}</h5>
                 <ul class="text-start">

@@ -9,7 +9,7 @@
     </div>
     <div class="col-md">
         <div class="card-body">
-            <h5 class="card-title">{{user.nombre}} {{user.apellido}}</h5>
+            <h5 class="card-title">{{user | nombreCompleto}}</h5>
             <p class="card-text">Edad: {{user.edad}}</p>
             <p class="card-text">{{user.email}}</p>
             <p class="card-text">DNI: {{user.dni}}</p>

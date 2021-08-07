@@ -5,7 +5,7 @@
         </div>
     </div>
     <div class="col text-start">
-        <span class="h5 text-hover-primary mb-0">{{item.nombre}} {{item.apellido}}</span> 
+        <span class="h5 text-hover-primary mb-0">{{item | nombreCompleto}}</span> 
         <p class="text-hover-primary mb-0 ml-1 fw-light">{{item.rol | rol}}</p>        
         <!-- <p class="text-hover-primary mb-0 ml-1 fw-light" *ngIf="item.model.nota">{{item.model.nota}} {{item.model.nota | calificacion}}</p> -->
     </div>    
