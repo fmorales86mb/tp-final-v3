@@ -27,7 +27,10 @@
         </div>
         
         <!-- Turno -->
-        <app-turno-nuevo [paciente]="user" (emitter)="guardarTurno($event)"></app-turno-nuevo>
+        <div class="col-7 m-auto">
+            <app-turno-nuevo [paciente]="user" (emitter)="guardarTurno($event)"></app-turno-nuevo>
+        </div>
+        
 
     </main>
 

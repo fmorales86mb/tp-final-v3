@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row">    
 
     <!-- Mensaje -->
     <div class="row justify-content-center">
@@ -7,90 +7,46 @@
         </div>
     </div>
 
+    <!-- Especialidad -->
     <div class="col">
-        <!-- Form Turno -->
-        <form class="needs-validation" (ngSubmit)="clickGuardar()">
-            <!-- Especialidad -->
-            <div class="row">
-                <div class="col m-auto">
-                    <label for="address" class="form-label">Especialidad</label>
-                    <div class="ng-autocomplete w-100" >
-                        <ng-autocomplete 
-                        [data]="especialidades"
-                        [searchKeyword]="keyword"
-                        (selected)='selectEvent($event)'
-                        (inputChanged)='onChangeSearch($event)'
-                        (inputFocused)='onFocused($event)'
-                        [itemTemplate]="itemTemplate"
-                        [notFoundTemplate]="notFoundTemplate"
-                        >                                 
-                        </ng-autocomplete>
-                        
-                        <ng-template #itemTemplate let-item>
-                        <a [innerHTML]="item.nombre"></a>
-                        </ng-template>
-                        
-                        <ng-template #notFoundTemplate let-notFound>
-                        <div [innerHTML]="notFound"></div>
-                        </ng-template>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Especialista -->
-            <div class="row">
-                <div class="col m-auto">
-                    <label for="address" class="form-label">Especialista</label>
-                    <div class="ng-autocomplete w-100" >
-                        <ng-autocomplete 
-                        [data]="especialistas"
-                        [searchKeyword]="keyword1"
-                        (selected)='selectEventEspecialista($event)'
-                        (inputChanged)='onChangeSearchEspecialista($event)'
-                        (inputFocused)='onFocusedEspecialista($event)'
-                        [itemTemplate]="itemTemplate"
-                        [notFoundTemplate]="notFoundTemplate"
-                        >                                 
-                        </ng-autocomplete>
-                        
-                        <ng-template #itemTemplate let-item>
-                        <a [innerHTML]="item.apellido"></a>
-                        </ng-template>
-                        
-                        <ng-template #notFoundTemplate let-notFound>
-                        <div [innerHTML]="notFound"></div>
-                        </ng-template>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Paciente -->
-            <div class="row" *ngIf="paciente">
-                <h5>Paciente {{paciente | nombreCompleto}}</h5>
-            </div>
-
-            <div class="row">
-                <div class="col m-auto" *ngIf="turnoSeleccionado">
-                    <label for="address" class="form-label">Turno Seleccionado</label>
-                    <app-turno-item [item]="turnoSeleccionado"></app-turno-item>
-                </div>
-            </div>
-
-            <!-- Btn Guardar -->
-            <hr class="my-4">
-            <div class="row">
-                <div class="col m-auto p-1">
-                    <button class="w-100 btn btn-success btn-lg" type="submit" [disabled]="guardarDisabled()">Solicitar Turno</button>
-                </div>
-            </div>
-        </form>
+        <h4>Especialidades</h4>
+        <div class="row justify-content-center espe-img" *ngFor="let espe of especialidades">
+            <img class="img-avatar mano" [appIconEspecialidad]="espe" (click)="selectEspecialidad(espe)">
+        </div>        
     </div>
-    <div class="col">
-        <!-- Listado Turnos -->
+
+    <!-- Especialista -->
+    <div class="col" *ngIf="especialidadSeleccionada">
+        <h4>Especialistas</h4>
+        <div class="row justify-content-center espe-img" *ngFor="let espe of especialistas">
+            <img class="img-avatar mano" [src]="espe.perfil1Src" (click)="selectEventEspecialista(espe)">
+        </div>        
+    </div>
+
+    <!-- Listado Turnos -->
+    <div class="col-6" *ngIf="especialistaSeleccionado">        
+        <h4>Turnos disponibles</h4>
          <div class="col m-auto">
-            <div class="list-scroll col vh-70 rounded">
+            <div class="list-scroll col vh-40 rounded">
                 <app-turno-list [items]="turnos" (emitter)="seleccionarItem($event)"></app-turno-list>
             </div>
         </div>  
     </div>
+
+    <!-- Paciente --> <!-- Turno Seleccionado -->
+    <div class="row" >
+        <h5 *ngIf="paciente">Paciente {{paciente | nombreCompleto}}</h5>
+        <div class="col m-auto" *ngIf="turnoSeleccionado">            
+            <app-turno-item [item]="turnoSeleccionado"></app-turno-item>
+        </div>
+    </div>
+
+    <!-- Btn Guardar -->
+    <hr class="my-4">
+    <div class="row">
+        <div class="col m-auto p-1">
+            <button class="w-100 btn btn-success btn-lg" type="button" (click)="clickGuardar()" [disabled]="guardarDisabled()">Solicitar Turno</button>
+        </div>
+    </div>
+
 </div>

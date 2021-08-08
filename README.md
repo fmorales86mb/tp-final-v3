@@ -31,15 +31,13 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 
 
-# Título del Proyecto
+# Clínica Pichicata
 
-_Acá va un párrafo que describa lo que es el proyecto_
+Proyecto para el Trabajo Práctico Final de Laboratorio IV - TUP UTN
 
 ## Comenzando 🚀
 
 _Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
-
-Mira **Deployment** para conocer como desplegar el proyecto.
 
 
 ### Pre-requisitos 📋
@@ -87,10 +85,6 @@ _Explica que verifican estas pruebas y por qué_
 ```
 Da un ejemplo
 ```
-
-## Despliegue 📦
-
-_Agrega notas adicionales sobre como hacer deploy_
 
 ## Construido con 🛠️
 

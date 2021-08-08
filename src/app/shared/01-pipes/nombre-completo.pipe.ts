@@ -7,7 +7,12 @@ import { User } from 'src/app/02-models/user';
 export class NombreCompletoPipe implements PipeTransform {
 
   transform(value: User, ...args: unknown[]): unknown {
-    return value.nombre + ' ' + value.apellido;
+    if(value){
+      return value.nombre + ' ' + value.apellido;
+    } 
+    else{
+      return "";
+    }
   }
 
 }

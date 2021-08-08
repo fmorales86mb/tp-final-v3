@@ -40,6 +40,7 @@ import { GraficoBarComponent } from './grafico-bar/grafico-bar.component';
 import { GraficoLineComponent } from './grafico-line/grafico-line.component';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { NombreCompletoPipe } from './01-pipes/nombre-completo.pipe';
+import { IconEspecialidadDirective } from './02-directives/icon-especialidad.directive';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { NombreCompletoPipe } from './01-pipes/nombre-completo.pipe';
     //pipes    
     RolPipe,
     NombreCompletoPipe,
+    IconEspecialidadDirective,
   ],
   imports: [
     CommonModule,

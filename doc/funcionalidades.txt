@@ -1,0 +1,30 @@
+// Captcha Google
+
+// Readme
+
+// Descarga Historia clínica
+
+// Descarga Listado Pacientes/turnos/usuarios
+
+// Filtro hisotia clínica (paciente)
+
+// Descarga Atenciones paciente
+
+// 3 Directivas
+
+// Captcha propio en Directivas
+
+------------------------------------------------------------------
+
+// Sprint 5
+
+// 3 Pipes
+
+// Animaciones entre componentes
+    transición de izquierda a derecha
+
+// Nuevo turnos
+    listado pacientes (admin)
+    listado especialidad (sólo img)
+    listado especialistas (sólo img)
+    listado turnos (ok)

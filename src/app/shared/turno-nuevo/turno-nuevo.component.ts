@@ -40,13 +40,24 @@ export class TurnoNuevoComponent implements OnInit, OnChanges {
     this.especialistas = [];
     this.turnos = [];
     this.pacientes = [];
+    this.mensaje = null;
   }
 
-  ngOnChanges(changes: any): void {
+  ngOnChanges(changes: any): void {    
     this.paciente = changes.paciente.currentValue;
+    if(this.paciente){
+      this.mensaje = null;
+    }
   }
 
   ngOnInit(): void {
+    if(!this.paciente){
+      this.mensaje = {
+        tipo:TipoMje.Warning,
+        txt:"Debe seleccionar un paciente"
+      };
+    }
+
     this.espeService.getAll().subscribe((items) =>{    
       this.especialidades = items;          
     });
@@ -73,42 +84,26 @@ export class TurnoNuevoComponent implements OnInit, OnChanges {
       }
   }
 
-  selectEvent(item) {
+  selectEspecialidad(item:Especialidad) {
     // do something with selected item
     this.especialidadSeleccionada = item;
+    this.especialistaSeleccionado = null;
+    this.turnoSeleccionado = null;
+    this.turnos = [];
     this.userService.getEspecialistasByEspecialidad(item).subscribe((especialistas) => {
       this.especialistas = especialistas;      
     })
   }
 
-  onChangeSearch(val: string) {
-    // fetch remote data from here
-    // And reassign the 'data' which is binded to 'data' property.    
-
-  }
-  
-  onFocused(e){
-    // do something when input is focused
-  }
-
   selectEventEspecialista(item) {
     // do something with selected item
     this.especialistaSeleccionado = item;
+    this.turnoSeleccionado = null;
     let horario = this.especialistaSeleccionado.horarios.find(x => x.docId == this.especialidadSeleccionada.docId);
     
     this.turnoService.getTurnosByEspecialistaEspecialidadLibres
       (this.especialistaSeleccionado.docId, this.especialidadSeleccionada.docId).subscribe(turnos => {        
         this.turnos = turnos;
       })
-  }
-
-  onChangeSearchEspecialista(val: string) {
-    // fetch remote data from here
-    // And reassign the 'data' which is binded to 'data' property.    
-
-  }
-  
-  onFocusedEspecialista(e){
-    // do something when input is focused
   }
 }

@@ -67,7 +67,12 @@ body {
 .vh-60{
   height: 60vh;
 }
-
+.vh-50{
+  height: 50vh;
+}
+.vh-40{
+  height: 40vh;
+}
 .vh-20{
   height: 20vh;
 }
@@ -102,4 +107,8 @@ body {
 .list-scroll{
 	overflow-y: auto;
     overflow-x: hidden;  
+}
+
+div.mano{
+  cursor: pointer;
 }
