@@ -29,27 +29,8 @@ export class PruebaComponent implements OnInit {
     //this.pruebaService.filter("").
   }
 
-  public addItem(){
-    let item = {
-      tipo:{
-        coso:"valor",
-        coso2:345
-      },
-      otroTipo:245,
-      tip:"asdf"
-    };
-
-    let item3:Prueba = {
-      tipo1:33,
-      tipo2:555
-    };
-
-    let item2:P2 = {
-      tipoNum:3,
-      tipoPrueba:item3
-    };
-
-    this.pruebaService.addItem(item2);
+  resolved(captchaResponse: string) {
+    console.log(`Resolved captcha with response: ${captchaResponse}`);
   }
 
 }

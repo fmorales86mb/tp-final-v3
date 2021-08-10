@@ -5,11 +5,26 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        
+
+        <div class="col">
+          <label for="customRange1" class="form-label">Califique la velocidad de atención {{valor1}}</label>
+          <input type="range" class="form-range" min="0" max="10" id="customRange1" [(ngModel)]="valor1">   
+        </div>
+
+        <div class="col">
+          <label for="customRange2" class="form-label">Califique la calidad de atención {{valor2}}</label>
+          <input type="range" class="form-range" min="0" max="10" id="customRange2" [(ngModel)]="valor2">   
+        </div>
+
+        <div class="col">
+          <label for="customRange3" class="form-label">Califique las instalaciones {{valor3}}</label>
+          <input type="range" class="form-range" min="0" max="10" id="customRange3" [(ngModel)]="valor3">   
+        </div>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-success" (click)="guardar()">Guardar Encuesta</button>
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="guardar()">Guardar Encuesta</button>
       </div>
     </div>
 </div>

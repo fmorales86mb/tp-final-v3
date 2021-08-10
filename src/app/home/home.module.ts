@@ -6,7 +6,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { SharedModule } from '../shared/shared.module';
 import { PruebaComponent } from './pages/prueba/prueba.component';
-
+import { RecaptchaModule } from "ng-recaptcha";
 
 @NgModule({
   declarations: [
@@ -18,6 +18,7 @@ import { PruebaComponent } from './pages/prueba/prueba.component';
     CommonModule,
     HomeRoutingModule,
     SharedModule,
+    RecaptchaModule
   ]
 })
 export class HomeModule { }

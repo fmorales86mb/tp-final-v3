@@ -117,7 +117,6 @@ export class HistoriaNuevaComponent implements OnInit {
     this.turno.hasHistoria = true;
     this.turno.historia = this.historia;
 
-    console.log(this.historia.dinamicos);
     this.historialService.addItem(this.historia);
     this.turnoService.setItemWithId(this.turno, this.turno.docId);
   }

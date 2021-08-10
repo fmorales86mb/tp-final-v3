@@ -35,6 +35,7 @@ export class TurnosComponent implements OnInit {
     this.spinner.show();
     this.turnoService.getTurnosByPacienteTomados(this.user.docId).subscribe(items => {
       this.turnos = items;
+      console.log(this.turnos);
       this.turnosFiltrados = this.turnos;      
       this.spinner.hide();
     })
@@ -44,11 +45,36 @@ export class TurnosComponent implements OnInit {
     this.turnosFiltrados = this.turnos.filter(t => {
       if(t.especialidad.nombre.toLowerCase().startsWith(searchValue.toLowerCase()) ||
       t.especialista.nombre.toLowerCase().startsWith(searchValue.toLowerCase()) ||
-      t.especialista.apellido.toLowerCase().startsWith(searchValue.toLowerCase())){
+      t.especialista.apellido.toLowerCase().startsWith(searchValue.toLowerCase()) ||
+      this.filterHistorial(t, searchValue)){
         return t;
       }
     })    
   }
+
+  filterHistorial(turno:Turno, searchValue:string): boolean{
+    if(turno.hasHistoria){
+      let historia =  turno.historia;
+      return (
+        historia.alutra.toString().toLowerCase().startsWith(searchValue.toLowerCase()) ||
+        historia.peso.toString().toLowerCase().startsWith(searchValue.toLowerCase()) ||
+        historia.presion.toString().toLowerCase().startsWith(searchValue.toLowerCase()) ||
+        historia.temperatura.toString().toLowerCase().startsWith(searchValue.toLowerCase()) ||
+        historia.dinamicos[0].clave.toString().toLowerCase().startsWith(searchValue.toLowerCase()) ||
+        historia.dinamicos[0].valor.toString().toLowerCase().startsWith(searchValue.toLowerCase()) ||
+        historia.dinamicos[1].clave.toString().toLowerCase().startsWith(searchValue.toLowerCase()) ||
+        historia.dinamicos[1].valor.toString().toLowerCase().startsWith(searchValue.toLowerCase()) ||
+        historia.dinamicos[2].clave.toString().toLowerCase().startsWith(searchValue.toLowerCase()) ||
+        historia.dinamicos[2].valor.toString().toLowerCase().startsWith(searchValue.toLowerCase()) ||
+        historia.dinamicos[3].clave.toString().toLowerCase().startsWith(searchValue.toLowerCase()) ||
+        historia.dinamicos[3].valor.toString().toLowerCase().startsWith(searchValue.toLowerCase()) ||
+        historia.dinamicos[4].clave.toString().toLowerCase().startsWith(searchValue.toLowerCase()) ||
+        historia.dinamicos[4].valor.toString().toLowerCase().startsWith(searchValue.toLowerCase()) ||
+        historia.dinamicos[5].clave.toString().toLowerCase().startsWith(searchValue.toLowerCase()) ||
+        historia.dinamicos[5].valor.toString().toLowerCase().startsWith(searchValue.toLowerCase())
+      )
+    }
+  }  
 
   seleccionarItem(turno:Turno){
     this.mensaje = null;

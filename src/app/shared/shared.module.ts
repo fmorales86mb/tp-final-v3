@@ -7,11 +7,8 @@ import { UserRegisterComponent } from './user-register/user-register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserItemComponent } from './user-item/user-item.component';
-import { MateriaDetalleComponent } from './materia-detalle/materia-detalle.component';
 import { AlertComponent } from './alert/alert.component';
 import { UserDetalleComponent } from './user-detalle/user-detalle.component';
-import { UserItemNotaComponent } from './user-item-nota/user-item-nota.component';
-import { ExamenItemComponent } from './examen-item/examen-item.component';
 import { EmailDirective } from './02-directives/email.directive';
 import { RolPipe } from './01-pipes/rol.pipe';
 import { RegisterPacienteComponent } from './register-paciente/register-paciente.component';
@@ -41,22 +38,22 @@ import { GraficoLineComponent } from './grafico-line/grafico-line.component';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { NombreCompletoPipe } from './01-pipes/nombre-completo.pipe';
 import { IconEspecialidadDirective } from './02-directives/icon-especialidad.directive';
+import { RolDirective } from './02-directives/rol.directive';
 
 @NgModule({
   declarations: [
     //directives
     EmailDirective,
+    IconEspecialidadDirective,
+    RolDirective,
 
     FooterComponent,
     HeaderComponent,
     UserRegisterComponent,    
     UserItemComponent,
-    UserListComponent,
-    MateriaDetalleComponent,
+    UserListComponent,    
     AlertComponent,
-    UserDetalleComponent,
-    UserItemNotaComponent,
-    ExamenItemComponent,
+    UserDetalleComponent,    
     RegisterPacienteComponent,
     RegisterAdminComponent,
     RegisterEspecialistaComponent,
@@ -80,8 +77,7 @@ import { IconEspecialidadDirective } from './02-directives/icon-especialidad.dir
 
     //pipes    
     RolPipe,
-    NombreCompletoPipe,
-    IconEspecialidadDirective,
+    NombreCompletoPipe,    
   ],
   imports: [
     CommonModule,
@@ -97,6 +93,8 @@ import { IconEspecialidadDirective } from './02-directives/icon-especialidad.dir
   exports: [
     //directives
     EmailDirective,
+    IconEspecialidadDirective,
+    RolDirective,
 
     FooterComponent,
     HeaderComponent,

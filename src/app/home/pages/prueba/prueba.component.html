@@ -7,8 +7,12 @@
     <!-- main -->
     <main class="px-3">
         <h1>Pruebas</h1>
-        <button class="btn btn-principal" (click)="addItem()">Add item</button>
+        
         <!-- Prueba -->
+        <re-captcha
+    (resolved)="resolved($event)"
+    siteKey="YOUR_SITE_KEY"
+  ></re-captcha>
 
     </main>
 
