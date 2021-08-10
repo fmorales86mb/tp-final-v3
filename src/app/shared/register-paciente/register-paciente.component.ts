@@ -27,12 +27,14 @@ export class RegisterPacienteComponent implements OnInit, AfterContentInit  {
   mensajeError:string;
   file1:File;
   file2:File;
+  showCaptcha:boolean;
 
   constructor(
     private bf:FormBuilder
   ) {     
     this.tab = 1;
     this.progressClass = "percent-0";
+    this.showCaptcha = false;
   }
 
   ngAfterContentInit(): void {
@@ -45,6 +47,10 @@ export class RegisterPacienteComponent implements OnInit, AfterContentInit  {
   }
 
   async clickRegister(){
+    this.showCaptcha = true;
+  }
+
+  async register(){
     this.progressClass = "percent-100"
     
     this.loginData = {
@@ -61,6 +67,15 @@ export class RegisterPacienteComponent implements OnInit, AfterContentInit  {
     };
 
     this.userEmitter.emit(data);
+  }
+
+  resolved(captchaResponse: string) {
+    console.log(`Resolved captcha with response: ${captchaResponse}`);
+    if(captchaResponse){
+      this.register();
+    }else{
+      this.showCaptcha = false;
+    }
   }
 
   private async getUser(){

@@ -39,6 +39,7 @@ import { RecaptchaModule } from 'ng-recaptcha';
 import { NombreCompletoPipe } from './01-pipes/nombre-completo.pipe';
 import { IconEspecialidadDirective } from './02-directives/icon-especialidad.directive';
 import { RolDirective } from './02-directives/rol.directive';
+import { CaptchaDirective } from './02-directives/captcha.directive';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { RolDirective } from './02-directives/rol.directive';
 
     //pipes    
     RolPipe,
-    NombreCompletoPipe,    
+    NombreCompletoPipe,
+    CaptchaDirective,    
   ],
   imports: [
     CommonModule,

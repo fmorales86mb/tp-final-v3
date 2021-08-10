@@ -98,6 +98,10 @@
                     </div>
 
                     <hr class="my-4">
+                    <!-- Captcha -->
+                    <div class="row" *ngIf="showCaptcha">
+                        <re-captcha (resolved)="resolved($event)" siteKey="6LfPi-4bAAAAAL15tnGBFJ1_Bp1InLdlvsk7z_NR"></re-captcha>
+                    </div>
                     <div class="row">
                         <div class="col p-1">
                             <button class="w-100 btn btn-success btn-lg" type="submit" [disabled]="form2.invalid">Registrarse</button>

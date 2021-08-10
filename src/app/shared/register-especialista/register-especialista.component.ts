@@ -30,6 +30,7 @@ export class RegisterEspecialistaComponent implements OnInit {
   especialidad:Especialidad;
   isNewEspe:boolean;
   especialidadesSeleccionadas:Especialidad[];
+  showCaptcha:boolean;
 
   keyword = 'nombre';
   especialidades:Especialidad[];
@@ -42,6 +43,7 @@ export class RegisterEspecialistaComponent implements OnInit {
     this.tab = 1;
     this.progressClass = "percent-20";
     this.especialidadesSeleccionadas = [];
+    this.showCaptcha = false;
   }
 
   ngOnInit(): void {    
@@ -55,6 +57,10 @@ export class RegisterEspecialistaComponent implements OnInit {
   }
 
   async clickRegister(){
+    this.showCaptcha = true;
+  }
+
+  async register(){
     //console.log(this.especialidadesSeleccionadas.length);
     this.progressClass = "percent-100"
     
@@ -72,6 +78,15 @@ export class RegisterEspecialistaComponent implements OnInit {
     };
 
     this.userEmitter.emit(data);
+  }
+  
+  resolved(captchaResponse: string) {
+    console.log(`Resolved captcha with response: ${captchaResponse}`);
+    if(captchaResponse){
+      this.register();
+    }else{
+      this.showCaptcha = false;
+    }
   }
 
   private async getUser(){

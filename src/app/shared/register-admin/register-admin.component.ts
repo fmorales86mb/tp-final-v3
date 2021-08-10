@@ -25,11 +25,13 @@ export class RegisterAdminComponent implements OnInit {
   public admin: User;
   mensajeError:string;
   file1:File;
+  showCaptcha:boolean;
 
   constructor(
     private bf:FormBuilder
   ) {     
     this.tab = 1;
+    this.showCaptcha = false;
     this.progressClass = "percent-20";
   }
 
@@ -38,7 +40,20 @@ export class RegisterAdminComponent implements OnInit {
     this.initForm2();
   }
 
-  async clickRegister(){
+  clickRegister(){
+    this.showCaptcha = true;
+  }
+
+  resolved(captchaResponse: string) {
+    console.log(`Resolved captcha with response: ${captchaResponse}`);
+    if(captchaResponse){
+      this.register();
+    }else{
+      this.showCaptcha = false;
+    }
+  }
+
+  async register(){
     this.progressClass = "percent-100"
     
     this.loginData = {
