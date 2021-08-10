@@ -3,3 +3,10 @@ piviho2837@insgogc.com
 
 especialista:
 tahedit764@flipssl.com
+
+sitio web clave
+Usa esta clave de sitio web en el código HTML que tu sitio web sirve a los usuarios.
+6LfPi-4bAAAAAL15tnGBFJ1_Bp1InLdlvsk7z_NR
+
+Usa esta clave secreta para la comunicación entre tu sitio web y el servicio reCAPTCHA.
+6LfPi-4bAAAAAHUB_eZjLOEt-nCSombkiWd2EFfa (clave secreta)
