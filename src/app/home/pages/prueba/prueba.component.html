@@ -9,10 +9,12 @@
         <h1>Pruebas</h1>
         
         <!-- Prueba -->
-        <re-captcha
-    (resolved)="resolved($event)"
-    siteKey="6LfPi-4bAAAAAL15tnGBFJ1_Bp1InLdlvsk7z_NR"
-  ></re-captcha>
+        <div *appCaptcha="str">
+            hola
+        </div>
+
+        <app-mi-captcha></app-mi-captcha>
+
 
     </main>
 

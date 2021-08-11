@@ -19,18 +19,15 @@ export interface P2{
 
 export class PruebaComponent implements OnInit {
 
-  constructor(private pruebaService:PruebasService) { }
+  str:string;
+  constructor(private pruebaService:PruebasService) { 
+    this.str="perross"
+  }
 
   ngOnInit(): void {
-    this.pruebaService.items$.subscribe((items)=>{
-      //console.log(items);
-    });
 
-    //this.pruebaService.filter("").
+
   }
 
-  resolved(captchaResponse: string) {
-    console.log(`Resolved captcha with response: ${captchaResponse}`);
-  }
 
 }

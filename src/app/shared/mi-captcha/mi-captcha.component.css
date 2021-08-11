@@ -1,0 +1,11 @@
+.col-captcha{
+    width: 18rem !important;
+}
+
+canvas{
+    vertical-align: middle;
+    
+}
+.row{
+    margin-bottom: .5rem;
+}

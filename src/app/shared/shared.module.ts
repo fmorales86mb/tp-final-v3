@@ -40,6 +40,7 @@ import { NombreCompletoPipe } from './01-pipes/nombre-completo.pipe';
 import { IconEspecialidadDirective } from './02-directives/icon-especialidad.directive';
 import { RolDirective } from './02-directives/rol.directive';
 import { CaptchaDirective } from './02-directives/captcha.directive';
+import { MiCaptchaComponent } from './mi-captcha/mi-captcha.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { CaptchaDirective } from './02-directives/captcha.directive';
     EmailDirective,
     IconEspecialidadDirective,
     RolDirective,
+    CaptchaDirective,   
 
     FooterComponent,
     HeaderComponent,
@@ -75,11 +77,13 @@ import { CaptchaDirective } from './02-directives/captcha.directive';
     GraficoPieComponent,
     GraficoBarComponent,
     GraficoLineComponent,
+    MiCaptchaComponent,
 
     //pipes    
     RolPipe,
     NombreCompletoPipe,
-    CaptchaDirective,    
+
+ 
   ],
   imports: [
     CommonModule,
@@ -97,6 +101,7 @@ import { CaptchaDirective } from './02-directives/captcha.directive';
     EmailDirective,
     IconEspecialidadDirective,
     RolDirective,
+    CaptchaDirective,   
 
     FooterComponent,
     HeaderComponent,
@@ -125,6 +130,7 @@ import { CaptchaDirective } from './02-directives/captcha.directive';
     GraficoPieComponent,
     GraficoBarComponent,
     GraficoLineComponent,
+    MiCaptchaComponent,
     
     //pipes
     RolPipe,
