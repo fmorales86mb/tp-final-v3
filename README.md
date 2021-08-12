@@ -55,12 +55,8 @@ Haciendo click en cualquiera de esos turnos se va al detalle del mismo, donde va
 ### Home
 Una vez logueado el usuario va a ser dirigido a esta vista que va a contener un encabezado con su email y los accesos a las diferentes secciones. También va a poder habilitar o deshabilitar el captcha.
 
-![](https://github.com/fmorales86mb/tp-final-v3/blob/master/doc/images-readme/Screenshot%202021-08-12%20at%2017-33-42%20Cl%C3%ADnica%20Pichicata.png)
-
 ### Mis Turnos
 Acá vamos a poder ver el listado de los turnos tomados para el especialista y tenemos la opción de descargar el pdf con todos los turnos. Este listado cuenta con un filtro por especialista, especialidad e historia clínica. Haciendo click en cualquiera de esos turnos se va al detalle del mismo, donde el especialista va a poder cambiar el estado del mismo, agragar reseña, comentario y cargar un item de historia clínica de ese paciente.
-
-![](https://github.com/fmorales86mb/tp-final-v3/blob/master/doc/images-readme/Screenshot%202021-08-12%20at%2017-33-42%20Cl%C3%ADnica%20Pichicata.png)
 
 ### Historia clínica
 La historia clínica cuenta con campos obligatorios y 6 campos opcionales. Si se encuentra habilitado el captcha, al guardar el historial se va a mostrar un captcha para validación.
