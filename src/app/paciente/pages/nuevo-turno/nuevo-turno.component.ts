@@ -16,16 +16,42 @@ export class NuevoTurnoComponent implements OnInit {
 
   user:User;
   mensaje:Mensaje;
-  
+  showCaptcha:boolean;
+  nuevoTurno:Turno;
+  captchaEnabled:boolean;
+
   constructor(
     private autService:AuthService,
     private turnoService:TurnoService,
     private spinner: NgxSpinnerService
-  ) { }
+  ) { 
+    this.showCaptcha = false;
+    this.captchaEnabled = this.autService.captchaEnabled;
+  }
 
   ngOnInit(): void {
     this.mensaje = null;
     this.user = this.autService.GetCurrentUser();
+  }
+
+  guardarTurnoClick(turno:Turno){
+    this.mensaje = null;
+    this.nuevoTurno = turno;
+    this.showCaptcha = true;
+  }
+
+  handlerCaptcha(result:boolean){
+    if(result){
+      this.guardarTurno(this.nuevoTurno);
+    }
+    else{
+      this.nuevoTurno = null; 
+      this.mensaje = {
+        tipo:TipoMje.Warning,
+        txt:"No ingresó el el texto correcto"
+      }    
+    }
+    this.showCaptcha = false;
   }
 
   guardarTurno(turno:Turno){

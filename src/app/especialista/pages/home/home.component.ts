@@ -10,10 +10,16 @@ import { User } from 'src/app/02-models/user';
 export class HomeComponent implements OnInit {
 
   user:User;
+  enable:boolean;
 
   constructor(private autService:AuthService) { }
 
   ngOnInit(): void {
     this.user = this.autService.GetCurrentUser();
+    this.enable = this.autService.captchaEnabled;
+  }
+
+  setCaptcha(){
+    this.autService.captchaEnabled = !this.autService.captchaEnabled;
   }
 }

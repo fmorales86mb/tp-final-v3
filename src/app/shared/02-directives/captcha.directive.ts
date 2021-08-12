@@ -1,19 +1,39 @@
-import { Directive, Input, OnInit } from '@angular/core';
+import { ComponentFactoryResolver, ComponentRef, Directive, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewContainerRef } from '@angular/core';
+import { MiCaptchaComponent } from '../mi-captcha/mi-captcha.component';
 
 @Directive({
   selector: '[appCaptcha]'
 })
-export class CaptchaDirective implements OnInit {
+export class CaptchaDirective implements OnInit, OnChanges {
 
-  @Input() appCaptcha:string;
+  private ref:ComponentRef<MiCaptchaComponent>;
+  @Input() appCaptcha:boolean;
+  @Output() emitter2 = new EventEmitter<any>();
 
-  constructor() { 
-    console.log("app Captcha ok");
+  constructor(    
+    private viewContainer: ViewContainerRef,
+    private resolver: ComponentFactoryResolver
+    ) {     
   }
 
-  ngOnInit(): void {
-    console.log(this.appCaptcha)
+  ngOnInit(): void {            
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if(this.appCaptcha){
+      this.init();
+    } else if(this.ref){      
+      this.ref.destroy();
+    }
+  }
 
+  private init(){
+    this.ref = this.viewContainer.createComponent(this.resolver.resolveComponentFactory(MiCaptchaComponent));    
+
+    this.ref.instance.emitter.subscribe(data => {  
+      console.log(data);    
+      this.emitter2.emit(data);
+    });
+  }
+  
 }

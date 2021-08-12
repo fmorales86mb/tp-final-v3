@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col m-auto">
+    <div class="col m-auto text-center">
         <canvas #captcha></canvas>         
             <svg (click)="initCaptcha()"  xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
@@ -8,12 +8,12 @@
     </div>    
 </div>
 <div class="row">
-    <div class="col m-auto">
+    <div class="col m-auto text-center">
         <input type="text" class="form-control m-auto col-captcha" placeholder="Ingrese el texto de la imagen" [(ngModel)]="txtInput"> 
     </div>    
 </div>
 <div class="row">
-    <div class="col m-auto">
+    <div class="col m-auto text-center">
         <button (click)="validCaptcha()" class="btn btn-secondary col-captcha">Comprobar</button>        
     </div>    
 </div>

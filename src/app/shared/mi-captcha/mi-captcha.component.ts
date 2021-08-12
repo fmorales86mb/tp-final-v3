@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-mi-captcha',
@@ -11,6 +11,7 @@ export class MiCaptchaComponent implements OnInit, AfterViewInit {
   private code:string;
   txtInput:string;
   @ViewChild("captcha") elementView: ElementRef;
+  @Output() emitter = new EventEmitter<boolean>();
 
   constructor() {        
     this.txtInput = '';
@@ -48,19 +49,22 @@ export class MiCaptchaComponent implements OnInit, AfterViewInit {
   }
 
   public validCaptcha() {
+    let result:boolean = false;
+
     var string1 = this.removeSpaces(this.code);
     var string2 = this.removeSpaces(this.txtInput);
-    if (string1 == string2) {
-        console.log("ok");
-        return true;
+
+    if (string1 == string2) {        
+        result = true;
     }
     else {
         this.setCaptchaCode();
         this.creaIMG(this.code);
-        this.txtInput = '';
-        console.log("Nok");
-        return false;
+        this.txtInput = '';        
+        result = false;
     }
+
+    this.emitter.emit(result);
   }
 
   private removeSpaces(string) {
@@ -103,5 +107,4 @@ export class MiCaptchaComponent implements OnInit, AfterViewInit {
     ctxCanvas.fillStyle = "red";
     ctxCanvas.fillText(texto, x, y);
   }
-
 }

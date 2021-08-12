@@ -7,12 +7,19 @@
     <!-- main -->
     <main class="px-3">
         <h1>Pruebas</h1>
+
+        <div class="row">
+            <div [appCaptcha]="show" (emitter2)="test($event)"></div>
+            <button type="button" class="btn btn-warning" (click)="toogle()">Toogle</button>
+        </div>
         
         <!-- Prueba -->
-        <button type="button" class="btn btn-warning" (click)="printUsers()">Usuarios</button>
-        <button type="button" class="btn btn-danger" (click)="printHistorial()">Historia clínica</button>
-        <button type="button" class="btn btn-secondary" (click)="printTurnos()">Historia clínica</button>
-        <!-- <app-mi-captcha></app-mi-captcha> -->
+        <div class="row">
+            <button type="button" class="btn btn-warning" (click)="printUsers()">Usuarios</button>
+            <button type="button" class="btn btn-danger" (click)="printHistorial()">Historia clínica</button>
+            <button type="button" class="btn btn-secondary" (click)="printTurnos()">Turnos</button>
+        </div>        
+        
 
 
     </main>

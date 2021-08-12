@@ -1,9 +1,12 @@
 import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { AuthService } from 'src/app/01-services/auth.service';
 import { HistorialService } from 'src/app/01-services/historial.service';
 import { TurnoService } from 'src/app/01-services/turno.service';
+import { TipoMje } from 'src/app/02-models/enums/mje-enum';
 import { HistoriaClinica } from 'src/app/02-models/historia-clinica';
+import { Mensaje } from 'src/app/02-models/mensaje';
 import { Turno } from 'src/app/02-models/turno';
 import { User } from 'src/app/02-models/user';
 
@@ -15,17 +18,27 @@ import { User } from 'src/app/02-models/user';
 export class HistoriaNuevaComponent implements OnInit {
 
   @Input() turno:Turno;
-
+  mensaje:Mensaje;
   historia:HistoriaClinica;
-  public form: FormGroup;  
+  public form: FormGroup;    
+  captchaEnabled:boolean;
+  showCaptcha:boolean;
+  showCerrar:boolean;
 
   constructor(
     private bf:FormBuilder,
     private historialService:HistorialService,
-    private turnoService:TurnoService
-  ) { }
+    private turnoService:TurnoService,
+    private autService:AuthService,
+  ) {
+    this.showCaptcha = false;
+    this.captchaEnabled = this.autService.captchaEnabled;
+    this.showCerrar = false;
+    this.mensaje = null;
+   }
 
   ngOnInit(): void {
+    this.mensaje = null;
     this.form = this.bf.group({
       altura:['', [Validators.required, Validators.max(300), Validators.pattern("^[0-9]*$")]],
       peso:['', [Validators.required, Validators.max(200), Validators.pattern("^[0-9]*$")]],     
@@ -95,6 +108,29 @@ export class HistoriaNuevaComponent implements OnInit {
     return this.form.get("valor6");
   }
   
+  guardarClick(){
+    this.mensaje = null;    
+    this.showCaptcha = true;
+  }
+
+  handlerCaptcha(result:boolean){
+    if(result){
+      this.guardar();
+      this.mensaje = {
+        txt: "Historia clínica guardada correctamente",
+        tipo: TipoMje.Success
+      };
+      this.showCerrar = true;
+    }
+    else{      
+      this.mensaje = {
+        tipo:TipoMje.Warning,
+        txt:"No ingresó el texto correcto"
+      }    
+    }
+    this.showCaptcha = false;
+  }
+
   guardar(){
     this.historia = {
       paciente : this.turno.paciente,

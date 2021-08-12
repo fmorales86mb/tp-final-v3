@@ -5,6 +5,12 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body text-start">
+                  <!-- Mensaje -->
+        <div class="row justify-content-center">
+            <div class="col-8" *ngIf="mensaje">                
+                <app-alert [mensaje]="mensaje"></app-alert>
+            </div>
+        </div>
         
         <form class="" [formGroup]="form">
             <!-- Altura -->
@@ -121,11 +127,24 @@
             </div>
 
         </form>
-
+        <br>
+        <div class="row" *ngIf="captchaEnabled">
+            
+            <!-- Captcha -->
+            <div [appCaptcha]="showCaptcha" (emitter2)="handlerCaptcha($event)"></div>
+        </div> 
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer" *ngIf="!captchaEnabled">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
         <button type="button" class="btn btn-success" [disabled]="form.invalid" data-bs-dismiss="modal" (click)="guardar()">Guardar</button>
       </div>
+      <div class="modal-footer" *ngIf="captchaEnabled">
+          <div class="row">
+            <button type="button" class="btn btn-secondary col mr-1" data-bs-dismiss="modal" *ngIf="!showCaptcha && !showCerrar">Cancelar</button>
+            <button type="button" class="btn btn-success col" [disabled]="form.invalid" (click)="guardarClick()" *ngIf="!showCaptcha && !showCerrar">Guardar</button>
+            <button type="button" class="btn btn-secondary col" data-bs-dismiss="modal" *ngIf="showCerrar">Cerrar</button>        
+          </div>               
+      </div>
+
     </div>
 </div>

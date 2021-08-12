@@ -29,6 +29,7 @@ export class PruebaComponent implements OnInit {
   users:User[];
   historiales:HistoriaClinica[];
   turnos:Turno[];
+  show:boolean = true;
 
   constructor(private pruebaService:PruebasService, 
     private userService:UserService,
@@ -54,6 +55,14 @@ export class PruebaComponent implements OnInit {
     this.turnoService.getTurnosTomados().subscribe(items => {
       this.turnos = items;
     })
+  }
+
+  test(result){
+    console.log("resultado: " + result);
+  }
+
+  toogle(){
+    this.show = !this.show;
   }
 
   printUsers(){

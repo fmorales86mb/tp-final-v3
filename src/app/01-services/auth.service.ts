@@ -16,11 +16,13 @@ export class AuthService {
   private isAuth:boolean = false;
   private currentUser:User;
   private uid;  
+  captchaEnabled:boolean;
 
   constructor(private authDb: AngularFireAuth, 
     private router:Router, 
     private userService:UserService,
     ) { 
+      this.captchaEnabled = true;
     }
 
   public async Registrarse(loginData: LoginData, user:User):Promise<ResponseFirebase>{
