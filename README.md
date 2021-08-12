@@ -65,22 +65,20 @@ Acá vamos a poder ver el listado de los turnos tomados para el especialista y t
 ### Historia clínica
 La historia clínica cuenta con campos obligatorios y 6 campos opcionales. Si se encuentra habilitado el captcha, al guardar el historial se va a mostrar un captcha para validación.
 
-![](https://github.com/fmorales86mb/tp-final-v3/blob/master/doc/images-readme/Screenshot%202021-08-12%20at%2017-33-42%20Cl%C3%ADnica%20Pichicata.png)
+![](https://github.com/fmorales86mb/tp-final-v3/blob/master/doc/images-readme/Screenshot%202021-08-12%20at%2017-34-57%20Cl%C3%ADnica%20Pichicata.png)
 
 ### Mis Pacientes.
 Desde esta sección se a a poder visualizar el listado de todos los pacientes atendidos por el profesional y la descarga en pdf del mismo. Seleccionando un paciente se accede al detalle del mismo y a su historia clínica.
 
-![](https://github.com/fmorales86mb/tp-final-v3/blob/master/doc/images-readme/Screenshot%202021-08-12%20at%2017-33-42%20Cl%C3%ADnica%20Pichicata.png)
+![](https://github.com/fmorales86mb/tp-final-v3/blob/master/doc/images-readme/Screenshot%202021-08-12%20at%2017-35-26%20Cl%C3%ADnica%20Pichicata.png)
 
 ### Mi perfil
 En esta sección va a poder ver una card con sus datos personales, incluyendo imágenes cargadas
 
-![](https://github.com/fmorales86mb/tp-final-v3/blob/master/doc/images-readme/Screenshot%202021-08-12%20at%2017-33-42%20Cl%C3%ADnica%20Pichicata.png)
-
 ### Mis Horarios
 Desde esta sección el especialista va a poder cargar y modificar los horarios de atención para cada especialidad que tenga.
 
-![](https://github.com/fmorales86mb/tp-final-v3/blob/master/doc/images-readme/Screenshot%202021-08-12%20at%2017-33-42%20Cl%C3%ADnica%20Pichicata.png)
+![](https://github.com/fmorales86mb/tp-final-v3/blob/master/doc/images-readme/Screenshot%202021-08-12%20at%2017-35-35%20Cl%C3%ADnica%20Pichicata.png)
 
 ## Administrador
 
@@ -93,32 +91,33 @@ En esta sección va a poder ver una card con sus datos personales, incluyendo im
 ### Listado usuarios
 El administrador va a tener acceso al listado de todos los usuarios del sistema y su descarga en pdf. Dependiendo del rol del usuario se va a mostrar en un color distinto. Al seleccionar uno de ellos se va a desplegar una card con los datos personales del usuario seleccionado. En caso de ser un paciente, también se va a mostrar su historia clínica. en caso de ser un especialista va a poder habilitarlo o deshabilitarlo del sistema.
 
-![](https://github.com/fmorales86mb/tp-final-v3/blob/master/doc/images-readme/Screenshot%202021-08-12%20at%2017-33-42%20Cl%C3%ADnica%20Pichicata.png)
+![](https://github.com/fmorales86mb/tp-final-v3/blob/master/doc/images-readme/Screenshot%202021-08-12%20at%2017-48-14%20Cl%C3%ADnica%20Pichicata.png)
 
-### Mis Turnos
+### Turnos
 Acá vamos a poder ver el listado de los turnos tomados de toda la clínica y tenemos la opción de descargar el pdf. Este listado cuenta con un filtro por especialista, especialidad e historia clínica. Haciendo click en cualquiera de esos turnos se va al detalle del mismo, donde vamos a poder cancelarlo (según el estado en el que esté).
 
-![](https://github.com/fmorales86mb/tp-final-v3/blob/master/doc/images-readme/Screenshot%202021-08-12%20at%2017-33-42%20Cl%C3%ADnica%20Pichicata.png)
 
 ### Nuevo Turno
 Desde esta sección vamos a poder tomar un nuevo turno. Para esto primero seleccionamos a un paciente, luego la especialidad, luego un especialista y por último se nos presenta una lista de los turnos libres en los próximos 15 días para ese especialista.
 
-![](https://github.com/fmorales86mb/tp-final-v3/blob/master/doc/images-readme/Screenshot%202021-08-12%20at%2017-33-42%20Cl%C3%ADnica%20Pichicata.png)
-
 ### Estadísticas - Registro de ingresos
 Desde esta vista vamos a tener acceso al listado de los ingresos al sistema, con el nombre del usuario y la fecha y hora del ingreso. También se puede descargar el pdf con el listado. Se incluye un gráfico de torta que representa la porcion de ingresos de cada usuario.
 
-![](https://github.com/fmorales86mb/tp-final-v3/blob/master/doc/images-readme/Screenshot%202021-08-12%20at%2017-33-42%20Cl%C3%ADnica%20Pichicata.png)
+![](https://github.com/fmorales86mb/tp-final-v3/blob/master/doc/images-readme/Screenshot%202021-08-12%20at%2017-48-52%20Cl%C3%ADnica%20Pichicata.png)
 
 ### Estadísticas - Turnos
 El administrador va a tener acceso a algunos gráficos estadísticos y descargarlos en pdf.
 - Gráfico de barras de los turnos por especialidad.
+
+![](https://github.com/fmorales86mb/tp-final-v3/blob/master/doc/images-readme/Screenshot%202021-08-12%20at%2017-49-05%20Cl%C3%ADnica%20Pichicata.png)
+
 - Gráfico lineal representando la cantidad de turnos tomados por días
+
+![](https://github.com/fmorales86mb/tp-final-v3/blob/master/doc/images-readme/Screenshot%202021-08-12%20at%2017-49-18%20Cl%C3%ADnica%20Pichicata.png)
+
 - Gráfico de barras representando los turnos solicitados por especialista, diferenciando los finalizados de los no finalizados
 
-![](https://github.com/fmorales86mb/tp-final-v3/blob/master/doc/images-readme/Screenshot%202021-08-12%20at%2017-33-42%20Cl%C3%ADnica%20Pichicata.png)
+![](https://github.com/fmorales86mb/tp-final-v3/blob/master/doc/images-readme/Screenshot%202021-08-12%20at%2017-49-27%20Cl%C3%ADnica%20Pichicata.png)
 
 ### Registro
 En esta sección vamos poder elegir con qué rol nos queremos registrar (especialista, paciente, administrador). Una vez elegido el tipo de registro vamos a completar un formulario en dos pasos. Al confirmar se va a mostrar un captcha para validación.
-
-![](https://github.com/fmorales86mb/tp-final-v3/blob/master/doc/images-readme/Screenshot%202021-08-12%20at%2017-33-42%20Cl%C3%ADnica%20Pichicata.png)
