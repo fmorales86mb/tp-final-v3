@@ -3,6 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from 'src/app/01-services/auth.service';
 import { HistorialService } from 'src/app/01-services/historial.service';
+import { PdfService } from 'src/app/01-services/pdf.service';
 import { HistoriaClinica } from 'src/app/02-models/historia-clinica';
 import { Mensaje } from 'src/app/02-models/mensaje';
 import { User } from 'src/app/02-models/user';
@@ -24,7 +25,8 @@ export class PacientesComponent implements OnInit {
   constructor(private autService:AuthService, 
       private spinner: NgxSpinnerService,
       private historialService:HistorialService,
-      private modalService: NgbModal
+      private modalService: NgbModal,
+      private pdfService:PdfService
       ) { 
     this.users=[];
     this.historial = [];
@@ -60,5 +62,9 @@ export class PacientesComponent implements OnInit {
   mostrarDetalle(content,historial:HistoriaClinica){
     this.historialSeleccionado = historial;
     this.modalService.open(content);
+  }
+
+  print(){
+    this.pdfService.createPdfUsers(this.users, "Listado de Pacientes");
   }
 }

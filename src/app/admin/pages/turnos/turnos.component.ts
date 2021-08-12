@@ -1,6 +1,7 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from 'src/app/01-services/auth.service';
+import { PdfService } from 'src/app/01-services/pdf.service';
 import { TurnoService } from 'src/app/01-services/turno.service';
 import { TipoMje } from 'src/app/02-models/enums/mje-enum';
 import { Mensaje } from 'src/app/02-models/mensaje';
@@ -23,7 +24,8 @@ export class TurnosComponent implements OnInit {
   constructor(
     private autService:AuthService,
     private spinner: NgxSpinnerService,
-    private turnoService:TurnoService
+    private turnoService:TurnoService,
+    private pdfService:PdfService
   ) { 
     this.turnos = [];
   }
@@ -78,6 +80,10 @@ export class TurnosComponent implements OnInit {
     .finally(()=>{
       this.spinner.hide();
     })
+  }
+
+  print(){
+    this.pdfService.createPdfTurnos(this.turnos, "Listado de Turnos");
   }
 
 }

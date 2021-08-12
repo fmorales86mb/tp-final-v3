@@ -6,6 +6,7 @@ import { Mensaje } from 'src/app/02-models/mensaje';
 import { User } from 'src/app/02-models/user';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { PdfService } from 'src/app/01-services/pdf.service';
 
 @Component({
   selector: 'app-ingresos',
@@ -25,6 +26,7 @@ export class IngresosComponent implements OnInit {
   constructor(
     private autService:AuthService,
     private logService:LogService,
+    private pdfService:PdfService
   ) { 
     this.logs = [];
     this.data = [];
@@ -86,6 +88,10 @@ export class IngresosComponent implements OnInit {
       }).then((docResult) => {
         docResult.save(`${new Date().toISOString()}_tutorial.pdf`);
       });
+  }
+
+  print(){
+    this.pdfService.createPdfLogs(this.logs, "Registro de Ingresos");
   }
 
 }

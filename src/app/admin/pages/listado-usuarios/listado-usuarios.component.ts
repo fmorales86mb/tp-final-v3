@@ -3,6 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from 'src/app/01-services/auth.service';
 import { HistorialService } from 'src/app/01-services/historial.service';
+import { PdfService } from 'src/app/01-services/pdf.service';
 import { UserService } from 'src/app/01-services/user.service';
 import { TipoMje } from 'src/app/02-models/enums/mje-enum';
 import { Rol } from 'src/app/02-models/enums/rol-enum';
@@ -28,7 +29,8 @@ export class ListadoUsuariosComponent implements OnInit {
       private userService:UserService,
       private spinner: NgxSpinnerService,
       private historialService:HistorialService,
-      private modalService: NgbModal) { 
+      private modalService: NgbModal,
+      private pdfService:PdfService) { 
     this.users=[];
     this.historial = [];
   }
@@ -86,5 +88,9 @@ export class ListadoUsuariosComponent implements OnInit {
     this.historialSeleccionado = historial;
     // console.log(this.historialSeleccionado);
     this.modalService.open(content);
+  }
+
+  print(){
+    this.pdfService.createPdfUsers(this.users, "Listado de Usuarios");
   }
 }

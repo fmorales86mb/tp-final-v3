@@ -2,14 +2,19 @@
 // Captcha propio en Directivas
 
 // Readme
+El Readme debe contener una explicación de la Clínica, pantallas, formas de acceder a las diferentes
+secciones y que contiene cada sección.
 
+
+------------------------------------------------------------------
 // Descarga Historia clínica
+En Mi perfil, para los usuarios paciente, un pdf con la historia clínica. El PDF tiene que tener
+logo de la clínica, título del informe y fecha de emisión.
 
 // Descarga Listado Pacientes/turnos/usuarios
 
 // Descarga Atenciones paciente
 
-------------------------------------------------------------------
 // Captcha Google
 
 // Sprint 5

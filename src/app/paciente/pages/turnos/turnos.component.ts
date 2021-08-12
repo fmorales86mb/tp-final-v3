@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from 'src/app/01-services/auth.service';
+import { PdfService } from 'src/app/01-services/pdf.service';
 import { TurnoService } from 'src/app/01-services/turno.service';
 import { TipoMje } from 'src/app/02-models/enums/mje-enum';
+import { EstadoTurno } from 'src/app/02-models/enums/turno-estado-enum';
 import { Mensaje } from 'src/app/02-models/mensaje';
 import { Turno } from 'src/app/02-models/turno';
 import { User } from 'src/app/02-models/user';
@@ -17,15 +19,19 @@ export class TurnosComponent implements OnInit {
   user:User;
   mensaje:Mensaje;
   turnos:Turno[];
+  turnosAtendidos:Turno[];
   turnosFiltrados:Turno[];
   turnoSeleccionado:Turno;
 
   constructor(
     private autService:AuthService,
     private spinner: NgxSpinnerService,
-    private turnoService:TurnoService
+    private turnoService:TurnoService,
+    private pdfService:PdfService
   ) { 
     this.turnos = [];
+    this.turnosAtendidos = [];
+    this.turnosFiltrados = [];
   }
 
   ngOnInit(): void {
@@ -35,7 +41,6 @@ export class TurnosComponent implements OnInit {
     this.spinner.show();
     this.turnoService.getTurnosByPacienteTomados(this.user.docId).subscribe(items => {
       this.turnos = items;
-      console.log(this.turnos);
       this.turnosFiltrados = this.turnos;      
       this.spinner.hide();
     })
@@ -104,4 +109,15 @@ export class TurnosComponent implements OnInit {
     })
   }
 
+  print(){
+    this.pdfService.createPdfTurnos(this.turnos, "Listado de Turnos");
+  }
+
+  print2(){
+    this.turnosAtendidos = this.turnos.filter(item => {
+      return item.estado == EstadoTurno.Realizado;
+    });
+
+    this.pdfService.createPdfTurnos(this.turnosAtendidos, "Turnos Atendidos");
+  }
 }

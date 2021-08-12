@@ -2,3 +2,7 @@
 	overflow-y: auto;
     overflow-x: hidden;  
 }
+
+svg{
+    cursor: pointer;
+}

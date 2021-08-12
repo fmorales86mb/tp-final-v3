@@ -6,6 +6,7 @@ import { HistoriaClinica } from 'src/app/02-models/historia-clinica';
 import { Mensaje } from 'src/app/02-models/mensaje';
 import { User } from 'src/app/02-models/user';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { PdfService } from 'src/app/01-services/pdf.service';
 
 @Component({
   selector: 'app-perfil',
@@ -24,7 +25,8 @@ export class PerfilComponent implements OnInit {
     private autService:AuthService,
     private historialService:HistorialService,
     private spinner: NgxSpinnerService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private pdfService:PdfService
   ) {
     this.historiales = [];
   }
@@ -44,5 +46,9 @@ export class PerfilComponent implements OnInit {
     this.historialSeleccionado = historial;
     // console.log(this.historialSeleccionado);
     this.modalService.open(content);
+  }
+
+  printHistorial(){
+    this.pdfService.createPdfUserHistorial(this.historiales, "Historia Clínica", this.user);
   }
 }
